@@ -6,262 +6,260 @@
 <title>نظام إدارة الخطوط</title>
 <style>
 :root{
-  --emerald:#e60026;--we:#6b2fa0;--vodafone:#e60000;--orange:#ff7900;
-  --bg:#0f1117;--card:#1a1d27;--card2:#22263a;--text:#e8eaf0;
-  --sub:#8892a4;--border:#2d3352;--green:#2ecc71;--red:#e74c3c;
-  --yellow:#f39c12;--blue:#3d5af1;
+  --emerald:#da0812;--we:#6b2fa0;--vodafone:#e60000;--orange:#ff7900;
+  --bg:#080b14;--card:#0f1320;--card2:#161c2e;--card3:#1e2540;
+  --text:#e8eaf0;--sub:#6b7a99;--border:#1e2540;
+  --green:#00e676;--red:#ff4d4d;--yellow:#ffc107;--blue:#4f6ef7;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:'Segoe UI',Tahoma,sans-serif;min-height:100vh;}
-
-/* LOGIN */
-#login-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;}
-.login-box{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px 36px;width:100%;max-width:400px;text-align:center;}
-.login-logo{margin-bottom:14px;display:flex;justify-content:center;gap:8px;}
-.login-logo img,.login-logo svg{width:38px;height:38px;border-radius:50%;object-fit:cover;}
-.login-title{font-size:21px;font-weight:700;margin-bottom:3px;}
-.login-sub{color:var(--sub);font-size:13px;margin-bottom:28px;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+@keyframes fade-in-up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+#login-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;
+  background-image:radial-gradient(ellipse at 20% 50%,rgba(107,47,160,.15) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(79,110,247,.1) 0%,transparent 50%);}
+.login-box{background:rgba(15,19,32,.95);border:1px solid rgba(79,110,247,.2);border-radius:24px;padding:44px 38px;width:100%;max-width:420px;text-align:center;
+  backdrop-filter:blur(20px);box-shadow:0 40px 80px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.06);}
+.login-logos{display:flex;justify-content:center;gap:10px;margin-bottom:18px;}
+.login-logo-item{width:42px;height:42px;border-radius:12px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,.4);}
+.login-logo-item svg{width:100%;height:100%;}
+.login-title{font-size:22px;font-weight:800;margin-bottom:4px;background:linear-gradient(135deg,#fff,#a0b4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.login-sub{color:var(--sub);font-size:13px;margin-bottom:30px;}
 .form-group{margin-bottom:14px;text-align:right;}
-.form-label{display:block;font-size:12px;color:var(--sub);margin-bottom:5px;font-weight:500;}
-.form-input{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:11px 13px;border-radius:9px;font-size:14px;transition:border-color .2s;}
-.form-input:focus{outline:none;border-color:var(--blue);}
-.login-btn{width:100%;background:var(--blue);color:#fff;border:none;padding:12px;border-radius:9px;font-size:15px;font-weight:700;cursor:pointer;margin-top:6px;}
-.login-btn:hover{background:#2d4ae0;}
-.login-error{color:var(--red);font-size:13px;margin-top:8px;min-height:18px;}
-
-/* NAV */
-nav{background:var(--card);border-bottom:1px solid var(--border);padding:0 18px;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100;}
-.nav-brand{font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px;}
-.nav-brand svg{width:28px;height:28px;}
-.nav-center{display:flex;gap:3px;}
-.nav-btn{background:none;border:1px solid var(--border);color:var(--sub);padding:5px 11px;border-radius:7px;cursor:pointer;font-size:12px;transition:all .2s;}
-.nav-btn:hover,.nav-btn.active{border-color:var(--blue);color:var(--text);background:var(--card2);}
-.nav-btn.active{font-weight:700;}
-.nav-right{display:flex;align-items:center;gap:8px;}
-.user-chip{background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:4px 11px;font-size:12px;display:flex;align-items:center;gap:6px;}
-.role-tag-nav{font-size:10px;padding:1px 6px;border-radius:8px;font-weight:700;}
-.role-admin-nav{background:rgba(243,156,18,.2);color:var(--yellow);}
-.role-user-nav{background:rgba(61,90,241,.2);color:var(--blue);}
-.logout-btn{background:none;border:1px solid rgba(231,76,60,.3);color:var(--red);padding:4px 9px;border-radius:7px;cursor:pointer;font-size:12px;}
-.logout-btn:hover{background:rgba(231,76,60,.1);}
-
-/* MONTH BAR */
-.month-bar{background:var(--card2);border-bottom:1px solid var(--border);padding:7px 18px;display:flex;align-items:center;gap:8px;overflow-x:auto;flex-wrap:nowrap;}
-.month-chip{padding:4px 13px;border-radius:18px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;border:1px solid var(--border);background:none;color:var(--sub);transition:all .2s;}
-.month-chip.active{background:var(--blue);color:#fff;border-color:var(--blue);}
-.month-chip:hover:not(.active){background:var(--card);color:var(--text);}
-.new-month-btn{padding:4px 11px;border-radius:18px;font-size:12px;border:1px dashed var(--border);background:none;color:var(--sub);cursor:pointer;white-space:nowrap;flex-shrink:0;}
-.new-month-btn:hover{border-color:var(--blue);color:var(--blue);}
-
-/* PAGES */
-.page{display:none;padding:22px 18px;max-width:1200px;margin:0 auto;}
-.page.active{display:block;}
-
-/* COMPANY CARDS */
-.companies-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:15px;margin-top:18px;}
-.company-card{background:var(--card);border:2px solid var(--border);border-radius:16px;padding:22px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;}
-.company-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.4);}
-.company-card[data-co="emerald"]{border-color:rgba(230,0,38,.4);}
-.company-card[data-co="we"]{border-color:rgba(107,47,160,.5);}
-.company-card[data-co="vodafone"]{border-color:rgba(230,0,0,.4);}
-.company-card[data-co="orange"]{border-color:rgba(255,121,0,.4);}
-.co-logo-wrap{width:56px;height:56px;margin-bottom:12px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;}
-.co-logo-wrap svg,.co-logo-wrap img{width:100%;height:100%;}
-.co-name{font-size:17px;font-weight:700;margin-bottom:3px;}
-.co-stats{display:flex;gap:14px;margin-top:11px;}
-.co-stat{font-size:12px;color:var(--sub);}
-.co-stat strong{color:var(--text);display:block;font-size:16px;}
-.renew-badges{display:flex;gap:6px;margin-top:10px;}
-.renew-badge{font-size:11px;padding:2px 8px;border-radius:10px;font-weight:600;}
-.rb-1{background:rgba(61,90,241,.15);color:#7b96ff;}
-.rb-16{background:rgba(243,156,18,.15);color:var(--yellow);}
-
-/* SECTION HEADER */
-.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
-.section-title{font-size:18px;font-weight:700;}
-.section-sub{color:var(--sub);font-size:13px;margin-top:2px;}
-.btn{padding:8px 14px;border-radius:9px;border:none;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;display:inline-flex;align-items:center;gap:5px;}
-.btn-primary{background:var(--blue);color:#fff;}
-.btn-primary:hover{background:#2d4ae0;}
-.btn-sm{padding:5px 9px;font-size:12px;border-radius:7px;}
-.btn-danger{background:rgba(231,76,60,.12);color:var(--red);border:1px solid rgba(231,76,60,.25);}
-.btn-danger:hover{background:rgba(231,76,60,.2);}
-.btn-outline{background:none;border:1px solid var(--border);color:var(--text);}
-.btn-outline:hover{background:var(--card2);}
-.btn-yellow{background:rgba(243,156,18,.12);color:var(--yellow);border:1px solid rgba(243,156,18,.25);}
-.back-btn{background:none;border:none;color:var(--sub);cursor:pointer;font-size:13px;display:flex;align-items:center;gap:5px;padding:3px 0;margin-bottom:14px;}
-.back-btn:hover{color:var(--text);}
-
-/* TABLE */
-.table-wrap{background:var(--card);border-radius:13px;border:1px solid var(--border);overflow:hidden;overflow-x:auto;}
-table{width:100%;border-collapse:collapse;min-width:550px;}
-th{background:var(--card2);padding:10px 13px;text-align:right;font-size:11px;color:var(--sub);font-weight:700;text-transform:uppercase;border-bottom:1px solid var(--border);}
-td{padding:11px 13px;border-bottom:1px solid var(--border);font-size:13px;vertical-align:middle;}
-tr:last-child td{border-bottom:none;}
-tr:hover td{background:rgba(255,255,255,.02);}
-.line-number{font-family:monospace;font-size:14px;font-weight:700;letter-spacing:.5px;}
-.progress-bar{width:100%;height:5px;background:var(--border);border-radius:3px;overflow:hidden;margin-top:4px;}
-.progress-fill{height:100%;border-radius:3px;transition:width .3s;}
-.fill-green{background:var(--green);}
-.fill-yellow{background:var(--yellow);}
-.fill-red{background:var(--red);}
-.renew-day-badge{display:inline-flex;align-items:center;gap:3px;font-size:11px;padding:2px 8px;border-radius:10px;font-weight:700;}
-.day-1{background:rgba(61,90,241,.15);color:#7b96ff;}
-.day-16{background:rgba(243,156,18,.15);color:var(--yellow);}
-
-/* MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:500;display:flex;align-items:center;justify-content:center;padding:14px;opacity:0;pointer-events:none;transition:opacity .2s;}
-.modal-overlay.open{opacity:1;pointer-events:all;}
-.modal{background:var(--card);border:1px solid var(--border);border-radius:16px;width:100%;max-width:500px;max-height:92vh;overflow-y:auto;transform:scale(.95);transition:transform .2s;}
-.modal-overlay.open .modal{transform:scale(1);}
-.modal-head{padding:18px 20px 0;display:flex;align-items:center;justify-content:space-between;}
-.modal-title{font-size:16px;font-weight:700;}
-.modal-close{background:none;border:none;color:var(--sub);font-size:22px;cursor:pointer;line-height:1;}
-.modal-close:hover{color:var(--text);}
-.modal-body{padding:16px 20px 20px;}
-.form-group{margin-bottom:13px;}
 .form-label{display:block;font-size:12px;color:var(--sub);margin-bottom:5px;font-weight:600;}
-.form-input{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:10px 12px;border-radius:8px;font-size:14px;transition:border-color .2s;}
-.form-input:focus{outline:none;border-color:var(--blue);}
+.form-input{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:var(--text);padding:12px 14px;border-radius:10px;font-size:14px;transition:all .2s;}
+.form-input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(79,110,247,.15);}
+.login-btn{width:100%;background:linear-gradient(135deg,#4f6ef7,#7b4fe0);color:#fff;border:none;padding:13px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;margin-top:6px;
+  box-shadow:0 4px 20px rgba(79,110,247,.4);transition:all .2s;}
+.login-btn:hover{transform:translateY(-1px);box-shadow:0 8px 25px rgba(79,110,247,.5);}
+.login-error{color:var(--red);font-size:13px;margin-top:10px;min-height:18px;}
+nav{background:rgba(15,19,32,.95);border-bottom:1px solid var(--border);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:58px;position:sticky;top:0;z-index:100;backdrop-filter:blur(20px);}
+.nav-brand{font-size:15px;font-weight:800;display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#fff,#a0b4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-brand svg{-webkit-text-fill-color:initial;}
+.nav-center{display:flex;gap:3px;}
+.nav-btn{background:none;border:1px solid transparent;color:var(--sub);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;transition:all .2s;}
+.nav-btn:hover{border-color:var(--border);color:var(--text);background:var(--card2);}
+.nav-btn.active{border-color:rgba(79,110,247,.4);color:var(--text);background:rgba(79,110,247,.1);}
+.nav-right{display:flex;align-items:center;gap:8px;}
+.user-chip{background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:5px 13px;font-size:12px;display:flex;align-items:center;gap:6px;font-weight:600;}
+.role-tag-nav{font-size:10px;padding:2px 7px;border-radius:8px;font-weight:700;}
+.role-admin-nav{background:rgba(255,193,7,.15);color:var(--yellow);}
+.role-user-nav{background:rgba(79,110,247,.15);color:var(--blue);}
+.logout-btn{background:none;border:1px solid rgba(255,77,77,.25);color:var(--red);padding:5px 10px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;transition:all .2s;}
+.logout-btn:hover{background:rgba(255,77,77,.1);}
+.month-bar{background:var(--card);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;align-items:center;gap:8px;overflow-x:auto;flex-wrap:nowrap;}
+.month-chip{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;border:1px solid var(--border);background:none;color:var(--sub);transition:all .2s;}
+.month-chip.active{background:linear-gradient(135deg,#4f6ef7,#7b4fe0);color:#fff;border-color:transparent;box-shadow:0 2px 10px rgba(79,110,247,.4);}
+.month-chip:hover:not(.active){background:var(--card2);color:var(--text);}
+.new-month-btn{padding:5px 12px;border-radius:20px;font-size:12px;border:1px dashed rgba(79,110,247,.4);background:none;color:var(--blue);cursor:pointer;white-space:nowrap;flex-shrink:0;font-weight:600;transition:all .2s;}
+.new-month-btn:hover{background:rgba(79,110,247,.1);}
+.page{display:none;padding:24px 20px;max-width:1200px;margin:0 auto;}
+.page.active{display:block;animation:fade-in-up .3s ease;}
+.hero-banner{position:relative;overflow:hidden;border-radius:24px;padding:36px 32px;margin-bottom:28px;
+  background:linear-gradient(135deg,#0d1128 0%,#141833 50%,#0a0e20 100%);
+  border:1px solid rgba(79,110,247,.2);box-shadow:0 20px 60px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.05);}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
+.hero-orb-1{width:300px;height:300px;background:rgba(107,47,160,.35);top:-80px;right:-60px;animation:float 8s ease-in-out infinite;}
+.hero-orb-2{width:200px;height:200px;background:rgba(79,110,247,.25);bottom:-60px;left:10%;animation:float 10s ease-in-out infinite reverse;}
+.hero-orb-3{width:150px;height:150px;background:rgba(230,0,0,.2);top:20%;left:40%;animation:float 7s ease-in-out infinite 2s;}
+.hero-content{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+.hero-title{font-size:28px;font-weight:800;background:linear-gradient(135deg,#ffffff,#a0b4ff,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2;margin-bottom:8px;}
+.hero-greeting{font-size:14px;color:rgba(160,180,255,.7);font-weight:600;margin-bottom:6px;}
+.hero-sub{font-size:13px;color:var(--sub);}
+.hero-metrics{display:flex;gap:16px;flex-wrap:wrap;}
+.hero-metric{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px 20px;text-align:center;min-width:100px;backdrop-filter:blur(10px);}
+.hero-metric .hm-val{font-size:24px;font-weight:800;background:linear-gradient(135deg,#fff,#a0b4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-metric .hm-label{font-size:11px;color:var(--sub);margin-top:3px;font-weight:600;}
+.companies-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;}
+.company-card{position:relative;border-radius:20px;padding:24px;cursor:pointer;overflow:hidden;
+  background:var(--card);border:1px solid var(--border);
+  transition:transform .35s cubic-bezier(.17,.67,.35,1.2),box-shadow .35s ease;transform-style:preserve-3d;}
+.company-card::before{content:'';position:absolute;inset:0;border-radius:20px;opacity:0;transition:opacity .35s;pointer-events:none;}
+.company-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);pointer-events:none;}
+.company-card[data-co="we"]::before{background:radial-gradient(ellipse at 30% 20%,rgba(107,47,160,.4),transparent 65%);}
+.company-card[data-co="vodafone"]::before{background:radial-gradient(ellipse at 30% 20%,rgba(230,0,0,.35),transparent 65%);}
+.company-card[data-co="orange"]::before{background:radial-gradient(ellipse at 30% 20%,rgba(255,121,0,.35),transparent 65%);}
+.company-card[data-co="emerald"]::before{background:radial-gradient(ellipse at 30% 20%,rgba(218,8,18,.35),transparent 65%);}
+.company-card:hover{transform:perspective(1000px) rotateX(-4deg) rotateY(4deg) translateY(-8px);}
+.company-card:hover::before{opacity:1;}
+.company-card[data-co="we"]:hover{box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 40px rgba(107,47,160,.3);}
+.company-card[data-co="vodafone"]:hover{box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 40px rgba(230,0,0,.25);}
+.company-card[data-co="orange"]:hover{box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 40px rgba(255,121,0,.25);}
+.company-card[data-co="emerald"]:hover{box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 40px rgba(218,8,18,.25);}
+.co-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.co-logo-wrap{width:52px;height:52px;border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(0,0,0,.4);}
+.co-logo-wrap svg{width:100%;height:100%;}
+.co-progress-ring{width:52px;height:52px;flex-shrink:0;}
+.co-ring-bg{fill:none;stroke:rgba(255,255,255,.08);stroke-width:4;}
+.co-ring-fill{fill:none;stroke-width:4;stroke-linecap:round;}
+.co-ring-text{fill:var(--text);font-size:11px;font-weight:700;dominant-baseline:central;text-anchor:middle;}
+.co-name{font-size:18px;font-weight:800;margin-bottom:4px;}
+.co-color-line{height:3px;border-radius:2px;width:36px;margin-bottom:14px;}
+.co-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.co-stat{background:rgba(255,255,255,.04);border-radius:10px;padding:8px;text-align:center;border:1px solid rgba(255,255,255,.05);}
+.co-stat .sv{font-size:17px;font-weight:800;line-height:1;}
+.co-stat .sl{font-size:10px;color:var(--sub);margin-top:3px;font-weight:600;}
+.renew-badges{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap;}
+.renew-badge{font-size:11px;padding:3px 9px;border-radius:10px;font-weight:700;}
+.rb-1{background:rgba(79,110,247,.15);color:#7b96ff;border:1px solid rgba(79,110,247,.2);}
+.rb-16{background:rgba(255,193,7,.12);color:var(--yellow);border:1px solid rgba(255,193,7,.2);}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+.section-title{font-size:20px;font-weight:800;}
+.section-sub{color:var(--sub);font-size:13px;margin-top:3px;}
+.btn{padding:9px 15px;border-radius:10px;border:none;cursor:pointer;font-size:13px;font-weight:700;transition:all .2s;display:inline-flex;align-items:center;gap:5px;}
+.btn-primary{background:linear-gradient(135deg,#4f6ef7,#7b4fe0);color:#fff;box-shadow:0 4px 15px rgba(79,110,247,.3);}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(79,110,247,.4);}
+.btn-sm{padding:6px 10px;font-size:12px;border-radius:8px;}
+.btn-danger{background:rgba(255,77,77,.1);color:var(--red);border:1px solid rgba(255,77,77,.2);}
+.btn-danger:hover{background:rgba(255,77,77,.2);}
+.btn-outline{background:none;border:1px solid var(--border);color:var(--text);font-weight:600;}
+.btn-outline:hover{background:var(--card2);}
+.back-btn{background:none;border:none;color:var(--sub);cursor:pointer;font-size:13px;display:flex;align-items:center;gap:5px;padding:3px 0;margin-bottom:16px;font-weight:600;}
+.back-btn:hover{color:var(--text);}
+.table-wrap{background:var(--card);border-radius:14px;border:1px solid var(--border);overflow:hidden;overflow-x:auto;}
+table{width:100%;border-collapse:collapse;min-width:550px;}
+th{background:var(--card2);padding:11px 14px;text-align:right;font-size:11px;color:var(--sub);font-weight:700;text-transform:uppercase;border-bottom:1px solid var(--border);}
+td{padding:12px 14px;border-bottom:1px solid var(--border);font-size:13px;vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:rgba(79,110,247,.04);}
+.line-number{font-family:monospace;font-size:14px;font-weight:800;}
+.progress-bar{width:100%;height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;margin-top:5px;}
+.progress-fill{height:100%;border-radius:3px;transition:width .3s;}
+.fill-green{background:linear-gradient(90deg,#00c853,#00e676);}
+.fill-yellow{background:linear-gradient(90deg,#ff9800,#ffc107);}
+.fill-red{background:linear-gradient(90deg,#d32f2f,#ff4d4d);}
+.renew-day-badge{display:inline-flex;align-items:center;gap:3px;font-size:11px;padding:3px 9px;border-radius:10px;font-weight:700;}
+.day-1{background:rgba(79,110,247,.15);color:#7b96ff;border:1px solid rgba(79,110,247,.2);}
+.day-16{background:rgba(255,193,7,.12);color:var(--yellow);border:1px solid rgba(255,193,7,.2);}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:500;display:flex;align-items:center;justify-content:center;padding:14px;opacity:0;pointer-events:none;transition:opacity .2s;backdrop-filter:blur(4px);}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:20px;width:100%;max-width:500px;max-height:92vh;overflow-y:auto;transform:scale(.95);transition:transform .2s;box-shadow:0 40px 80px rgba(0,0,0,.6);}
+.modal-overlay.open .modal{transform:scale(1);}
+.modal-head{padding:20px 22px 0;display:flex;align-items:center;justify-content:space-between;}
+.modal-title{font-size:17px;font-weight:800;}
+.modal-close{background:none;border:none;color:var(--sub);font-size:24px;cursor:pointer;line-height:1;}
+.modal-close:hover{color:var(--text);}
+.modal-body{padding:18px 22px 22px;}
 select.form-input{appearance:none;cursor:pointer;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.form-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
-.flex-end{display:flex;justify-content:flex-end;gap:8px;margin-top:16px;}
+.flex-end{display:flex;justify-content:flex-end;gap:8px;margin-top:18px;}
 .renew-day-selector{display:flex;gap:8px;}
-.renew-opt{flex:1;background:var(--bg);border:2px solid var(--border);border-radius:9px;padding:10px;text-align:center;cursor:pointer;transition:all .2s;}
-.renew-opt.selected-1{border-color:#7b96ff;background:rgba(61,90,241,.1);}
-.renew-opt.selected-16{border-color:var(--yellow);background:rgba(243,156,18,.1);}
-.renew-opt .rd-num{font-size:22px;font-weight:800;}
+.renew-opt{flex:1;background:rgba(255,255,255,.04);border:2px solid var(--border);border-radius:10px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;}
+.renew-opt.selected-1{border-color:#7b96ff;background:rgba(79,110,247,.1);}
+.renew-opt.selected-16{border-color:var(--yellow);background:rgba(255,193,7,.08);}
+.renew-opt .rd-num{font-size:24px;font-weight:800;}
 .renew-opt .rd-label{font-size:11px;color:var(--sub);margin-top:3px;}
-
-/* TABS */
-.tabs{display:flex;gap:3px;margin-bottom:18px;background:var(--card);border-radius:9px;padding:3px;border:1px solid var(--border);width:fit-content;}
-.tab{padding:6px 14px;border-radius:7px;cursor:pointer;font-size:13px;font-weight:500;color:var(--sub);border:none;background:none;transition:all .2s;}
+.tabs{display:flex;gap:3px;margin-bottom:20px;background:var(--card);border-radius:10px;padding:3px;border:1px solid var(--border);width:fit-content;}
+.tab{padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;color:var(--sub);border:none;background:none;transition:all .2s;}
 .tab.active{background:var(--card2);color:var(--text);font-weight:700;}
 .tab-content{display:none;}
 .tab-content.active{display:block;}
-
-/* FILTER BAR */
 .filter-bar{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;}
-.filter-chip{padding:4px 12px;border-radius:15px;border:1px solid var(--border);background:none;color:var(--sub);font-size:12px;cursor:pointer;transition:all .2s;}
+.filter-chip{padding:5px 13px;border-radius:15px;border:1px solid var(--border);background:none;color:var(--sub);font-size:12px;cursor:pointer;font-weight:600;transition:all .2s;}
 .filter-chip.active{background:var(--card2);color:var(--text);border-color:var(--text);}
-.filter-chip.fc-1.active{background:rgba(61,90,241,.15);color:#7b96ff;border-color:#7b96ff;}
-.filter-chip.fc-16.active{background:rgba(243,156,18,.15);color:var(--yellow);border-color:var(--yellow);}
-
-/* STATS */
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin-bottom:18px;}
-.stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;}
-.stat-card .label{font-size:11px;color:var(--sub);margin-bottom:6px;}
-.stat-card .value{font-size:23px;font-weight:700;}
-.stat-card .sub-value{font-size:11px;color:var(--sub);margin-top:3px;}
-.profit-card{background:linear-gradient(135deg,rgba(46,204,113,.07),rgba(61,90,241,.07));border-color:rgba(46,204,113,.2);}
-
-/* CUSTOMERS */
-.customers-grid{display:grid;gap:9px;}
-.customer-card{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:12px 14px;display:flex;align-items:center;gap:11px;}
-.cust-seq{width:30px;height:30px;border-radius:50%;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:2px solid var(--border);flex-shrink:0;}
+.filter-chip.fc-1.active{background:rgba(79,110,247,.12);color:#7b96ff;border-color:rgba(79,110,247,.3);}
+.filter-chip.fc-16.active{background:rgba(255,193,7,.1);color:var(--yellow);border-color:rgba(255,193,7,.3);}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:13px;margin-bottom:20px;}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;}
+.stat-card.profit-card{background:linear-gradient(135deg,rgba(0,230,118,.05),rgba(79,110,247,.05));}
+.stat-card .label{font-size:11px;color:var(--sub);margin-bottom:8px;font-weight:700;}
+.stat-card .value{font-size:24px;font-weight:800;}
+.stat-card .sub-value{font-size:11px;color:var(--sub);margin-top:4px;}
+.global-stats-bar{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:22px;}
+.gsb-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;display:flex;align-items:center;gap:12px;}
+.gsb-icon{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.gsb-card .gv{font-size:20px;font-weight:800;line-height:1;}
+.gsb-card .gl{font-size:11px;color:var(--sub);margin-top:3px;font-weight:600;}
+.customers-grid{display:grid;gap:10px;}
+.customer-card{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:13px 15px;display:flex;align-items:center;gap:12px;transition:all .2s;}
+.customer-card:hover{border-color:rgba(79,110,247,.2);}
+.cust-seq{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0;background:rgba(255,255,255,.06);border:2px solid;}
 .cust-info{flex:1;min-width:0;}
-.cust-name{font-weight:600;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.cust-phone{font-size:11px;color:var(--sub);font-family:monospace;margin-top:1px;}
-.cust-pkg-info{font-size:11px;margin-top:3px;display:flex;flex-wrap:wrap;gap:3px;}
-.cust-pkg-info span{background:var(--card2);border-radius:4px;padding:1px 6px;}
+.cust-name{font-weight:700;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cust-phone{font-size:11px;color:var(--sub);font-family:monospace;margin-top:2px;}
+.cust-pkg-info{font-size:11px;margin-top:4px;display:flex;flex-wrap:wrap;gap:4px;}
+.cust-pkg-info span{background:rgba(255,255,255,.06);border-radius:5px;padding:1px 7px;border:1px solid var(--border);}
 .cust-price{text-align:left;flex-shrink:0;}
-.cust-paid{font-size:14px;font-weight:700;color:var(--green);}
+.cust-paid{font-size:15px;font-weight:800;color:var(--green);}
 .cust-cost-val{font-size:11px;color:var(--sub);}
-.cust-profit{font-size:11px;}
-.paid-badge{font-size:10px;padding:1px 6px;border-radius:8px;font-weight:700;margin-top:2px;display:inline-block;}
-.paid-yes{background:rgba(46,204,113,.15);color:var(--green);}
-.paid-no{background:rgba(243,156,18,.15);color:var(--yellow);}
-
-/* PACKAGES */
-.packages-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:13px;}
-.pkg-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;}
-.pkg-name{font-size:14px;font-weight:700;margin-bottom:10px;padding-left:30px;}
-.pkg-row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px;color:var(--sub);}
+.cust-profit{font-size:11px;font-weight:700;}
+.paid-badge{font-size:10px;padding:2px 7px;border-radius:8px;font-weight:700;margin-top:3px;display:inline-block;}
+.paid-yes{background:rgba(0,230,118,.12);color:var(--green);border:1px solid rgba(0,230,118,.2);}
+.paid-no{background:rgba(255,193,7,.1);color:var(--yellow);border:1px solid rgba(255,193,7,.2);}
+.packages-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;}
+.pkg-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;position:relative;transition:all .2s;}
+.pkg-card:hover{border-color:rgba(79,110,247,.2);transform:translateY(-2px);}
+.pkg-name{font-size:14px;font-weight:800;margin-bottom:12px;padding-left:30px;}
+.pkg-row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;color:var(--sub);}
 .pkg-row strong{color:var(--text);}
-.pkg-profit-bar{margin-top:10px;padding-top:10px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
-.profit-badge{background:rgba(46,204,113,.15);color:var(--green);padding:2px 8px;border-radius:12px;font-size:11px;font-weight:700;}
-.loss-badge{background:rgba(231,76,60,.15);color:var(--red);padding:2px 8px;border-radius:12px;font-size:11px;font-weight:700;}
-.pkg-del{position:absolute;top:10px;left:10px;}
+.pkg-profit-bar{margin-top:12px;padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.profit-badge{background:rgba(0,230,118,.12);color:var(--green);padding:3px 9px;border-radius:12px;font-size:11px;font-weight:700;}
+.loss-badge{background:rgba(255,77,77,.12);color:var(--red);padding:3px 9px;border-radius:12px;font-size:11px;font-weight:700;}
+.pkg-del{position:absolute;top:12px;left:12px;}
 .quick-pkgs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
-.quick-pkg-btn{padding:4px 10px;border-radius:8px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-size:12px;cursor:pointer;transition:all .2s;}
+.quick-pkg-btn{padding:4px 10px;border-radius:8px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-size:12px;cursor:pointer;font-weight:600;transition:all .2s;}
 .quick-pkg-btn:hover{border-color:var(--blue);color:var(--blue);}
-
-/* TIPS */
-.tips-list{display:grid;gap:9px;}
-.tip-card{background:var(--card);border-radius:10px;padding:13px 15px;display:flex;gap:11px;border-right:3px solid;}
+.tips-list{display:grid;gap:10px;}
+.tip-card{background:var(--card);border-radius:12px;padding:15px 17px;display:flex;gap:13px;border-right:3px solid;}
 .tip-card.tip-green{border-color:var(--green);}
 .tip-card.tip-yellow{border-color:var(--yellow);}
 .tip-card.tip-blue{border-color:var(--blue);}
-.tip-icon{font-size:18px;flex-shrink:0;}
-.tip-title{font-size:13px;font-weight:700;margin-bottom:3px;}
-.tip-text{font-size:12px;color:var(--sub);line-height:1.6;}
-
-/* DASHBOARD */
-.dash-line-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;}
-.dash-line-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px;}
-.dash-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;}
-.dm{background:var(--card2);border-radius:8px;padding:10px;text-align:center;}
-.dm .dv{font-size:17px;font-weight:700;}
-.dm .dl{font-size:10px;color:var(--sub);margin-top:2px;}
-
-/* USERS PAGE */
-.users-grid{display:grid;gap:9px;}
-.user-row{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px 15px;display:flex;align-items:center;gap:11px;}
-.user-avatar{width:34px;height:34px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;}
+.tip-icon{font-size:20px;flex-shrink:0;margin-top:1px;}
+.tip-title{font-size:13px;font-weight:800;margin-bottom:4px;}
+.tip-text{font-size:12px;color:var(--sub);line-height:1.7;}
+.dash-line-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:12px;transition:border-color .2s;position:relative;overflow:hidden;}
+.dash-line-card:hover{border-color:rgba(79,110,247,.2);}
+.dash-line-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px;}
+.dash-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.dm{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:11px;text-align:center;}
+.dm .dv{font-size:18px;font-weight:800;}
+.dm .dl{font-size:10px;color:var(--sub);margin-top:3px;font-weight:600;}
+.users-grid{display:grid;gap:10px;}
+.user-row{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;}
+.user-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#4f6ef7,#7b4fe0);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
 .user-details{flex:1;}
 .user-uname{font-weight:700;font-size:13px;}
 .user-meta{font-size:12px;color:var(--sub);margin-top:2px;}
-
-/* HISTORY */
-.history-grid{display:grid;gap:9px;}
-.hcard{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px 15px;cursor:pointer;transition:background .2s;}
-.hcard:hover{background:var(--card2);}
-.hcard-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;}
-.hcard-stats{display:flex;gap:14px;font-size:12px;color:var(--sub);}
+.history-grid{display:grid;gap:10px;}
+.hcard{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:15px 17px;cursor:pointer;transition:all .2s;}
+.hcard:hover{border-color:rgba(79,110,247,.2);background:var(--card2);}
+.hcard-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.hcard-stats{display:flex;gap:16px;font-size:12px;color:var(--sub);}
 .hcard-stats span strong{color:var(--text);}
-
-/* TOAST */
-#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:9px 16px;font-size:13px;z-index:999;transition:transform .3s;white-space:nowrap;}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:10px 18px;font-size:13px;font-weight:600;z-index:999;transition:transform .3s;white-space:nowrap;}
 #toast.show{transform:translateX(-50%) translateY(0);}
-#toast.success{border-color:var(--green);color:var(--green);}
-#toast.error{border-color:var(--red);color:var(--red);}
-
-.empty-state{text-align:center;padding:45px 20px;color:var(--sub);}
-.empty-state .icon{font-size:42px;margin-bottom:9px;}
-.divider{height:1px;background:var(--border);margin:18px 0;}
+#toast.success{border-color:rgba(0,230,118,.3);color:var(--green);}
+#toast.error{border-color:rgba(255,77,77,.3);color:var(--red);}
+.empty-state{text-align:center;padding:50px 20px;color:var(--sub);}
+.empty-state .icon{font-size:48px;margin-bottom:12px;display:block;}
+.divider{height:1px;background:var(--border);margin:20px 0;}
 .text-green{color:var(--green);}
 .text-red{color:var(--red);}
 .text-yellow{color:var(--yellow);}
 .text-sub{color:var(--sub);}
-.fw-700{font-weight:700;}
-.detail-header{display:flex;align-items:center;gap:13px;margin-bottom:20px;}
-.detail-logo-wrap{width:50px;height:50px;border-radius:11px;overflow:hidden;flex-shrink:0;}
-.detail-logo-wrap svg,.detail-logo-wrap img{width:100%;height:100%;}
-
-/* Day separator in dashboard */
-.day-separator{margin:18px 0 10px;display:flex;align-items:center;gap:10px;}
+.detail-header{display:flex;align-items:center;gap:14px;margin-bottom:22px;}
+.detail-logo-wrap{width:54px;height:54px;border-radius:13px;overflow:hidden;flex-shrink:0;}
+.detail-logo-wrap svg{width:100%;height:100%;}
+.day-separator{margin:20px 0 12px;display:flex;align-items:center;gap:12px;}
 .day-separator-label{font-size:13px;font-weight:700;white-space:nowrap;}
 .day-separator-line{flex:1;height:1px;background:var(--border);}
-
 @media(max-width:620px){
-  .form-row,.form-row-3{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
   .dash-metrics{grid-template-columns:repeat(2,1fr);}
   .nav-center{gap:2px;}
   .nav-btn{padding:4px 7px;font-size:11px;}
+  .hero-title{font-size:20px;}
+  .hero-content{flex-direction:column;}
 }
 </style>
 </head>
 <body>
-
-<!-- LOGIN -->
 <div id="login-screen">
   <div class="login-box">
-    <div class="login-logo">
-      <svg viewBox="0 0 60 60" style="border-radius:50%"><circle cx="30" cy="30" r="30" fill="#6b2fa0"/><text x="30" y="38" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="900">we</text></svg>
-      <svg viewBox="0 0 60 60" style="border-radius:8px"><rect width="60" height="60" fill="#ff7900" rx="8"/><text x="30" y="37" text-anchor="middle" fill="white" font-size="11" font-family="Arial" font-weight="bold">orange</text></svg>
-      <svg viewBox="0 0 60 60" style="border-radius:50%"><circle cx="30" cy="30" r="30" fill="#e60000"/><text x="30" y="37" text-anchor="middle" fill="white" font-size="10" font-family="Arial" font-weight="bold">vodafone</text></svg>
-      <svg viewBox="0 0 60 60" style="border-radius:8px"><rect width="60" height="60" fill="white" rx="8"/><text x="30" y="42" text-anchor="middle" fill="#da0812" font-size="22" font-family="Arial" font-weight="900">e&amp;</text></svg>
+    <div class="login-logos">
+      <div class="login-logo-item"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#6b2fa0"/><text x="50" y="65" text-anchor="middle" fill="white" font-size="38" font-family="Arial" font-weight="900">we</text></svg></div>
+      <div class="login-logo-item"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#ff7900" rx="10"/><text x="50" y="62" text-anchor="middle" fill="white" font-size="19" font-family="Arial" font-weight="bold">orange</text></svg></div>
+      <div class="login-logo-item"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#e60000"/><text x="50" y="52" text-anchor="middle" fill="white" font-size="11" font-family="Arial" font-weight="bold">vodafone</text></svg></div>
+      <div class="login-logo-item"><svg viewBox="0 0 120 70"><rect width="120" height="70" fill="white" rx="6"/><text x="60" y="50" text-anchor="middle" fill="#da0812" font-size="42" font-family="Arial" font-weight="900" font-style="italic">e&amp;</text></svg></div>
     </div>
     <div class="login-title">نظام إدارة الخطوط</div>
     <div class="login-sub">اتصالات · وي · فودافون · أورانج</div>
@@ -271,11 +269,9 @@ select.form-input{appearance:none;cursor:pointer;}
     <div class="login-error" id="login-error"></div>
   </div>
 </div>
-
-<!-- NAV -->
 <nav id="main-nav" style="display:none">
   <div class="nav-brand">
-    <svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="14" fill="#6b2fa0"/><text x="14" y="19" text-anchor="middle" fill="white" font-size="9" font-family="Arial" font-weight="900">we</text></svg>
+    <svg viewBox="0 0 28 28" style="-webkit-text-fill-color:initial;width:28px;height:28px"><circle cx="14" cy="14" r="14" fill="#6b2fa0"/><text x="14" y="19" text-anchor="middle" fill="white" font-size="9" font-family="Arial" font-weight="900">we</text></svg>
     إدارة الخطوط
   </div>
   <div class="nav-center">
@@ -289,23 +285,30 @@ select.form-input{appearance:none;cursor:pointer;}
     <button class="logout-btn" onclick="doLogout()">خروج</button>
   </div>
 </nav>
-
-<!-- MONTH BAR -->
 <div id="month-bar" style="display:none" class="month-bar">
-  <span style="font-size:11px;color:var(--sub);white-space:nowrap">📆 الشهر:</span>
+  <span style="font-size:11px;color:var(--sub);white-space:nowrap;font-weight:700">📆 الشهر:</span>
   <div id="month-chips" style="display:flex;gap:6px;flex-shrink:0"></div>
   <button class="new-month-btn" onclick="openNewMonth()">+ شهر جديد</button>
 </div>
-
-<!-- HOME -->
 <div class="page" id="page-home">
+  <div class="hero-banner">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="hero-content">
+      <div class="hero-left">
+        <div class="hero-greeting" id="hero-greeting">مرحباً 👋</div>
+        <div class="hero-title">نظام إدارة الخطوط</div>
+        <div class="hero-sub">اتصالات · وي · فودافون · أورانج</div>
+      </div>
+      <div class="hero-metrics" id="hero-metrics"></div>
+    </div>
+  </div>
   <div class="section-header">
-    <div><div class="section-title">الشركات</div><div class="section-sub" id="home-sub"></div></div>
+    <div><div class="section-title">الشركات</div><div class="section-sub" id="home-month-label"></div></div>
   </div>
   <div class="companies-grid" id="companies-grid"></div>
 </div>
-
-<!-- COMPANY -->
 <div class="page" id="page-company">
   <button class="back-btn" onclick="showPage('home')">← رجوع للشركات</button>
   <div class="detail-header" id="co-detail-header"></div>
@@ -335,12 +338,8 @@ select.form-input{appearance:none;cursor:pointer;}
     </div>
     <div id="packages-container"></div>
   </div>
-  <div class="tab-content" id="tab-tips">
-    <div id="tips-container"></div>
-  </div>
+  <div class="tab-content" id="tab-tips"><div id="tips-container"></div></div>
 </div>
-
-<!-- LINE DETAIL -->
 <div class="page" id="page-line">
   <button class="back-btn" id="line-back-btn">← رجوع</button>
   <div id="line-detail-header"></div>
@@ -352,39 +351,29 @@ select.form-input{appearance:none;cursor:pointer;}
   </div>
   <div id="customers-container"></div>
 </div>
-
-<!-- DASHBOARD -->
 <div class="page" id="page-dashboard">
   <div class="section-header">
-    <div><div class="section-title">الداشبورد</div><div class="section-sub" id="dash-sub"></div></div>
+    <div><div class="section-title">📊 الداشبورد</div><div class="section-sub" id="dash-sub"></div></div>
     <div class="filter-bar" style="margin:0">
       <button class="filter-chip active" id="dfc-all" onclick="setDashFilter('all')">الكل</button>
       <button class="filter-chip fc-1" id="dfc-1" onclick="setDashFilter(1)">يوم 1</button>
       <button class="filter-chip fc-16" id="dfc-16" onclick="setDashFilter(16)">يوم 16</button>
     </div>
   </div>
-  <div class="stats-grid" id="global-stats"></div>
+  <div class="global-stats-bar" id="global-stats"></div>
   <div id="dashboard-lines"></div>
 </div>
-
-<!-- HISTORY -->
 <div class="page" id="page-history">
-  <div class="section-header"><div><div class="section-title">السجل الشهري</div><div class="section-sub">مقارنة الأداء عبر الشهور</div></div></div>
+  <div class="section-header"><div><div class="section-title">📅 السجل الشهري</div><div class="section-sub">مقارنة الأداء عبر الشهور</div></div></div>
   <div id="history-container"></div>
 </div>
-
-<!-- ADMIN USERS -->
 <div class="page" id="page-admin-users">
   <div class="section-header">
-    <div><div class="section-title">إدارة المستخدمين</div></div>
+    <div><div class="section-title">👥 إدارة المستخدمين</div></div>
     <button class="btn btn-primary btn-sm" onclick="openAddUser()">+ مستخدم جديد</button>
   </div>
   <div class="users-grid" id="users-container"></div>
 </div>
-
-<!-- MODALS -->
-
-<!-- Add Line -->
 <div class="modal-overlay" id="modal-line">
   <div class="modal">
     <div class="modal-head"><div class="modal-title">إضافة خط جديد</div><button class="modal-close" onclick="closeModal('modal-line')">×</button></div>
@@ -393,17 +382,11 @@ select.form-input{appearance:none;cursor:pointer;}
       <div class="form-group">
         <label class="form-label">يوم التجديد الشهري</label>
         <div class="renew-day-selector">
-          <div class="renew-opt selected-1" id="opt-1" onclick="selectRenewDay(1)">
-            <div class="rd-num" style="color:#7b96ff">1</div>
-            <div class="rd-label">أول الشهر</div>
-          </div>
-          <div class="renew-opt" id="opt-16" onclick="selectRenewDay(16)">
-            <div class="rd-num" style="color:var(--yellow)">16</div>
-            <div class="rd-label">منتصف الشهر</div>
-          </div>
+          <div class="renew-opt selected-1" id="opt-1" onclick="selectRenewDay(1)"><div class="rd-num" style="color:#7b96ff">1</div><div class="rd-label">أول الشهر</div></div>
+          <div class="renew-opt" id="opt-16" onclick="selectRenewDay(16)"><div class="rd-num" style="color:var(--yellow)">16</div><div class="rd-label">منتصف الشهر</div></div>
         </div>
       </div>
-      <div class="form-group"><label class="form-label">ملاحظات (اختياري)</label><input class="form-input" id="line-notes" placeholder="مثال: خط احمد، خط رانيا..."></div>
+      <div class="form-group"><label class="form-label">ملاحظات (اختياري)</label><input class="form-input" id="line-notes" placeholder="مثال: خط احمد..."></div>
       <div class="flex-end">
         <button class="btn btn-outline" onclick="closeModal('modal-line')">إلغاء</button>
         <button class="btn btn-primary" onclick="saveLine()">حفظ الخط</button>
@@ -411,22 +394,20 @@ select.form-input{appearance:none;cursor:pointer;}
     </div>
   </div>
 </div>
-
-<!-- Add Package -->
 <div class="modal-overlay" id="modal-package">
   <div class="modal">
     <div class="modal-head"><div class="modal-title">إضافة باقة</div><button class="modal-close" onclick="closeModal('modal-package')">×</button></div>
     <div class="modal-body">
       <div class="form-group">
-        <label class="form-label">باقات جاهزة (اضغط لتعبئة تلقائي)</label>
+        <label class="form-label">باقات جاهزة</label>
         <div class="quick-pkgs">
-          <button class="quick-pkg-btn" onclick="fillQuickPkg(20,1500,0,280)">20GB/1500د</button>
-          <button class="quick-pkg-btn" onclick="fillQuickPkg(35,1500,0,380)">35GB/1500د</button>
-          <button class="quick-pkg-btn" onclick="fillQuickPkg(40,1500,0,430)">40GB/1500د</button>
-          <button class="quick-pkg-btn" onclick="fillQuickPkg(50,1700,0,490)">50GB/1700د</button>
-          <button class="quick-pkg-btn" onclick="fillQuickPkg(65,1700,0,570)">65GB/1700د</button>
-          <button class="quick-pkg-btn" onclick="fillQuickPkg(70,1700,0,570)">70GB/1700د</button>
-          <button class="quick-pkg-btn" onclick="fillQuickPkg(80,1700,0,620)">80GB/1700د</button>
+          <button class="quick-pkg-btn" onclick="fillQuickPkg(20,1500,0,280)">20GB/280ج</button>
+          <button class="quick-pkg-btn" onclick="fillQuickPkg(35,1500,0,380)">35GB/380ج</button>
+          <button class="quick-pkg-btn" onclick="fillQuickPkg(40,1500,0,430)">40GB/430ج</button>
+          <button class="quick-pkg-btn" onclick="fillQuickPkg(50,1700,0,490)">50GB/490ج</button>
+          <button class="quick-pkg-btn" onclick="fillQuickPkg(65,1700,0,570)">65GB/570ج</button>
+          <button class="quick-pkg-btn" onclick="fillQuickPkg(70,1700,0,570)">70GB/570ج</button>
+          <button class="quick-pkg-btn" onclick="fillQuickPkg(80,1700,0,620)">80GB/620ج</button>
         </div>
       </div>
       <div class="form-group"><label class="form-label">اسم الباقة</label><input class="form-input" id="pkg-name" placeholder="مثال: باقة 50 جيجا"></div>
@@ -435,8 +416,8 @@ select.form-input{appearance:none;cursor:pointer;}
         <div class="form-group"><label class="form-label">الدقائق</label><input class="form-input" id="pkg-min" type="number" placeholder="1700" min="0"></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label class="form-label">تكلفتك على الباقة (ج.م)</label><input class="form-input" id="pkg-cost" type="number" placeholder="0" min="0" oninput="calcPkgProfit()"></div>
-        <div class="form-group"><label class="form-label">سعر البيع للعميل (ج.م)</label><input class="form-input" id="pkg-price" type="number" placeholder="490" min="0" oninput="calcPkgProfit()"></div>
+        <div class="form-group"><label class="form-label">تكلفتك (ج.م)</label><input class="form-input" id="pkg-cost" type="number" placeholder="0" min="0" oninput="calcPkgProfit()"></div>
+        <div class="form-group"><label class="form-label">سعر البيع (ج.م)</label><input class="form-input" id="pkg-price" type="number" placeholder="490" min="0" oninput="calcPkgProfit()"></div>
       </div>
       <div id="pkg-profit-preview" style="font-size:12px;color:var(--sub);margin-top:2px"></div>
       <div class="flex-end">
@@ -446,8 +427,6 @@ select.form-input{appearance:none;cursor:pointer;}
     </div>
   </div>
 </div>
-
-<!-- Add Customer -->
 <div class="modal-overlay" id="modal-customer">
   <div class="modal">
     <div class="modal-head"><div class="modal-title">إضافة عميل</div><button class="modal-close" onclick="closeModal('modal-customer')">×</button></div>
@@ -463,8 +442,7 @@ select.form-input{appearance:none;cursor:pointer;}
         <div class="form-group"><label class="form-label">تكلفة الباقة (تلقائي)</label><input class="form-input" id="cust-cost" type="number" readonly style="opacity:.6"></div>
         <div class="form-group"><label class="form-label">دفع العميل (ج.م)</label><input class="form-input" id="cust-paid" type="number" placeholder="0"></div>
       </div>
-      <div class="form-group">
-        <label class="form-label">حالة الدفع</label>
+      <div class="form-group"><label class="form-label">حالة الدفع</label>
         <select class="form-input" id="cust-paid-status">
           <option value="paid">دفع ✅</option>
           <option value="pending">لسه مدفعش ⏳</option>
@@ -480,13 +458,11 @@ select.form-input{appearance:none;cursor:pointer;}
     </div>
   </div>
 </div>
-
-<!-- Add User -->
 <div class="modal-overlay" id="modal-user">
   <div class="modal">
     <div class="modal-head"><div class="modal-title">إضافة مستخدم</div><button class="modal-close" onclick="closeModal('modal-user')">×</button></div>
     <div class="modal-body">
-      <div class="form-group"><label class="form-label">اسم المستخدم (بالإنجليزي)</label><input class="form-input" id="new-username" placeholder="ahmed123"></div>
+      <div class="form-group"><label class="form-label">اسم المستخدم</label><input class="form-input" id="new-username" placeholder="ahmed123"></div>
       <div class="form-group"><label class="form-label">الاسم بالعربي</label><input class="form-input" id="new-displayname" placeholder="أحمد محمد"></div>
       <div class="form-group"><label class="form-label">كلمة المرور</label><input class="form-input" id="new-password" type="password" placeholder="••••••••"></div>
       <div class="form-group"><label class="form-label">الصلاحية</label>
@@ -500,14 +476,12 @@ select.form-input{appearance:none;cursor:pointer;}
     </div>
   </div>
 </div>
-
-<!-- New Month -->
 <div class="modal-overlay" id="modal-month">
   <div class="modal">
     <div class="modal-head"><div class="modal-title">شهر جديد</div><button class="modal-close" onclick="closeModal('modal-month')">×</button></div>
     <div class="modal-body">
       <div class="form-group"><label class="form-label">اسم الشهر</label><input class="form-input" id="month-name" placeholder="يناير 2026"></div>
-      <p style="font-size:12px;color:var(--sub);margin-top:6px;line-height:1.6">البيانات القديمة محفوظة في "السجل الشهري". الشهر الجديد يبدأ فارغ.</p>
+      <p style="font-size:12px;color:var(--sub);margin-top:6px;line-height:1.7">البيانات القديمة محفوظة في السجل الشهري. الشهر الجديد يبدأ فارغ.</p>
       <div class="flex-end">
         <button class="btn btn-outline" onclick="closeModal('modal-month')">إلغاء</button>
         <button class="btn btn-primary" onclick="confirmNewMonth()">إنشاء الشهر</button>
@@ -515,87 +489,64 @@ select.form-input{appearance:none;cursor:pointer;}
     </div>
   </div>
 </div>
-
 <div id="toast"></div>
-
-<!-- LOGOS as data URIs via JS constants -->
 <script>
-// ===== SVG LOGOS =====
+
 const LOGOS = {
-  emerald: `<svg viewBox="0 0 120 70" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="70" fill="white" rx="6"/><text x="60" y="50" text-anchor="middle" fill="#da0812" font-size="42" font-family="Arial,sans-serif" font-weight="900" font-style="italic">e&amp;</text></svg>`,
-  we:      `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50" fill="#6b2fa0"/><text x="50" y="65" text-anchor="middle" fill="white" font-size="38" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="900" letter-spacing="-2">we</text></svg>`,
-  vodafone:`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50" fill="#e60000"/><circle cx="50" cy="44" r="28" fill="white" opacity=".15"/><text x="50" y="52" text-anchor="middle" fill="white" font-size="11" font-family="Arial,sans-serif" font-weight="bold" letter-spacing=".5">vodafone</text><path d="M35 32 Q50 18 65 32 Q78 50 62 68 Q55 78 46 74 Q30 66 35 48 Q38 36 50 34 Q60 32 65 40" fill="white" opacity=".25"/></svg>`,
-  orange:  `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#ff7900" rx="10"/><text x="50" y="62" text-anchor="middle" fill="white" font-size="19" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="bold">orange</text><text x="87" y="46" fill="white" font-size="12" font-family="Arial">™</text></svg>`,
+  emerald:`<svg viewBox="0 0 120 70" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="70" fill="white" rx="6"/><text x="60" y="50" text-anchor="middle" fill="#da0812" font-size="42" font-family="Arial,sans-serif" font-weight="900" font-style="italic">e&amp;</text></svg>`,
+  we:`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50" fill="#6b2fa0"/><text x="50" y="65" text-anchor="middle" fill="white" font-size="38" font-family="Arial,sans-serif" font-weight="900" letter-spacing="-2">we</text></svg>`,
+  vodafone:`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50" fill="#e60000"/><text x="50" y="52" text-anchor="middle" fill="white" font-size="11" font-family="Arial,sans-serif" font-weight="bold">vodafone</text></svg>`,
+  orange:`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#ff7900" rx="10"/><text x="50" y="62" text-anchor="middle" fill="white" font-size="19" font-family="Arial,sans-serif" font-weight="bold">orange</text></svg>`,
 };
-
-// ===== COMPANIES CONFIG =====
 const COMPANIES = {
-  emerald: { name:'اتصالات e&', color:'#da0812', maxDist:6 },
-  we:      { name:'وي',          color:'#6b2fa0', maxDist:6 },
-  vodafone:{ name:'فودافون',     color:'#e60000', maxDist:6 },
-  orange:  { name:'أورانج',      color:'#ff7900', maxDist:6 },
+  emerald:{name:'اتصالات e&',color:'#da0812',maxDist:6},
+  we:{name:'وي',color:'#6b2fa0',maxDist:6},
+  vodafone:{name:'فودافون',color:'#e60000',maxDist:6},
+  orange:{name:'أورانج',color:'#ff7900',maxDist:6},
 };
+const SYS_KEY = 'lm_sys_v3';
+const SEED = {"ahmed.h":{"months":{"2026-06":{"key":"2026-06","label":"يونيو 2026","lines":{"we":{"l_557418":{"id":"l_557418","number":"01555557418","renewDay":1,"notes":"","company":"we"},"l_557498":{"id":"l_557498","number":"01555557498","renewDay":1,"notes":"","company":"we"},"l_557425":{"id":"l_557425","number":"01555557425","renewDay":1,"notes":"","company":"we"},"l_555390":{"id":"l_555390","number":"01515555390","renewDay":1,"notes":"","company":"we"},"l_555330":{"id":"l_555330","number":"01515555330","renewDay":1,"notes":"","company":"we"},"l_982222":{"id":"l_982222","number":"01509982222","renewDay":1,"notes":"","company":"we"},"l_673333":{"id":"l_673333","number":"01515673333","renewDay":1,"notes":"","company":"we"},"l_611222":{"id":"l_611222","number":"01500611222","renewDay":1,"notes":"","company":"we"},"l_267777":{"id":"l_267777","number":"01515267777","renewDay":16,"notes":"","company":"we"},"l_487777":{"id":"l_487777","number":"01515487777","renewDay":16,"notes":"","company":"we"},"l_555862":{"id":"l_555862","number":"01505555862","renewDay":16,"notes":"","company":"we"},"l_772222":{"id":"l_772222","number":"01508772222","renewDay":16,"notes":"","company":"we"},"l_992222":{"id":"l_992222","number":"01507992222","renewDay":16,"notes":"","company":"we"}},"vodafone":{"l_780731":{"id":"l_780731","number":"01280780731","renewDay":1,"notes":"","company":"vodafone"}},"emerald":{},"orange":{}},"packages":{"we":{"pkg_w1":{"id":"pkg_w1","name":"باقة 20 جيجا","gb":20,"min":1500,"cost":0,"price":280},"pkg_w2":{"id":"pkg_w2","name":"باقة 35 جيجا","gb":35,"min":1500,"cost":0,"price":380},"pkg_w3":{"id":"pkg_w3","name":"باقة 40 جيجا","gb":40,"min":1500,"cost":0,"price":430},"pkg_w4":{"id":"pkg_w4","name":"باقة 50 جيجا","gb":50,"min":1700,"cost":0,"price":490},"pkg_w5":{"id":"pkg_w5","name":"باقة 65 جيجا","gb":65,"min":1700,"cost":0,"price":570},"pkg_w6":{"id":"pkg_w6","name":"باقة 70 جيجا","gb":70,"min":1700,"cost":0,"price":570},"pkg_w7":{"id":"pkg_w7","name":"باقة 80 جيجا","gb":80,"min":1700,"cost":0,"price":620}},"vodafone":{"pkg_v1":{"id":"pkg_v1","name":"باقة 20 جيجا","gb":20,"min":1500,"cost":0,"price":280},"pkg_v2":{"id":"pkg_v2","name":"باقة 35 جيجا","gb":35,"min":1500,"cost":0,"price":380},"pkg_v3":{"id":"pkg_v3","name":"باقة 40 جيجا","gb":40,"min":1500,"cost":0,"price":430}},"emerald":{},"orange":{}},"customers":{"l_557418":{"c_07533559":{"id":"c_07533559","name":"مصطفي","phone":"01507533559","pkgId":"pkg_w5","cost":0,"paid":570,"paidStatus":"paid","notes":"","seq":1},"c_80898681":{"id":"c_80898681","name":"","phone":"01080898681","pkgId":"pkg_w1","cost":0,"paid":0,"paidStatus":"pending","notes":"","seq":2},"c_08370099":{"id":"c_08370099","name":"محمد خالد محمد","phone":"01508370099","pkgId":"pkg_w3","cost":0,"paid":0,"paidStatus":"pending","notes":"مكمل","seq":3},"c_55413525":{"id":"c_55413525","name":"شريف عمر","phone":"01555413525","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":4},"c_53909042":{"id":"c_53909042","name":"بدوي عرفه عبدالقادر","phone":"01553909042","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":5},"c_32135035":{"id":"c_32135035","name":"","phone":"01032135035","pkgId":"pkg_w1","cost":0,"paid":0,"paidStatus":"pending","notes":"","seq":6}},"l_557498":{"c_50211369":{"id":"c_50211369","name":"مصطفى بدر","phone":"01550211369","pkgId":"pkg_w4","cost":0,"paid":490,"paidStatus":"paid","notes":"","seq":1},"c_57007821":{"id":"c_57007821","name":"شريف عمر","phone":"01557007821","pkgId":"pkg_w1","cost":0,"paid":0,"paidStatus":"pending","notes":"مكمل","seq":2},"c_58813233":{"id":"c_58813233","name":"","phone":"01558813233","pkgId":"pkg_w3","cost":0,"paid":430,"paidStatus":"paid","notes":"مكمل","seq":3},"c_05718272":{"id":"c_05718272","name":"","phone":"01505718272","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"","seq":4},"c_58272118":{"id":"c_58272118","name":"رمضان السيد سعد","phone":"01558272118","pkgId":"pkg_w3","cost":0,"paid":430,"paidStatus":"paid","notes":"","seq":5},"c_15225148":{"id":"c_15225148","name":"محمد خالد ","phone":"01515225148","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":6}},"l_557425":{"c_56959583":{"id":"c_56959583","name":"تبع علي ","phone":"01556959583","pkgId":"pkg_w4","cost":0,"paid":0,"paidStatus":"pending","notes":"","seq":1},"c_55446945":{"id":"c_55446945","name":"د محمد حسن","phone":"01555446945","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":2},"c_01893812":{"id":"c_01893812","name":"عادل عبد الهادي","phone":"01501893812","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"مكمل","seq":3},"c_53359490":{"id":"c_53359490","name":"ضياء محمد محمود","phone":"01553359490","pkgId":"pkg_w1","cost":0,"paid":0,"paidStatus":"pending","notes":"","seq":4},"c_55205440":{"id":"c_55205440","name":"احمد مدكور","phone":"01555205440","pkgId":"pkg_w4","cost":0,"paid":490,"paidStatus":"paid","notes":"مكمل","seq":5}},"l_555390":{"c_00286901":{"id":"c_00286901","name":"تبع محمد خالد","phone":"01500286901","pkgId":"pkg_w5","cost":0,"paid":0,"paidStatus":"pending","notes":"مكمل","seq":1},"c_54573271":{"id":"c_54573271","name":"أحمد عاطف عبد الفتاح","phone":"01554573271","pkgId":"pkg_w4","cost":0,"paid":490,"paidStatus":"paid","notes":"اضافه","seq":2},"c_56332468":{"id":"c_56332468","name":"","phone":"01556332468","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"","seq":3},"c_54181681":{"id":"c_54181681","name":"مصطفى عماد مصطفى ","phone":"01554181681","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"","seq":4},"c_55129935":{"id":"c_55129935","name":"رضا محمد","phone":"01555129935","pkgId":"pkg_w1","cost":0,"paid":0,"paidStatus":"pending","notes":"","seq":5}},"l_555330":{"c_00643032":{"id":"c_00643032","name":"عطيه خالد","phone":"01500643032","pkgId":"pkg_w4","cost":0,"paid":490,"paidStatus":"paid","notes":"مكمل","seq":1},"c_51647055":{"id":"c_51647055","name":"منار موسي","phone":"01551647055","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":2},"c_15852021":{"id":"c_15852021","name":"حجاج","phone":"01515852021","pkgId":"pkg_w4","cost":0,"paid":490,"paidStatus":"paid","notes":"","seq":3},"c_52282092":{"id":"c_52282092","name":"","phone":"01552282092","pkgId":"pkg_w2","cost":0,"paid":0,"paidStatus":"pending","notes":"مكمل","seq":4},"c_52853151":{"id":"c_52853151","name":"","phone":"01552853151","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"","seq":5}},"l_982222":{"c_01075072":{"id":"c_01075072","name":"","phone":"01501075072","pkgId":"pkg_w5","cost":0,"paid":570,"paidStatus":"paid","notes":"","seq":1},"c_52337849":{"id":"c_52337849","name":"يوسف عبادة محمد عبدالرسول خطاب","phone":"01552337849","pkgId":"pkg_w3","cost":0,"paid":430,"paidStatus":"paid","notes":"","seq":2},"c_57965079":{"id":"c_57965079","name":"","phone":"01557965079","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":3},"c_07014433":{"id":"c_07014433","name":"","phone":"01507014433","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":4},"c_59607877":{"id":"c_59607877","name":"حازم رمضان","phone":"01559607877","pkgId":"pkg_w1","cost":0,"paid":0,"paidStatus":"pending","notes":"مكمل","seq":5}},"l_673333":{"c_51510941":{"id":"c_51510941","name":"مهاب حسني ","phone":"01551510941","pkgId":"pkg_w3","cost":0,"paid":430,"paidStatus":"paid","notes":"","seq":1},"c_08758465":{"id":"c_08758465","name":"","phone":"01508758465","pkgId":"pkg_w3","cost":0,"paid":430,"paidStatus":"paid","notes":"مكملل","seq":2},"c_54917381":{"id":"c_54917381","name":"عمر فتحي محمد","phone":"01554917381","pkgId":"pkg_w2","cost":0,"paid":0,"paidStatus":"pending","notes":"مكملل","seq":3},"c_01579310":{"id":"c_01579310","name":"عبيد جلال عبيد ","phone":"01501579310","pkgId":"pkg_w2","cost":0,"paid":0,"paidStatus":"pending","notes":"مكملل","seq":4},"c_50826699":{"id":"c_50826699","name":"محمود منير","phone":"01550826699","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"","seq":5}},"l_611222":{"c_56998536":{"id":"c_56998536","name":"وليد محمد","phone":"01556998536","pkgId":"pkg_w1","cost":0,"paid":380,"paidStatus":"paid","notes":"","seq":1},"c_08102805":{"id":"c_08102805","name":"احمد عمر احمد","phone":"01508102805","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":2},"c_54292006":{"id":"c_54292006","name":"عبدالرحمن صابر عبدالرحمن الحاوي","phone":"01554292006","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":3},"c_55430564":{"id":"c_55430564","name":"تبع محمد خالد","phone":"01555430564","pkgId":"pkg_w1","cost":0,"paid":0,"paidStatus":"pending","notes":"","seq":4},"c_00139377":{"id":"c_00139377","name":"","phone":"01500139377","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":5},"c_67459726":{"id":"c_67459726","name":"","phone":"01067459726","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":6}},"l_780731":{"c_58292001":{"id":"c_58292001","name":"","phone":"01558292001","pkgId":"pkg_w1","cost":0,"paid":380,"paidStatus":"paid","notes":"","seq":1},"c_59191952":{"id":"c_59191952","name":"","phone":"01559191952","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":2},"c_50776905":{"id":"c_50776905","name":"سيف ","phone":"01550776905","pkgId":"pkg_w1","cost":0,"paid":0,"paidStatus":"pending","notes":"","seq":3},"c_58041818":{"id":"c_58041818","name":"","phone":"01558041818","pkgId":"pkg_w1","cost":0,"paid":0,"paidStatus":"pending","notes":"","seq":4},"c_57850694":{"id":"c_57850694","name":"احمداسماعيل عبد المعبود","phone":"01557850694","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":5}},"l_267777":{"c_56154966":{"id":"c_56154966","name":"محمد جمال محمد ","phone":"01556154966","pkgId":"pkg_w3","cost":0,"paid":430,"paidStatus":"paid","notes":"","seq":1},"c_58263689":{"id":"c_58263689","name":"","phone":"01558263689","pkgId":"pkg_w4","cost":0,"paid":490,"paidStatus":"paid","notes":"مكمل","seq":2},"c_52482045":{"id":"c_52482045","name":"","phone":"01552482045","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"مكمل","seq":3},"c_58292001":{"id":"c_58292001","name":"","phone":"01558292001","pkgId":"pkg_w3","cost":0,"paid":430,"paidStatus":"paid","notes":"","seq":4},"c_15343405":{"id":"c_15343405","name":"نور شريف","phone":"01515343405","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":5},"c_51854113":{"id":"c_51854113","name":" عمر سلامه","phone":"01551854113","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":6}},"l_487777":{"c_54524745":{"id":"c_54524745","name":"عمار ابراهيم","phone":"01554524745","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":1},"c_03438701":{"id":"c_03438701","name":"خالد أحمد علي شمس","phone":"01503438701","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":2},"c_50662990":{"id":"c_50662990","name":"","phone":"01550662990","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":3},"c_56200701":{"id":"c_56200701","name":"الحسين محمد","phone":"01556200701","pkgId":"pkg_w3","cost":0,"paid":430,"paidStatus":"paid","notes":"","seq":4},"c_00567891":{"id":"c_00567891","name":"","phone":"01500567891","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":5},"c_51810795":{"id":"c_51810795","name":"محمد ابراهيم محمد حسن ","phone":"01551810795","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":6}},"l_555862":{"c_57841201":{"id":"c_57841201","name":"محمد حلاف","phone":"01557841201","pkgId":"pkg_w5","cost":0,"paid":570,"paidStatus":"paid","notes":"مكمل","seq":1},"c_55195553":{"id":"c_55195553","name":"محمد الحنفي ","phone":"01555195553","pkgId":"pkg_w3","cost":0,"paid":430,"paidStatus":"paid","notes":"","seq":2},"c_57890589":{"id":"c_57890589","name":"","phone":"01557890589","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":3},"c_55300516":{"id":"c_55300516","name":"","phone":"01555300516","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"مكمل","seq":4},"c_03424211":{"id":"c_03424211","name":"سامح عبدالهادي ","phone":"01503424211","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"مكمل","seq":5}},"l_772222":{"c_07552509":{"id":"c_07552509","name":"تبع عمرو","phone":"01507552509","pkgId":"pkg_w5","cost":0,"paid":570,"paidStatus":"paid","notes":"","seq":1},"c_51780669":{"id":"c_51780669","name":"تبع عمرو","phone":"01551780669","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"","seq":2},"c_58575969":{"id":"c_58575969","name":"تبع عمرو","phone":"01558575969","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"","seq":3},"c_58085611":{"id":"c_58085611","name":"","phone":"01558085611","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"","seq":4},"c_50805105":{"id":"c_50805105","name":"","phone":"01550805105","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"","seq":5}},"l_992222":{"c_59494924":{"id":"c_59494924","name":"تبع عمرو","phone":"01559494924","pkgId":"pkg_w6","cost":0,"paid":570,"paidStatus":"paid","notes":"","seq":1},"c_59424224":{"id":"c_59424224","name":"تبع عمرو","phone":"01559424224","pkgId":"pkg_w3","cost":0,"paid":430,"paidStatus":"paid","notes":"","seq":2},"c_54409881":{"id":"c_54409881","name":"تبع عمرو","phone":"01554409881","pkgId":"pkg_w3","cost":0,"paid":430,"paidStatus":"paid","notes":"","seq":3},"c_59441717":{"id":"c_59441717","name":"","phone":"01559441717","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"","seq":4},"c_58454046":{"id":"c_58454046","name":"تبع عمرو","phone":"01558454046","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":5}}},"companySettings":{"we":{"maxDist":6},"vodafone":{"maxDist":6},"emerald":{"maxDist":6},"orange":{"maxDist":6}}}}},"rania.m":{"months":{"2026-06":{"key":"2026-06","label":"يونيو 2026","lines":{"we":{"l_024444":{"id":"l_024444","number":"01515024444","renewDay":1,"notes":"","company":"we"},"l_027777":{"id":"l_027777","number":"01515027777","renewDay":1,"notes":"","company":"we"},"l_800388":{"id":"l_800388","number":"0150800388","renewDay":1,"notes":"","company":"we"},"l_038888":{"id":"l_038888","number":"01515038888","renewDay":1,"notes":"","company":"we"},"l_861111":{"id":"l_861111","number":"01505861111","renewDay":1,"notes":"","company":"we"},"l_761111":{"id":"l_761111","number":"01551761111","renewDay":1,"notes":"","company":"we"},"l_341111":{"id":"l_341111","number":"01508341111","renewDay":1,"notes":"","company":"we"},"l_211116":{"id":"l_211116","number":"01515211116","renewDay":1,"notes":"","company":"we"},"l_506455":{"id":"l_506455","number":"01555506455","renewDay":1,"notes":"","company":"we"},"l_504910":{"id":"l_504910","number":"01555504910","renewDay":1,"notes":"","company":"we"}},"vodafone":{},"emerald":{},"orange":{}},"packages":{"we":{"pkg_w1":{"id":"pkg_w1","name":"باقة 20 جيجا","gb":20,"min":1500,"cost":0,"price":280},"pkg_w2":{"id":"pkg_w2","name":"باقة 35 جيجا","gb":35,"min":1500,"cost":0,"price":380},"pkg_w3":{"id":"pkg_w3","name":"باقة 40 جيجا","gb":40,"min":1500,"cost":0,"price":430},"pkg_w4":{"id":"pkg_w4","name":"باقة 50 جيجا","gb":50,"min":1700,"cost":0,"price":490},"pkg_w5":{"id":"pkg_w5","name":"باقة 65 جيجا","gb":65,"min":1700,"cost":0,"price":570},"pkg_w6":{"id":"pkg_w6","name":"باقة 70 جيجا","gb":70,"min":1700,"cost":0,"price":570},"pkg_w7":{"id":"pkg_w7","name":"باقة 80 جيجا","gb":80,"min":1700,"cost":0,"price":620}},"vodafone":{"pkg_v1":{"id":"pkg_v1","name":"باقة 20 جيجا","gb":20,"min":1500,"cost":0,"price":280},"pkg_v2":{"id":"pkg_v2","name":"باقة 35 جيجا","gb":35,"min":1500,"cost":0,"price":380},"pkg_v3":{"id":"pkg_v3","name":"باقة 40 جيجا","gb":40,"min":1500,"cost":0,"price":430}},"emerald":{},"orange":{}},"customers":{"l_024444":{"c_22096604":{"id":"c_22096604","name":"مصطفى اشرف ثابت ","phone":"01122096604","pkgId":"pkg_w4","cost":0,"paid":490,"paidStatus":"paid","notes":"مكمل","seq":1},"c_03312517":{"id":"c_03312517","name":"سامح شوقي سعدان","phone":"01503312517","pkgId":"pkg_w3","cost":0,"paid":430,"paidStatus":"paid","notes":"مكمل","seq":2},"c_69297069":{"id":"c_69297069","name":"احمد بدراوي الشافعي","phone":"01069297069","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":3},"c_52577342":{"id":"c_52577342","name":"احمد جمال","phone":"01552577342","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":4},"c_56414097":{"id":"c_56414097","name":"","phone":"01556414097","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"مكمل","seq":5},"c_08734688":{"id":"c_08734688","name":"اخو اسلام","phone":"01508734688","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"مكمل","seq":6}},"l_027777":{"c_52162652":{"id":"c_52162652","name":"","phone":"01552162652","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":1},"c_55123725":{"id":"c_55123725","name":"محمد رمضان","phone":"01555123725","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":2},"c_57928882":{"id":"c_57928882","name":"فادي عادل","phone":"01557928882","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":3},"c_57643052":{"id":"c_57643052","name":"انعام","phone":"01557643052","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":4},"c_15166781":{"id":"c_15166781","name":"علاء جمال","phone":"01515166781","pkgId":"pkg_w2","cost":0,"paid":0,"paidStatus":"pending","notes":"مكمل","seq":5},"c_51371507":{"id":"c_51371507","name":"","phone":"01551371507","pkgId":"pkg_w1","cost":0,"paid":0,"paidStatus":"pending","notes":"","seq":6}},"l_800388":{"c_54200726":{"id":"c_54200726","name":"جمال عبدالمنعم","phone":"01554200726","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"اضافه","seq":1},"c_50029810":{"id":"c_50029810","name":"","phone":"01550029810","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":2},"c_15169029":{"id":"c_15169029","name":"حجاج","phone":"01515169029","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":3},"c_58822555":{"id":"c_58822555","name":"","phone":"01558822555","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"مكمل","seq":4},"c_21110990":{"id":"c_21110990","name":"د محمد","phone":"0121110990","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"مكمل","seq":5},"c_55181864":{"id":"c_55181864","name":"مارتن يوسف","phone":"01555181864","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":6}},"l_038888":{"c_12259667":{"id":"c_12259667","name":"عبدالعزيز ","phone":"01212259667","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":1},"c_56556504":{"id":"c_56556504","name":"","phone":"01556556504","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":2},"c_23753586":{"id":"c_23753586","name":"تبع محمود الخميس ","phone":"01123753586","pkgId":"pkg_w1","cost":0,"paid":0,"paidStatus":"pending","notes":"مكمل","seq":3},"c_07177346":{"id":"c_07177346","name":"ضياء محمد محمود","phone":"01507177346","pkgId":"pkg_w1","cost":0,"paid":0,"paidStatus":"pending","notes":"تعديل","seq":4},"c_57308311":{"id":"c_57308311","name":"اسلام احمد مصطفى محمود","phone":"01557308311","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"مكمل","seq":5}},"l_861111":{"c_58453806":{"id":"c_58453806","name":"محمد عماد الدين","phone":"01558453806","pkgId":"pkg_w5","cost":0,"paid":570,"paidStatus":"paid","notes":"","seq":1},"c_07339094":{"id":"c_07339094","name":"","phone":"01507339094","pkgId":"pkg_w1","cost":0,"paid":0,"paidStatus":"pending","notes":"مكمل","seq":2},"c_59181573":{"id":"c_59181573","name":"سعد","phone":"01559181573","pkgId":"pkg_w1","cost":0,"paid":0,"paidStatus":"pending","notes":"","seq":3},"c_00212141":{"id":"c_00212141","name":"","phone":"01500212141","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"مكمل","seq":4}},"l_761111":{"c_56619967":{"id":"c_56619967","name":"احمد","phone":"01556619967","pkgId":"pkg_w1","cost":0,"paid":620,"paidStatus":"paid","notes":"مكمل","seq":1},"c_95577922":{"id":"c_95577922","name":"اسلام سامي محمد ","phone":"01095577922","pkgId":"pkg_w2","cost":0,"paid":0,"paidStatus":"pending","notes":"مكمل","seq":2},"c_05315087":{"id":"c_05315087","name":"مرات اسلام","phone":"01505315087","pkgId":"pkg_w1","cost":0,"paid":0,"paidStatus":"pending","notes":"لسه مذف ","seq":3},"c_54991058":{"id":"c_54991058","name":"اميره عرفه","phone":"01554991058","pkgId":"pkg_w1","cost":0,"paid":0,"paidStatus":"pending","notes":"تعديل","seq":4},"c_59996862":{"id":"c_59996862","name":"نقيب معاذ الهواري","phone":"01559996862","pkgId":"pkg_w4","cost":0,"paid":490,"paidStatus":"paid","notes":"تعديل","seq":5}},"l_341111":{"c_57959563":{"id":"c_57959563","name":"","phone":"01557959563","pkgId":"pkg_w1","cost":0,"paid":0,"paidStatus":"pending","notes":"","seq":1},"c_51429966":{"id":"c_51429966","name":"","phone":"01551429966","pkgId":"pkg_w5","cost":0,"paid":0,"paidStatus":"paid","notes":"مكمل","seq":2},"c_01595051":{"id":"c_01595051","name":"ضياء ","phone":"01501595051","pkgId":"pkg_w1","cost":0,"paid":0,"paidStatus":"pending","notes":"تعديل","seq":3},"c_54730073":{"id":"c_54730073","name":"احمدمحمد","phone":"01554730073","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":4}},"l_211116":{"c_54129570":{"id":"c_54129570","name":"محمد يحيى محمد","phone":"01554129570","pkgId":"pkg_w4","cost":0,"paid":490,"paidStatus":"paid","notes":"","seq":1},"c_58906817":{"id":"c_58906817","name":"تبع علي","phone":"01558906817","pkgId":"pkg_w5","cost":0,"paid":0,"paidStatus":"pending","notes":"","seq":2},"c_51303685":{"id":"c_51303685","name":"طه عدلى فتحي","phone":"01551303685","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"","seq":3},"c_52045996":{"id":"c_52045996","name":"احمد عبده","phone":"01552045996","pkgId":"pkg_w2","cost":0,"paid":0,"paidStatus":"pending","notes":"لسه مضفش ","seq":4},"c_07790035":{"id":"c_07790035","name":"","phone":"01507790035","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":5}},"l_506455":{"c_01202647":{"id":"c_01202647","name":"رياض عياد ","phone":"01501202647","pkgId":"pkg_w3","cost":0,"paid":430,"paidStatus":"paid","notes":"","seq":1},"c_03283837":{"id":"c_03283837","name":"رياض عياد ","phone":"01503283837","pkgId":"pkg_w3","cost":0,"paid":430,"paidStatus":"paid","notes":"","seq":2},"c_54088248":{"id":"c_54088248","name":"احمد جمال","phone":"01554088248","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"","seq":3},"c_50544747":{"id":"c_50544747","name":"رجب جمعه‏‪","phone":"01550544747","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"","seq":4},"c_59356265":{"id":"c_59356265","name":"محمد سمير","phone":"01559356265","pkgId":"pkg_w5","cost":0,"paid":0,"paidStatus":"pending","notes":"","seq":5}},"l_504910":{"c_56034097":{"id":"c_56034097","name":"محمد سعد","phone":"01556034097","pkgId":"pkg_w5","cost":0,"paid":570,"paidStatus":"paid","notes":"","seq":1},"c_15281041":{"id":"c_15281041","name":"","phone":"01515281041","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"","seq":2},"c_03328622":{"id":"c_03328622","name":"مصطفى احمد جمعه ","phone":"01503328622","pkgId":"pkg_w4","cost":0,"paid":490,"paidStatus":"paid","notes":"","seq":3},"c_58279727":{"id":"c_58279727","name":"احمد مختار فؤاد","phone":"01558279727","pkgId":"pkg_w4","cost":0,"paid":490,"paidStatus":"paid","notes":"","seq":4}}},"companySettings":{"we":{"maxDist":6},"vodafone":{"maxDist":6},"emerald":{"maxDist":6},"orange":{"maxDist":6}}}}},"madona.n":{"months":{"2026-06":{"key":"2026-06","label":"يونيو 2026","lines":{"we":{"l_456666":{"id":"l_456666","number":"01515456666","renewDay":1,"notes":"","company":"we"},"l_596666":{"id":"l_596666","number":"01515596666","renewDay":1,"notes":"","company":"we"},"l_666693":{"id":"l_666693","number":"01515666693","renewDay":1,"notes":"","company":"we"},"l_648888":{"id":"l_648888","number":"01515648888","renewDay":1,"notes":"","company":"we"},"l_618888":{"id":"l_618888","number":"01515618888","renewDay":1,"notes":"","company":"we"}},"vodafone":{},"emerald":{},"orange":{}},"packages":{"we":{"pkg_w1":{"id":"pkg_w1","name":"باقة 20 جيجا","gb":20,"min":1500,"cost":0,"price":280},"pkg_w2":{"id":"pkg_w2","name":"باقة 35 جيجا","gb":35,"min":1500,"cost":0,"price":380},"pkg_w3":{"id":"pkg_w3","name":"باقة 40 جيجا","gb":40,"min":1500,"cost":0,"price":430},"pkg_w4":{"id":"pkg_w4","name":"باقة 50 جيجا","gb":50,"min":1700,"cost":0,"price":490},"pkg_w5":{"id":"pkg_w5","name":"باقة 65 جيجا","gb":65,"min":1700,"cost":0,"price":570},"pkg_w6":{"id":"pkg_w6","name":"باقة 70 جيجا","gb":70,"min":1700,"cost":0,"price":570},"pkg_w7":{"id":"pkg_w7","name":"باقة 80 جيجا","gb":80,"min":1700,"cost":0,"price":620}},"vodafone":{"pkg_v1":{"id":"pkg_v1","name":"باقة 20 جيجا","gb":20,"min":1500,"cost":0,"price":280},"pkg_v2":{"id":"pkg_v2","name":"باقة 35 جيجا","gb":35,"min":1500,"cost":0,"price":380},"pkg_v3":{"id":"pkg_v3","name":"باقة 40 جيجا","gb":40,"min":1500,"cost":0,"price":430}},"emerald":{},"orange":{}},"customers":{"l_456666":{"c_15058265":{"id":"c_15058265","name":"محمد أحمد","phone":"01515058265","pkgId":"pkg_w5","cost":0,"paid":570,"paidStatus":"paid","notes":"","seq":1},"c_51594223":{"id":"c_51594223","name":"رياض محمود","phone":"01551594223","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"","seq":2},"c_15852021":{"id":"c_15852021","name":"تبع حجاج","phone":"01515852021","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":3},"c_50805105":{"id":"c_50805105","name":"","phone":"01550805105","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"","seq":4},"c_15148953":{"id":"c_15148953","name":"","phone":"01515148953","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":5},"c_52004124":{"id":"c_52004124","name":"","phone":"01552004124","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":6}},"l_596666":{"c_53190329":{"id":"c_53190329","name":" احمد السيد الحوشي","phone":"01553190329","pkgId":"pkg_w4","cost":0,"paid":480,"paidStatus":"paid","notes":"مكمل","seq":1},"c_55823397":{"id":"c_55823397","name":"رامى شعبان","phone":"01555823397","pkgId":"pkg_w5","cost":0,"paid":570,"paidStatus":"paid","notes":"مكمل","seq":2},"c_52453747":{"id":"c_52453747","name":" محمد غريب","phone":"01552453747","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":3},"c_00601499":{"id":"c_00601499","name":"","phone":"01500601499","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":4},"c_21232442":{"id":"c_21232442","name":"محمد احمد","phone":"01221232442","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"مكمل","seq":5},"c_59021383":{"id":"c_59021383","name":"تبع رانيا","phone":"01559021383","pkgId":"pkg_w1","cost":0,"paid":0,"paidStatus":"pending","notes":"","seq":6}},"l_666693":{"c_05125697":{"id":"c_05125697","name":"احمد سامي امين ","phone":"01505125697","pkgId":"pkg_w3","cost":0,"paid":430,"paidStatus":"paid","notes":"مكمل","seq":1},"c_07469147":{"id":"c_07469147","name":"عمرو","phone":"01507469147","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":2},"c_15160918":{"id":"c_15160918","name":"عمرو","phone":"01515160918","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":3},"c_58971353":{"id":"c_58971353","name":"عمرو","phone":"01558971353","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":4},"c_05513138":{"id":"c_05513138","name":"زياد خالد سعيد ","phone":"01505513138","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":5},"c_51715029":{"id":"c_51715029","name":"","phone":"01551715029","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":6}},"l_648888":{"c_07224290":{"id":"c_07224290","name":"عبده السنوسي","phone":"01507224290","pkgId":"pkg_w5","cost":0,"paid":570,"paidStatus":"paid","notes":"مكمل","seq":1},"c_57617031":{"id":"c_57617031","name":"محمد ناجي","phone":"01557617031","pkgId":"pkg_w5","cost":0,"paid":570,"paidStatus":"paid","notes":"","seq":2},"c_54931980":{"id":"c_54931980","name":"تبع عمرو","phone":"01554931980","pkgId":"pkg_w3","cost":0,"paid":430,"paidStatus":"paid","notes":"","seq":3},"c_53179013":{"id":"c_53179013","name":"محمد حجاج","phone":"01553179013","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":4},"c_02156743":{"id":"c_02156743","name":"محمد صبرى محمد حسن ","phone":"01102156743","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"","seq":5}},"l_618888":{"c_53534128":{"id":"c_53534128","name":"الحسيني","phone":"01553534128","pkgId":"pkg_w3","cost":0,"paid":430,"paidStatus":"paid","notes":"مكمل","seq":1},"c_07296230":{"id":"c_07296230","name":"تبع عمرو","phone":"01507296230","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"اضافه","seq":2},"c_51876645":{"id":"c_51876645","name":"هيثم جمعه","phone":"01551876645","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":3},"c_54603838":{"id":"c_54603838","name":"احمد سيد","phone":"01554603838","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"مكمل","seq":4},"c_57566969":{"id":"c_57566969","name":"عمرو العطار","phone":"01557566969","pkgId":"pkg_w2","cost":0,"paid":380,"paidStatus":"paid","notes":"","seq":5},"c_15148956":{"id":"c_15148956","name":"","phone":"01515148956","pkgId":"pkg_w1","cost":0,"paid":280,"paidStatus":"paid","notes":"مكمل","seq":6}}},"companySettings":{"we":{"maxDist":6},"vodafone":{"maxDist":6},"emerald":{"maxDist":6},"orange":{"maxDist":6}}}}}};
 
-// ===== SYSTEM / AUTH =====
-const SYS_KEY = 'lm_sys_v2';
-
-function getSys(){
-  const d=localStorage.getItem(SYS_KEY);
-  return d?JSON.parse(d):initSys();
+function applySeed(username){
+  const s=getSys();const u=s.users[username];if(!u)return;
+  if(u.data&&u.data.months&&Object.keys(u.data.months).length>0)return;
+  const sd=SEED[username];if(!sd)return;
+  u.data=sd;saveSys(s);
 }
+function getSys(){const d=localStorage.getItem(SYS_KEY);return d?JSON.parse(d):initSys();}
 function initSys(){
-  const s={users:{admin:{username:'admin',displayName:'الأدمن',password:'admin123',role:'admin',data:{}}}};
-  localStorage.setItem(SYS_KEY,JSON.stringify(s));
-  return s;
+  const s={users:{
+    admin:{username:'admin',displayName:'الأدمن',password:'admin123',role:'admin',data:{}},
+    'ahmed.h':{username:'ahmed.h',displayName:'Ahmed H',password:'WeGold2000',role:'user',data:{}},
+    'rania.m':{username:'rania.m',displayName:'Rania M',password:'WeGold2000',role:'user',data:{}},
+    'madona.n':{username:'madona.n',displayName:'Madona N',password:'WeGold2000',role:'user',data:{}},
+  }};
+  localStorage.setItem(SYS_KEY,JSON.stringify(s));return s;
 }
 function saveSys(s){localStorage.setItem(SYS_KEY,JSON.stringify(s));}
-
-let currentUser=null, currentCo=null, currentLineId=null, currentMonth=null, lineFilter='all', dashFilter='all';
+let currentUser=null,currentCo=null,currentLineId=null,currentMonth=null,lineFilter='all',dashFilter='all';
 let selectedRenewDay=1;
-
-// ===== USER DATA =====
 function getUserData(){const s=getSys();return s.users[currentUser.username].data||{};}
 function setUserData(d){const s=getSys();s.users[currentUser.username].data=d;saveSys(s);}
-
 function getMonthData(key){
-  const d=getUserData();
-  if(!d.months)d.months={};
-  if(!d.months[key]){
-    d.months[key]={key,label:key,lines:{},packages:{},customers:{},companySettings:initCoSettings()};
-    setUserData(d);
-  }
+  const d=getUserData();if(!d.months)d.months={};
+  if(!d.months[key]){d.months[key]={key,label:key,lines:{},packages:{},customers:{},companySettings:initCoSettings()};setUserData(d);}
   return d.months[key];
 }
-function saveMonthData(key,m){
-  const d=getUserData();
-  if(!d.months)d.months={};
-  d.months[key]=m;
-  setUserData(d);
-}
-function initCoSettings(){
-  const s={};
-  Object.keys(COMPANIES).forEach(co=>s[co]={maxDist:COMPANIES[co].maxDist});
-  return s;
-}
-function getAllMonths(){
-  const d=getUserData();
-  if(!d.months)return[];
-  return Object.values(d.months).sort((a,b)=>b.key.localeCompare(a.key));
-}
+function saveMonthData(key,m){const d=getUserData();if(!d.months)d.months={};d.months[key]=m;setUserData(d);}
+function initCoSettings(){const s={};Object.keys(COMPANIES).forEach(co=>s[co]={maxDist:COMPANIES[co].maxDist});return s;}
+function getAllMonths(){const d=getUserData();if(!d.months)return[];return Object.values(d.months).sort((a,b)=>b.key.localeCompare(a.key));}
 function mdata(){return getMonthData(currentMonth);}
 function saveMdata(m){saveMonthData(currentMonth,m);}
-
-// ===== LOGIN =====
 document.getElementById('login-pass').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
 document.getElementById('login-user').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('login-pass').focus();});
-
 function doLogin(){
   const u=document.getElementById('login-user').value.trim().toLowerCase();
   const p=document.getElementById('login-pass').value;
-  const sys=getSys();
-  const user=sys.users[u];
+  const sys=getSys();const user=sys.users[u];
   if(!user||user.password!==p){document.getElementById('login-error').textContent='اسم المستخدم أو كلمة المرور غير صحيحة';return;}
   currentUser={username:user.username,displayName:user.displayName,role:user.role};
+  applySeed(u);
   document.getElementById('login-screen').style.display='none';
   document.getElementById('main-nav').style.display='flex';
   document.getElementById('month-bar').style.display='flex';
@@ -603,13 +554,10 @@ function doLogin(){
   document.getElementById('nav-role').textContent=user.role==='admin'?'أدمن':'مستخدم';
   document.getElementById('nav-role').className='role-tag-nav '+(user.role==='admin'?'role-admin-nav':'role-user-nav');
   if(user.role==='admin')document.getElementById('nav-admin').style.display='';
-  // init month
   const months=getAllMonths();
   if(!months.length){
-    const now=new Date();
-    const key=now.getFullYear()+'-'+(now.getMonth()+1).toString().padStart(2,'0');
-    const label=getMonthLabel(key);
-    const d=getUserData();d.months=d.months||{};
+    const now=new Date();const key=now.getFullYear()+'-'+(now.getMonth()+1).toString().padStart(2,'0');
+    const label=getMonthLabel(key);const d=getUserData();d.months=d.months||{};
     d.months[key]={key,label,lines:{},packages:{},customers:{},companySettings:initCoSettings()};
     setUserData(d);currentMonth=key;
   } else {currentMonth=months[0].key;}
@@ -625,24 +573,19 @@ function doLogout(){
   document.getElementById('login-pass').value='';
   document.getElementById('login-error').textContent='';
 }
-
-// ===== MONTH =====
 function getMonthLabel(key){
-  const parts=key.split('-');
-  const y=parts[0],m=parseInt(parts[1]);
+  const parts=key.split('-');const y=parts[0],m=parseInt(parts[1]);
   const names=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
   return (names[m-1]||m)+' '+y;
 }
 function renderMonthBar(){
   const months=getAllMonths();
-  document.getElementById('month-chips').innerHTML=months.map(m=>`
-    <button class="month-chip ${m.key===currentMonth?'active':''}" onclick="selectMonth('${m.key}')">${m.label||getMonthLabel(m.key)}</button>`).join('');
+  document.getElementById('month-chips').innerHTML=months.map(m=>`<button class="month-chip ${m.key===currentMonth?'active':''}" onclick="selectMonth('${m.key}')">${m.label||getMonthLabel(m.key)}</button>`).join('');
 }
 function selectMonth(key){
   currentMonth=key;renderMonthBar();
   const act=document.querySelector('.page.active');
-  if(act){
-    const id=act.id.replace('page-','');
+  if(act){const id=act.id.replace('page-','');
     if(id==='home')renderHome();
     else if(id==='dashboard')renderDashboard();
     else if(id==='company'){renderLines();renderPackages();}
@@ -658,24 +601,16 @@ function openNewMonth(){
 function confirmNewMonth(){
   const label=document.getElementById('month-name').value.trim();
   if(!label){toast('أدخل اسم الشهر','error');return;}
-  const now=new Date();
-  const base=now.getFullYear()+'-'+(now.getMonth()+1).toString().padStart(2,'0');
+  const now=new Date();const base=now.getFullYear()+'-'+(now.getMonth()+1).toString().padStart(2,'0');
   const key=base+'-'+Date.now().toString().slice(-4);
   const d=getUserData();d.months=d.months||{};
   d.months[key]={key,label,lines:{},packages:{},customers:{},companySettings:initCoSettings()};
-  setUserData(d);currentMonth=key;
-  closeModal('modal-month');renderMonthBar();showPage('home');
+  setUserData(d);currentMonth=key;closeModal('modal-month');renderMonthBar();showPage('home');
   toast('✅ تم إنشاء: '+label);
 }
-
-// ===== NAVIGATION =====
 function showPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+name).classList.add('active');
-  ['home','dashboard','history','admin-users'].forEach(n=>{
-    const el=document.getElementById('nav-'+n.replace('-users','').replace('admin','admin'));
-    // simpler:
-  });
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
   const nm={home:'nav-home',dashboard:'nav-dashboard',history:'nav-history','admin-users':'nav-admin'};
   if(nm[name])document.getElementById(nm[name])?.classList.add('active');
@@ -706,50 +641,62 @@ function switchTab(name){
   const idx=['lines','packages','tips'].indexOf(name);
   document.querySelectorAll('.tab')[idx].classList.add('active');
   document.getElementById('tab-'+name).classList.add('active');
-  if(name==='lines')renderLines();
-  if(name==='packages')renderPackages();
-  if(name==='tips')renderTips();
+  if(name==='lines')renderLines();if(name==='packages')renderPackages();if(name==='tips')renderTips();
 }
 function setLineFilter(f){
-  lineFilter=f;
-  ['all','1','16'].forEach(x=>document.getElementById('fc-'+x)?.classList.remove('active'));
-  document.getElementById('fc-'+f)?.classList.add('active');
-  renderLines();
+  lineFilter=f;['all','1','16'].forEach(x=>document.getElementById('fc-'+x)?.classList.remove('active'));
+  document.getElementById('fc-'+f)?.classList.add('active');renderLines();
 }
 function setDashFilter(f){
-  dashFilter=f;
-  ['all','1','16'].forEach(x=>document.getElementById('dfc-'+x)?.classList.remove('active'));
-  document.getElementById('dfc-'+f)?.classList.add('active');
-  renderDashboard();
+  dashFilter=f;['all','1','16'].forEach(x=>document.getElementById('dfc-'+x)?.classList.remove('active'));
+  document.getElementById('dfc-'+f)?.classList.add('active');renderDashboard();
 }
-
-// ===== TOAST =====
 function toast(msg,type='success'){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.className='show '+type;
-  setTimeout(()=>t.className='',2600);
+  const t=document.getElementById('toast');t.textContent=msg;t.className='show '+type;
+  setTimeout(()=>t.className='',2800);
 }
 function openModal(id){document.getElementById(id).classList.add('open');}
 function closeModal(id){document.getElementById(id).classList.remove('open');}
 document.querySelectorAll('.modal-overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open');}));
-
-// ===== RENDER HOME =====
 function renderHome(){
   const m=mdata();
-  document.getElementById('home-sub').textContent='شهر: '+(m.label||getMonthLabel(m.key));
+  const allLines=Object.keys(COMPANIES).flatMap(co=>Object.values(m.lines[co]||{}));
+  const allCusts=allLines.flatMap(l=>Object.values(m.customers[l.id]||{}));
+  const totRev=allCusts.reduce((a,c)=>a+(c.paid||0),0);
+  const unpaid=allCusts.filter(c=>c.paidStatus==='pending').length;
+  const hrs=new Date().getHours();
+  document.getElementById('hero-greeting').textContent=(hrs<12?'صباح الخير ☀️':hrs<18?'مساء الخير 🌤️':'مساء النور 🌙')+' '+currentUser.displayName;
+  document.getElementById('home-month-label').textContent='شهر: '+(m.label||getMonthLabel(m.key));
+  document.getElementById('hero-metrics').innerHTML=`
+    <div class="hero-metric"><div class="hm-val">${allLines.length}</div><div class="hm-label">خطوط نشطة</div></div>
+    <div class="hero-metric"><div class="hm-val">${allCusts.length}</div><div class="hm-label">إجمالي العملاء</div></div>
+    <div class="hero-metric"><div class="hm-val">${totRev.toLocaleString()}</div><div class="hm-label">الإيرادات (ج)</div></div>
+    <div class="hero-metric"><div class="hm-val" style="color:${unpaid?'var(--yellow)':'var(--green)'}">${unpaid}</div><div class="hm-label">لم يدفعوا</div></div>`;
   document.getElementById('companies-grid').innerHTML=Object.entries(COMPANIES).map(([id,co])=>{
     const lines=Object.values(m.lines[id]||{});
     const custs=lines.flatMap(l=>Object.values(m.customers[l.id]||{}));
     const rev=custs.reduce((a,c)=>a+(c.paid||0),0);
     const day1=lines.filter(l=>l.renewDay===1).length;
     const day16=lines.filter(l=>l.renewDay===16).length;
+    const maxDist=m.companySettings[id]?.maxDist||co.maxDist;
+    const totalSlots=lines.length*maxDist;
+    const pct=totalSlots?Math.round((custs.length/totalSlots)*100):0;
+    const R=20,circ=2*Math.PI*R,dash=circ*(pct/100);
     return `<div class="company-card" data-co="${id}" onclick="openCompany('${id}')">
-      <div class="co-logo-wrap">${LOGOS[id]}</div>
+      <div class="co-top">
+        <div class="co-logo-wrap">${LOGOS[id]}</div>
+        <svg class="co-progress-ring" viewBox="0 0 50 50">
+          <circle class="co-ring-bg" cx="25" cy="25" r="${R}"/>
+          <circle class="co-ring-fill" cx="25" cy="25" r="${R}" stroke="${co.color}" stroke-dasharray="${dash.toFixed(1)} ${circ.toFixed(1)}" transform="rotate(-90 25 25)"/>
+          <text x="25" y="25" class="co-ring-text" style="fill:${co.color}">${pct}%</text>
+        </svg>
+      </div>
       <div class="co-name">${co.name}</div>
+      <div class="co-color-line" style="background:${co.color}"></div>
       <div class="co-stats">
-        <div class="co-stat"><strong>${lines.length}</strong>خطوط</div>
-        <div class="co-stat"><strong>${custs.length}</strong>عملاء</div>
-        <div class="co-stat"><strong>${rev.toLocaleString()}</strong>ج.م</div>
+        <div class="co-stat"><div class="sv" style="color:${co.color}">${lines.length}</div><div class="sl">خطوط</div></div>
+        <div class="co-stat"><div class="sv">${custs.length}</div><div class="sl">عملاء</div></div>
+        <div class="co-stat"><div class="sv" style="color:var(--green)">${rev.toLocaleString()}</div><div class="sl">ج.م</div></div>
       </div>
       <div class="renew-badges">
         ${day1?`<span class="renew-badge rb-1">📅 يوم 1: ${day1}</span>`:''}
@@ -758,69 +705,50 @@ function renderHome(){
     </div>`;
   }).join('');
 }
-
-// ===== RENDER COMPANY HEADER =====
 function renderCompanyHeader(){
   const co=COMPANIES[currentCo];
   document.getElementById('co-detail-header').innerHTML=`
     <div class="detail-logo-wrap">${LOGOS[currentCo]}</div>
-    <div>
-      <div style="font-size:18px;font-weight:700">${co.name}</div>
-      <div style="color:var(--sub);font-size:12px">خطوط الفاتورة - توزيع الباقات</div>
-      <div style="height:3px;background:${co.color};width:44px;border-radius:2px;margin-top:5px"></div>
-    </div>`;
+    <div><div style="font-size:19px;font-weight:800">${co.name}</div>
+    <div style="color:var(--sub);font-size:12px;margin-top:3px">خطوط الفاتورة - توزيع الباقات</div>
+    <div style="height:3px;background:${co.color};width:44px;border-radius:2px;margin-top:6px"></div></div>`;
 }
-
-// ===== RENDER LINES =====
 function renderLines(){
-  const m=mdata();
-  let lines=Object.values(m.lines[currentCo]||{});
-  if(lineFilter===1||lineFilter===16) lines=lines.filter(l=>l.renewDay===lineFilter);
+  const m=mdata();let lines=Object.values(m.lines[currentCo]||{});
+  if(lineFilter===1||lineFilter===16)lines=lines.filter(l=>l.renewDay===lineFilter);
   const pkgs=Object.values(m.packages[currentCo]||{});
   const maxDist=m.companySettings[currentCo]?.maxDist||COMPANIES[currentCo].maxDist;
   if(!lines.length){
-    document.getElementById('lines-container').innerHTML=`<div class="empty-state"><div class="icon">📡</div><p>${lineFilter!=='all'?'لا يوجد خطوط في يوم '+lineFilter:'لا يوجد خطوط. اضغط "+ خط جديد"'}</p></div>`;return;
+    document.getElementById('lines-container').innerHTML=`<div class="empty-state"><span class="icon">📡</span><p>${lineFilter!=='all'?'لا يوجد خطوط في يوم '+lineFilter:'لا يوجد خطوط. اضغط "+ خط جديد"'}</p></div>`;return;
   }
   const rows=lines.map(line=>{
     const custs=Object.values(m.customers[line.id]||{});
     const used=custs.length;
     const gb=custs.reduce((a,c)=>{const p=pkgs.find(x=>x.id===c.pkgId);return a+(p?p.gb:0);},0);
     const min=custs.reduce((a,c)=>{const p=pkgs.find(x=>x.id===c.pkgId);return a+(p?p.min:0);},0);
-    const rev=custs.reduce((a,c)=>a+(c.paid||0),0);
-    const cost=custs.reduce((a,c)=>a+(c.cost||0),0);
-    const profit=rev-cost;
-    const pct=(used/maxDist)*100;
+    const rev=custs.reduce((a,c)=>a+(c.paid||0),0);const cost=custs.reduce((a,c)=>a+(c.cost||0),0);
+    const profit=rev-cost;const pct=(used/maxDist)*100;
     const fc=pct>=100?'fill-red':pct>=70?'fill-yellow':'fill-green';
-    const dayBadge=`<span class="renew-day-badge ${line.renewDay===16?'day-16':'day-1'}">يوم ${line.renewDay||1}</span>`;
     return `<tr onclick="openLinePage('${line.id}')" style="cursor:pointer">
       <td><span class="line-number">${line.number}</span>${line.notes?`<div style="font-size:11px;color:var(--sub);margin-top:2px">${line.notes}</div>`:''}</td>
-      <td>${dayBadge}</td>
+      <td><span class="renew-day-badge ${line.renewDay===16?'day-16':'day-1'}">يوم ${line.renewDay||1}</span></td>
       <td>${used}/${maxDist}<div class="progress-bar"><div class="progress-fill ${fc}" style="width:${Math.min(pct,100)}%"></div></div></td>
       <td>${gb} <span style="color:var(--sub);font-size:11px">GB</span></td>
       <td>${min} <span style="color:var(--sub);font-size:11px">د</span></td>
-      <td class="${profit>=0?'text-green':'text-red'}" style="font-weight:700">${profit>=0?'+':''}${profit.toLocaleString()} ج</td>
-      <td style="white-space:nowrap">
-        <button class="btn btn-sm btn-outline" onclick="event.stopPropagation();openLinePage('${line.id}')">تفاصيل</button>
-        <button class="btn btn-sm btn-danger" style="margin-right:5px" onclick="event.stopPropagation();deleteLine('${line.id}')">×</button>
-      </td>
+      <td class="${profit>=0?'text-green':'text-red'}" style="font-weight:800">${profit>=0?'+':''}${profit.toLocaleString()} ج</td>
+      <td><button class="btn btn-sm btn-outline" onclick="event.stopPropagation();openLinePage('${line.id}')">تفاصيل</button>
+        <button class="btn btn-sm btn-danger" style="margin-right:5px" onclick="event.stopPropagation();deleteLine('${line.id}')">×</button></td>
     </tr>`;
   }).join('');
   document.getElementById('lines-container').innerHTML=`<div class="table-wrap"><table>
     <thead><tr><th>الرقم الأساسي</th><th>يوم التجديد</th><th>الإشغال</th><th>الجيجا</th><th>الدقائق</th><th>الربح</th><th></th></tr></thead>
-    <tbody>${rows}</tbody>
-  </table></div>`;
+    <tbody>${rows}</tbody></table></div>`;
 }
-
-// ===== RENDER PACKAGES =====
 function renderPackages(){
-  const m=mdata();
-  const pkgs=Object.values(m.packages[currentCo]||{});
-  if(!pkgs.length){
-    document.getElementById('packages-container').innerHTML=`<div class="empty-state"><div class="icon">📦</div><p>لا يوجد باقات بعد. اضغط "+ باقة جديدة"</p></div>`;return;
-  }
+  const m=mdata();const pkgs=Object.values(m.packages[currentCo]||{});
+  if(!pkgs.length){document.getElementById('packages-container').innerHTML=`<div class="empty-state"><span class="icon">📦</span><p>لا يوجد باقات. اضغط "+ باقة جديدة"</p></div>`;return;}
   document.getElementById('packages-container').innerHTML=`<div class="packages-grid">${pkgs.map(p=>{
-    const profit=(p.price||0)-(p.cost||0);
-    const margin=p.cost?((profit/p.cost)*100).toFixed(0):0;
+    const profit=(p.price||0)-(p.cost||0);const margin=p.cost?((profit/p.cost)*100).toFixed(0):100;
     return `<div class="pkg-card">
       <div class="pkg-del"><button class="btn btn-sm btn-danger" onclick="deletePkg('${p.id}')">×</button></div>
       <div class="pkg-name">${p.name}</div>
@@ -828,117 +756,62 @@ function renderPackages(){
       <div class="pkg-row"><span>الدقائق</span><strong>${p.min} دقيقة</strong></div>
       <div class="pkg-row"><span>التكلفة</span><strong>${p.cost} ج</strong></div>
       <div class="pkg-row"><span>سعر البيع</span><strong style="color:var(--green)">${p.price} ج</strong></div>
-      <div class="pkg-profit-bar">
-        <span style="font-size:12px">ربح: <strong class="${profit>=0?'text-green':'text-red'}">${profit>=0?'+':''}${profit} ج</strong></span>
-        <span class="${profit>=0?'profit-badge':'loss-badge'}">${margin}%</span>
-      </div>
+      <div class="pkg-profit-bar"><span>ربح: <strong class="${profit>=0?'text-green':'text-red'}">${profit>=0?'+':''}${profit} ج</strong></span>
+        <span class="${profit>=0?'profit-badge':'loss-badge'}">${margin}%</span></div>
     </div>`;
   }).join('')}</div>`;
 }
-
-// ===== RENDER TIPS =====
 function renderTips(){
-  const m=mdata();
-  const co=COMPANIES[currentCo];
-  const lines=Object.values(m.lines[currentCo]||{});
-  const pkgs=Object.values(m.packages[currentCo]||{});
+  const m=mdata();const co=COMPANIES[currentCo];
+  const lines=Object.values(m.lines[currentCo]||{});const pkgs=Object.values(m.packages[currentCo]||{});
   const maxDist=m.companySettings[currentCo]?.maxDist||co.maxDist;
   const allCusts=lines.flatMap(l=>Object.values(m.customers[l.id]||{}));
-  const rev=allCusts.reduce((a,c)=>a+(c.paid||0),0);
-  const cost=allCusts.reduce((a,c)=>a+(c.cost||0),0);
+  const rev=allCusts.reduce((a,c)=>a+(c.paid||0),0);const cost=allCusts.reduce((a,c)=>a+(c.cost||0),0);
   const bestPkg=[...pkgs].sort((a,b)=>((b.price-b.cost)-(a.price-a.cost)))[0];
-  const day1Lines=lines.filter(l=>l.renewDay===1);
-  const day16Lines=lines.filter(l=>l.renewDay===16);
+  const day1Lines=lines.filter(l=>l.renewDay===1);const day16Lines=lines.filter(l=>l.renewDay===16);
   const unpaid=allCusts.filter(c=>c.paidStatus==='pending').length;
-
   const tips=[
-    {icon:'💡',type:'tip-green',title:'أفضل باقة ربحًا',
-     text:bestPkg?`"${bestPkg.name}" = ربح ${(bestPkg.price-bestPkg.cost).toLocaleString()} ج/عميل (هامش ${bestPkg.cost?(((bestPkg.price-bestPkg.cost)/bestPkg.cost)*100).toFixed(0):0}%). ركز على تسويقها.`:'أضف باقات مع أسعار بيع لتظهر التوصيات.'},
-    {icon:'📅',type:'tip-blue',title:'يوم 1 مقابل يوم 16',
-     text:`خطوط يوم 1: ${day1Lines.length} خطوط (${day1Lines.flatMap(l=>Object.values(m.customers[l.id]||{})).length} عميل) | خطوط يوم 16: ${day16Lines.length} خطوط (${day16Lines.flatMap(l=>Object.values(m.customers[l.id]||{})).length} عميل). توزيع الخطوط على التاريخين يضمن تدفق إيرادات منتظم طول الشهر.`},
-    {icon:'⚠️',type:'tip-yellow',title:'العملاء غير المدفوعين',
-     text:unpaid?`⚠️ ${unpaid} عميل لسه مدفعوش. راجعهم وحصّل المستحقات قبل التجديد.`:'✅ كل العملاء دفعوا في هذا الشهر!'},
-    {icon:'💰',type:'tip-green',title:'ملخص الربحية',
-     text:`إيرادات: ${rev.toLocaleString()} ج | تكلفة: ${cost.toLocaleString()} ج | صافي: ${(rev-cost).toLocaleString()} ج (${cost?(((rev-cost)/cost)*100).toFixed(0):0}%). ${(rev-cost)>0?'شغلك رابح 🎉':'راجع التسعير!'}`},
-    {icon:'📈',type:'tip-blue',title:'زيادة الإيرادات',
-     text:`لو ملّيت كل خطوطك (${lines.length*maxDist} عميل بدل ${allCusts.length}) بأفضل باقة "${bestPkg?.name||'---'}"، الإيراد المتوقع: ${bestPkg?(bestPkg.price*lines.length*maxDist).toLocaleString():0} ج شهريًا.`},
+    {icon:'💡',type:'tip-green',title:'أفضل باقة ربحًا',text:bestPkg?`"${bestPkg.name}" = ربح ${(bestPkg.price-bestPkg.cost).toLocaleString()} ج/عميل.`:'أضف باقات لتظهر التوصيات.'},
+    {icon:'📅',type:'tip-blue',title:'يوم 1 مقابل يوم 16',text:`يوم 1: ${day1Lines.length} خطوط (${day1Lines.flatMap(l=>Object.values(m.customers[l.id]||{})).length} عميل) | يوم 16: ${day16Lines.length} خطوط (${day16Lines.flatMap(l=>Object.values(m.customers[l.id]||{})).length} عميل)`},
+    {icon:'⚠️',type:'tip-yellow',title:'غير المدفوعين',text:unpaid?`⚠️ ${unpaid} عميل لم يدفعوا.`:'✅ كل العملاء دفعوا!'},
+    {icon:'💰',type:'tip-green',title:'ملخص الربحية',text:`إيرادات: ${rev.toLocaleString()} ج | صافي: ${(rev-cost).toLocaleString()} ج`},
   ];
   document.getElementById('tips-container').innerHTML=`<div class="tips-list">${tips.map(t=>`
     <div class="tip-card ${t.type}"><div class="tip-icon">${t.icon}</div>
     <div><div class="tip-title">${t.title}</div><div class="tip-text">${t.text}</div></div></div>`).join('')}</div>`;
 }
-
-// ===== RENDER LINE DETAIL =====
 function renderLineDetail(){
-  const m=mdata();
-  const coId=findLineCompany(currentLineId);
-  if(!coId)return;
-  const co=COMPANIES[coId];
-  const line=m.lines[coId]?.[currentLineId];
-  if(!line)return;
+  const m=mdata();const coId=findLineCompany(currentLineId);if(!coId)return;
+  const co=COMPANIES[coId];const line=m.lines[coId]?.[currentLineId];if(!line)return;
   const pkgs=Object.values(m.packages[coId]||{});
   const custs=Object.values(m.customers[currentLineId]||{}).sort((a,b)=>a.seq-b.seq);
   const maxDist=m.companySettings[coId]?.maxDist||co.maxDist;
   const totalGb=custs.reduce((a,c)=>{const p=pkgs.find(x=>x.id===c.pkgId);return a+(p?p.gb:0);},0);
   const totalMin=custs.reduce((a,c)=>{const p=pkgs.find(x=>x.id===c.pkgId);return a+(p?p.min:0);},0);
-  const rev=custs.reduce((a,c)=>a+(c.paid||0),0);
-  const cost=custs.reduce((a,c)=>a+(c.cost||0),0);
+  const rev=custs.reduce((a,c)=>a+(c.paid||0),0);const cost=custs.reduce((a,c)=>a+(c.cost||0),0);
   const paidCount=custs.filter(c=>c.paidStatus==='paid').length;
   const pct=(custs.length/maxDist)*100;
-
   document.getElementById('line-detail-header').innerHTML=`
-    <div class="detail-header">
-      <div class="detail-logo-wrap">${LOGOS[coId]}</div>
-      <div>
-        <div style="font-weight:700;font-family:monospace;font-size:17px">${line.number}</div>
-        <div style="font-size:12px;color:var(--sub);margin-top:2px">
-          ${co.name} · <span class="renew-day-badge ${line.renewDay===16?'day-16':'day-1'}" style="display:inline-flex">يوم ${line.renewDay||1}</span>
-          ${line.notes?'· '+line.notes:''}
-        </div>
-      </div>
-    </div>`;
-
+    <div class="detail-header"><div class="detail-logo-wrap">${LOGOS[coId]}</div>
+    <div><div style="font-weight:800;font-family:monospace;font-size:18px">${line.number}</div>
+    <div style="font-size:12px;color:var(--sub);margin-top:3px">${co.name} · <span class="renew-day-badge ${line.renewDay===16?'day-16':'day-1'}" style="display:inline-flex">يوم ${line.renewDay||1}</span>${line.notes?'· '+line.notes:''}</div>
+    </div></div>`;
   document.getElementById('line-stats').innerHTML=`
-    <div class="stat-card">
-      <div class="label">الإشغال</div>
-      <div class="value">${custs.length}/${maxDist}</div>
-      <div class="progress-bar" style="margin-top:7px"><div class="progress-fill ${pct>=100?'fill-red':pct>=70?'fill-yellow':'fill-green'}" style="width:${Math.min(pct,100)}%"></div></div>
-    </div>
-    <div class="stat-card">
-      <div class="label">جيجا موزعة</div>
-      <div class="value">${totalGb} <span style="font-size:14px">GB</span></div>
-    </div>
-    <div class="stat-card">
-      <div class="label">دقائق موزعة</div>
-      <div class="value">${totalMin}</div>
-      <div class="sub-value">دقيقة</div>
-    </div>
-    <div class="stat-card profit-card">
-      <div class="label">الإيرادات</div>
-      <div class="value text-green">${rev.toLocaleString()} ج</div>
-      <div class="sub-value">دفعوا: ${paidCount}/${custs.length}</div>
-    </div>
-    <div class="stat-card profit-card">
-      <div class="label">الربح الصافي</div>
-      <div class="value" style="color:${rev-cost>=0?'var(--green)':'var(--red)'}">${rev-cost>=0?'+':''}${(rev-cost).toLocaleString()} ج</div>
-      <div class="sub-value">تكلفة: ${cost.toLocaleString()} ج</div>
-    </div>`;
-
-  if(!custs.length){
-    document.getElementById('customers-container').innerHTML=`<div class="empty-state"><div class="icon">👤</div><p>لا يوجد عملاء بعد</p></div>`;return;
-  }
+    <div class="stat-card"><div class="label">الإشغال</div><div class="value">${custs.length}/${maxDist}</div>
+      <div class="progress-bar" style="margin-top:8px"><div class="progress-fill ${pct>=100?'fill-red':pct>=70?'fill-yellow':'fill-green'}" style="width:${Math.min(pct,100)}%"></div></div></div>
+    <div class="stat-card"><div class="label">جيجا موزعة</div><div class="value">${totalGb} <span style="font-size:14px">GB</span></div></div>
+    <div class="stat-card"><div class="label">دقائق موزعة</div><div class="value">${totalMin}</div><div class="sub-value">دقيقة</div></div>
+    <div class="stat-card profit-card"><div class="label">الإيرادات</div><div class="value text-green">${rev.toLocaleString()} ج</div><div class="sub-value">دفعوا: ${paidCount}/${custs.length}</div></div>
+    <div class="stat-card profit-card"><div class="label">الربح الصافي</div><div class="value" style="color:${rev-cost>=0?'var(--green)':'var(--red)'}">${rev-cost>=0?'+':''}${(rev-cost).toLocaleString()} ج</div><div class="sub-value">تكلفة: ${cost.toLocaleString()} ج</div></div>`;
+  if(!custs.length){document.getElementById('customers-container').innerHTML=`<div class="empty-state"><span class="icon">👤</span><p>لا يوجد عملاء بعد</p></div>`;return;}
   document.getElementById('customers-container').innerHTML=`<div class="customers-grid">${custs.map(c=>{
-    const pkg=pkgs.find(p=>p.id===c.pkgId);
-    const profit=(c.paid||0)-(c.cost||0);
+    const pkg=pkgs.find(p=>p.id===c.pkgId);const profit=(c.paid||0)-(c.cost||0);
     const statusMap={paid:'دفع ✅',pending:'لم يدفع ⏳',partial:'جزئي 🔶'};
     return `<div class="customer-card">
-      <div class="cust-seq" style="border-color:${co.color}">${c.seq}</div>
-      <div class="cust-info">
-        <div class="cust-name">${c.name||'—'}</div>
-        <div class="cust-phone">${c.phone}</div>
+      <div class="cust-seq" style="border-color:${co.color};color:${co.color}">${c.seq}</div>
+      <div class="cust-info"><div class="cust-name">${c.name||'—'}</div><div class="cust-phone">${c.phone}</div>
         <div class="cust-pkg-info">${pkg?`<span>${pkg.name}</span><span>${pkg.gb}GB</span><span>${pkg.min}د</span>`:'<span style="color:var(--red)">بدون باقة</span>'}</div>
-        ${c.notes?`<div style="font-size:11px;color:var(--sub);margin-top:2px">${c.notes}</div>`:''}
-      </div>
+        ${c.notes?`<div style="font-size:11px;color:var(--sub);margin-top:3px">${c.notes}</div>`:''}</div>
       <div class="cust-price">
         <div class="cust-paid">${(c.paid||0).toLocaleString()} ج</div>
         <div class="cust-cost-val">تكلفة: ${c.cost||0} ج</div>
@@ -949,16 +822,10 @@ function renderLineDetail(){
     </div>`;
   }).join('')}</div>`;
 }
-
-// ===== RENDER DASHBOARD =====
 function renderDashboard(){
-  const m=mdata();
-  document.getElementById('dash-sub').textContent='شهر: '+(m.label||getMonthLabel(m.key));
-  let totRev=0,totCost=0,totCusts=0,totLines=0;
-
-  // Group by renewDay
+  const m=mdata();document.getElementById('dash-sub').textContent='شهر: '+(m.label||getMonthLabel(m.key));
+  let totRev=0,totCost=0,totCusts=0,totLines=0,totUnpaid=0;
   const day1Cards=[],day16Cards=[];
-
   Object.entries(COMPANIES).forEach(([coId,co])=>{
     let lines=Object.values(m.lines[coId]||{});
     const pkgs=Object.values(m.packages[coId]||{});
@@ -969,98 +836,77 @@ function renderDashboard(){
     totLines+=lines.length;
     lines.forEach(line=>{
       const custs=Object.values(m.customers[line.id]||{});
-      const rev=custs.reduce((a,c)=>a+(c.paid||0),0);
-      const cost=custs.reduce((a,c)=>a+(c.cost||0),0);
+      const rev=custs.reduce((a,c)=>a+(c.paid||0),0);const cost=custs.reduce((a,c)=>a+(c.cost||0),0);
       const gb=custs.reduce((a,c)=>{const p=pkgs.find(x=>x.id===c.pkgId);return a+(p?p.gb:0);},0);
       const min=custs.reduce((a,c)=>{const p=pkgs.find(x=>x.id===c.pkgId);return a+(p?p.min:0);},0);
-      totRev+=rev;totCost+=cost;totCusts+=custs.length;
-      const pct=(custs.length/maxDist)*100;
+      const unpaid=custs.filter(c=>c.paidStatus==='pending').length;
+      totRev+=rev;totCost+=cost;totCusts+=custs.length;totUnpaid+=unpaid;
+      const pct=(custs.length/maxDist)*100;const fc=pct>=100?'fill-red':pct>=70?'fill-yellow':'fill-green';
       const card=`<div class="dash-line-card" style="border-right:4px solid ${co.color}">
         <div class="dash-line-head">
           <div style="display:flex;align-items:center;gap:10px">
-            <div style="width:32px;height:32px;border-radius:7px;overflow:hidden;flex-shrink:0">${LOGOS[coId]}</div>
-            <div>
-              <span style="font-weight:700;font-family:monospace">${line.number}</span>
+            <div style="width:34px;height:34px;border-radius:8px;overflow:hidden;flex-shrink:0">${LOGOS[coId]}</div>
+            <div><span style="font-weight:800;font-family:monospace">${line.number}</span>
               <span style="font-size:12px;color:var(--sub);margin-right:8px">${co.name}</span>
               ${line.notes?`<span style="font-size:11px;color:var(--sub)">· ${line.notes}</span>`:''}
             </div>
           </div>
+          <span class="renew-day-badge ${line.renewDay===16?'day-16':'day-1'}">يوم ${line.renewDay||1}</span>
         </div>
         <div class="dash-metrics">
-          <div class="dm"><div class="dv">${custs.length}/${maxDist}</div><div class="dl">العملاء</div><div class="progress-bar" style="margin-top:5px"><div class="progress-fill ${pct>=100?'fill-red':pct>=70?'fill-yellow':'fill-green'}" style="width:${Math.min(pct,100)}%"></div></div></div>
+          <div class="dm"><div class="dv">${custs.length}/${maxDist}</div><div class="dl">العملاء</div>
+            <div class="progress-bar" style="margin-top:6px"><div class="progress-fill ${fc}" style="width:${Math.min(pct,100)}%"></div></div></div>
           <div class="dm"><div class="dv">${gb}</div><div class="dl">جيجا موزعة</div></div>
           <div class="dm"><div class="dv">${min}</div><div class="dl">دقائق</div></div>
           <div class="dm"><div class="dv" style="color:${rev-cost>=0?'var(--green)':'var(--red)'}">${rev-cost>=0?'+':''}${(rev-cost).toLocaleString()}</div><div class="dl">ربح (ج)</div></div>
         </div>
       </div>`;
-      if(line.renewDay===16)day16Cards.push(card);
-      else day1Cards.push(card);
+      if(line.renewDay===16)day16Cards.push(card);else day1Cards.push(card);
     });
   });
-
   document.getElementById('global-stats').innerHTML=`
-    <div class="stat-card profit-card"><div class="label">إجمالي الإيرادات</div><div class="value text-green">${totRev.toLocaleString()} ج</div></div>
-    <div class="stat-card profit-card"><div class="label">الربح الصافي</div><div class="value" style="color:${totRev-totCost>=0?'var(--green)':'var(--red)'}">${totRev-totCost>=0?'+':''}${(totRev-totCost).toLocaleString()} ج</div></div>
-    <div class="stat-card"><div class="label">إجمالي العملاء</div><div class="value">${totCusts}</div></div>
-    <div class="stat-card"><div class="label">إجمالي الخطوط</div><div class="value">${totLines}</div></div>`;
-
+    <div class="gsb-card"><div class="gsb-icon" style="background:rgba(0,230,118,.1)">💰</div><div><div class="gv text-green">${totRev.toLocaleString()}</div><div class="gl">إجمالي الإيرادات</div></div></div>
+    <div class="gsb-card"><div class="gsb-icon" style="background:rgba(79,110,247,.1)">📈</div><div><div class="gv" style="color:${totRev-totCost>=0?'var(--green)':'var(--red)'}">${(totRev-totCost>=0?'+':'')+(totRev-totCost).toLocaleString()}</div><div class="gl">الربح الصافي</div></div></div>
+    <div class="gsb-card"><div class="gsb-icon" style="background:rgba(107,47,160,.1)">👥</div><div><div class="gv">${totCusts}</div><div class="gl">إجمالي العملاء</div></div></div>
+    <div class="gsb-card"><div class="gsb-icon" style="background:rgba(255,193,7,.1)">⚠️</div><div><div class="gv" style="color:${totUnpaid?'var(--yellow)':'var(--green)'}">${totUnpaid}</div><div class="gl">لم يدفعوا</div></div></div>
+    <div class="gsb-card"><div class="gsb-icon" style="background:rgba(255,77,77,.1)">📡</div><div><div class="gv">${totLines}</div><div class="gl">الخطوط</div></div></div>`;
   let html='';
-  if(day1Cards.length){
-    html+=`<div class="day-separator"><div class="day-separator-label"><span class="renew-day-badge day-1" style="font-size:13px;padding:4px 12px">📅 خطوط يوم 1</span></div><div class="day-separator-line"></div></div>`;
-    html+=day1Cards.join('');
-  }
-  if(day16Cards.length){
-    html+=`<div class="day-separator" style="margin-top:${day1Cards.length?'24px':'0'}"><div class="day-separator-label"><span class="renew-day-badge day-16" style="font-size:13px;padding:4px 12px">📅 خطوط يوم 16</span></div><div class="day-separator-line"></div></div>`;
-    html+=day16Cards.join('');
-  }
-  document.getElementById('dashboard-lines').innerHTML=html||`<div class="empty-state"><div class="icon">📊</div><p>لا يوجد خطوط في هذا الشهر</p></div>`;
+  if(day1Cards.length){html+=`<div class="day-separator"><div class="day-separator-label"><span class="renew-day-badge day-1" style="font-size:13px;padding:5px 14px">📅 خطوط يوم 1</span></div><div class="day-separator-line"></div></div>`;html+=day1Cards.join('');}
+  if(day16Cards.length){html+=`<div class="day-separator" style="margin-top:${day1Cards.length?'24px':'0'}"><div class="day-separator-label"><span class="renew-day-badge day-16" style="font-size:13px;padding:5px 14px">📅 خطوط يوم 16</span></div><div class="day-separator-line"></div></div>`;html+=day16Cards.join('');}
+  document.getElementById('dashboard-lines').innerHTML=html||`<div class="empty-state"><span class="icon">📊</span><p>لا يوجد خطوط</p></div>`;
 }
-
-// ===== RENDER HISTORY =====
 function renderHistory(){
   const months=getAllMonths();
-  if(!months.length){document.getElementById('history-container').innerHTML=`<div class="empty-state"><div class="icon">📅</div><p>لا يوجد شهور</p></div>`;return;}
+  if(!months.length){document.getElementById('history-container').innerHTML=`<div class="empty-state"><span class="icon">📅</span><p>لا يوجد شهور</p></div>`;return;}
   document.getElementById('history-container').innerHTML=`<div class="history-grid">${months.map(m=>{
     const lines=Object.keys(COMPANIES).flatMap(co=>Object.values(m.lines[co]||{}));
     const custs=lines.flatMap(l=>Object.values(m.customers[l.id]||{}));
-    const rev=custs.reduce((a,c)=>a+(c.paid||0),0);
-    const cost=custs.reduce((a,c)=>a+(c.cost||0),0);
+    const rev=custs.reduce((a,c)=>a+(c.paid||0),0);const cost=custs.reduce((a,c)=>a+(c.cost||0),0);
     const isCurr=m.key===currentMonth;
     return `<div class="hcard" onclick="selectMonth('${m.key}')">
       <div class="hcard-head">
-        <div style="font-weight:700;font-size:14px">${m.label||getMonthLabel(m.key)} ${isCurr?'<span style="font-size:10px;background:var(--blue);color:#fff;padding:1px 7px;border-radius:8px">الحالي</span>':''}</div>
-        <div style="font-size:14px;font-weight:700;color:${rev-cost>=0?'var(--green)':'var(--red)'}">${rev-cost>=0?'+':''}${(rev-cost).toLocaleString()} ج</div>
+        <div style="font-weight:800;font-size:14px">${m.label||getMonthLabel(m.key)} ${isCurr?'<span style="font-size:10px;background:linear-gradient(135deg,#4f6ef7,#7b4fe0);color:#fff;padding:2px 8px;border-radius:8px">الحالي</span>':''}</div>
+        <div style="font-size:15px;font-weight:800;color:${rev-cost>=0?'var(--green)':'var(--red)'}">${rev-cost>=0?'+':''}${(rev-cost).toLocaleString()} ج</div>
       </div>
-      <div class="hcard-stats">
-        <span><strong>${lines.length}</strong> خطوط</span>
-        <span><strong>${custs.length}</strong> عملاء</span>
-        <span><strong>${rev.toLocaleString()}</strong> ج إيرادات</span>
-        <span><strong>${cost.toLocaleString()}</strong> ج تكلفة</span>
-      </div>
+      <div class="hcard-stats"><span><strong>${lines.length}</strong> خطوط</span><span><strong>${custs.length}</strong> عملاء</span><span><strong>${rev.toLocaleString()}</strong> ج إيرادات</span></div>
     </div>`;
   }).join('')}</div>`;
 }
-
-// ===== RENDER ADMIN USERS =====
 function renderAdminUsers(){
   if(currentUser?.role!=='admin')return;
   const sys=getSys();
-  document.getElementById('users-container').innerHTML=`<div class="users-grid">${Object.values(sys.users).map(u=>`
+  document.getElementById('users-container').innerHTML=Object.values(sys.users).map(u=>`
     <div class="user-row">
       <div class="user-avatar">${(u.displayName||u.username).charAt(0).toUpperCase()}</div>
-      <div class="user-details">
-        <div class="user-uname">${u.displayName} <span style="font-size:11px;color:var(--sub)">@${u.username}</span></div>
+      <div class="user-details"><div class="user-uname">${u.displayName} <span style="font-size:11px;color:var(--sub)">@${u.username}</span></div>
         <div class="user-meta"><span class="role-tag-nav ${u.role==='admin'?'role-admin-nav':'role-user-nav'}">${u.role==='admin'?'أدمن':'مستخدم'}</span></div>
       </div>
       ${u.username!=='admin'?`<button class="btn btn-sm btn-danger" onclick="deleteUser('${u.username}')">حذف</button>`:''}
-    </div>`).join('')}</div>`;
+    </div>`).join('');
 }
-
-// ===== ADD/DELETE USER =====
 function openAddUser(){
   ['new-username','new-displayname','new-password'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('new-role').value='user';
-  document.getElementById('user-modal-error').textContent='';
+  document.getElementById('new-role').value='user';document.getElementById('user-modal-error').textContent='';
   openModal('modal-user');
 }
 function saveUser(){
@@ -1070,117 +916,86 @@ function saveUser(){
   const role=document.getElementById('new-role').value;
   const err=document.getElementById('user-modal-error');
   if(!username||!displayName||!password){err.textContent='اكمل الحقول';return;}
-  if(!/^[a-z0-9_]{3,20}$/.test(username)){err.textContent='اسم المستخدم: انجليزي وأرقام (3-20 حرف)';return;}
+  if(!/^[a-z0-9_.]{3,20}$/.test(username)){err.textContent='اسم المستخدم: انجليزي وأرقام';return;}
   if(password.length<6){err.textContent='كلمة المرور 6 أحرف على الأقل';return;}
-  const sys=getSys();
-  if(sys.users[username]){err.textContent='اليوزر موجود';return;}
+  const sys=getSys();if(sys.users[username]){err.textContent='اليوزر موجود';return;}
   sys.users[username]={username,displayName,password,role,data:{}};
-  saveSys(sys);closeModal('modal-user');renderAdminUsers();
-  toast('✅ تم إضافة: '+displayName);
+  saveSys(sys);closeModal('modal-user');renderAdminUsers();toast('✅ تم إضافة: '+displayName);
 }
 function deleteUser(username){
-  if(username==='admin'){toast('لا يمكن حذف الأدمن الرئيسي','error');return;}
-  if(!confirm(`حذف "${username}" وجميع بياناته؟`))return;
+  if(username==='admin'){toast('لا يمكن حذف الأدمن','error');return;}
+  if(!confirm(`حذف "${username}"?`))return;
   const sys=getSys();delete sys.users[username];saveSys(sys);renderAdminUsers();toast('تم الحذف');
 }
-
-// ===== ADD LINE =====
 function selectRenewDay(d){
   selectedRenewDay=d;
   document.getElementById('opt-1').className='renew-opt'+(d===1?' selected-1':'');
   document.getElementById('opt-16').className='renew-opt'+(d===16?' selected-16':'');
 }
 function openAddLine(){
-  document.getElementById('line-number').value='';
-  document.getElementById('line-notes').value='';
-  selectedRenewDay=1;
-  selectRenewDay(1);
-  openModal('modal-line');
+  document.getElementById('line-number').value='';document.getElementById('line-notes').value='';
+  selectedRenewDay=1;selectRenewDay(1);openModal('modal-line');
 }
 function saveLine(){
   const num=document.getElementById('line-number').value.trim().replace(/\s/g,'');
   if(!num||!/^01[0-9]{9}$/.test(num)){toast('أدخل رقم صحيح 11 رقم يبدأ بـ 01','error');return;}
-  const m=mdata();
-  if(!m.lines[currentCo])m.lines[currentCo]={};
+  const m=mdata();if(!m.lines[currentCo])m.lines[currentCo]={};
   if(Object.values(m.lines[currentCo]).find(l=>l.number===num)){toast('الرقم موجود بالفعل','error');return;}
   const id=uid();
   m.lines[currentCo][id]={id,number:num,renewDay:selectedRenewDay,notes:document.getElementById('line-notes').value.trim()};
-  m.customers[id]={};
-  saveMdata(m);closeModal('modal-line');renderLines();
+  m.customers[id]={};saveMdata(m);closeModal('modal-line');renderLines();
   toast('✅ تم إضافة الخط (يوم '+selectedRenewDay+')');
 }
 function deleteLine(lineId){
   if(!confirm('حذف الخط وجميع عملائه؟'))return;
-  const m=mdata();
-  delete m.lines[currentCo][lineId];delete m.customers[lineId];
+  const m=mdata();delete m.lines[currentCo][lineId];delete m.customers[lineId];
   saveMdata(m);renderLines();toast('تم الحذف');
 }
-
-// ===== ADD PACKAGE =====
 function fillQuickPkg(gb,min,cost,price){
-  document.getElementById('pkg-gb').value=gb;
-  document.getElementById('pkg-min').value=min;
-  document.getElementById('pkg-cost').value=cost;
-  document.getElementById('pkg-price').value=price;
-  document.getElementById('pkg-name').value=`باقة ${gb} جيجا`;
-  calcPkgProfit();
+  document.getElementById('pkg-gb').value=gb;document.getElementById('pkg-min').value=min;
+  document.getElementById('pkg-cost').value=cost;document.getElementById('pkg-price').value=price;
+  document.getElementById('pkg-name').value=`باقة ${gb} جيجا`;calcPkgProfit();
 }
 function openAddPackage(){
   ['pkg-name','pkg-gb','pkg-min','pkg-cost','pkg-price'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('pkg-profit-preview').textContent='';
-  openModal('modal-package');
+  document.getElementById('pkg-profit-preview').textContent='';openModal('modal-package');
 }
 function calcPkgProfit(){
-  const c=+document.getElementById('pkg-cost').value||0;
-  const p=+document.getElementById('pkg-price').value||0;
-  const pr=p-c;
-  const el=document.getElementById('pkg-profit-preview');
+  const c=+document.getElementById('pkg-cost').value||0;const p=+document.getElementById('pkg-price').value||0;
+  const pr=p-c;const el=document.getElementById('pkg-profit-preview');
   if(p)el.innerHTML=`الربح: <strong style="color:${pr>=0?'var(--green)':'var(--red)'}">${pr>=0?'+':''}${pr} ج (${c?(pr/c*100).toFixed(0):100}%)</strong>`;
 }
 function savePackage(){
   const name=document.getElementById('pkg-name').value.trim();
-  const gb=+document.getElementById('pkg-gb').value||0;
-  const min=+document.getElementById('pkg-min').value||0;
-  const cost=+document.getElementById('pkg-cost').value||0;
-  const price=+document.getElementById('pkg-price').value;
-  if(!name){toast('أدخل اسم الباقة','error');return;}
-  if(!price){toast('أدخل سعر البيع','error');return;}
-  const m=mdata();
-  if(!m.packages[currentCo])m.packages[currentCo]={};
+  const gb=+document.getElementById('pkg-gb').value||0;const min=+document.getElementById('pkg-min').value||0;
+  const cost=+document.getElementById('pkg-cost').value||0;const price=+document.getElementById('pkg-price').value;
+  if(!name){toast('أدخل اسم الباقة','error');return;}if(!price){toast('أدخل سعر البيع','error');return;}
+  const m=mdata();if(!m.packages[currentCo])m.packages[currentCo]={};
   const id=uid();m.packages[currentCo][id]={id,name,gb,min,cost,price};
   saveMdata(m);closeModal('modal-package');renderPackages();toast('✅ تم إضافة الباقة');
 }
 function deletePkg(pkgId){
   if(!confirm('حذف الباقة؟'))return;
-  const m=mdata();delete m.packages[currentCo][pkgId];
-  saveMdata(m);renderPackages();toast('تم الحذف');
+  const m=mdata();delete m.packages[currentCo][pkgId];saveMdata(m);renderPackages();toast('تم الحذف');
 }
-
-// ===== ADD CUSTOMER =====
 function openAddCustomer(){
-  const coId=findLineCompany(currentLineId);
-  const m=mdata();
-  const pkgs=Object.values(m.packages[coId]||{});
-  const custs=Object.values(m.customers[currentLineId]||{});
+  const coId=findLineCompany(currentLineId);const m=mdata();
+  const pkgs=Object.values(m.packages[coId]||{});const custs=Object.values(m.customers[currentLineId]||{});
   const maxDist=m.companySettings[coId]?.maxDist||COMPANIES[coId].maxDist;
   ['cust-name','cust-phone','cust-notes','cust-cost','cust-paid'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('cust-paid-status').value='paid';
   document.getElementById('cust-pkg').innerHTML='<option value="">-- اختر الباقة --</option>'+
     pkgs.map(p=>`<option value="${p.id}" data-cost="${p.cost}" data-price="${p.price}">${p.name} — ${p.gb}GB / ${p.min}د → ${p.price} ج</option>`).join('');
-  const warn=document.getElementById('cust-warn');
-  warn.textContent=custs.length>=maxDist?`⚠️ الخط ممتلئ (${maxDist}/${maxDist}) - لا يمكن إضافة عملاء`:
-    custs.length>=maxDist-1?`آخر مكان متاح في الخط (${custs.length+1}/${maxDist})`:'';
+  document.getElementById('cust-warn').textContent=custs.length>=maxDist?`⚠️ الخط ممتلئ (${maxDist}/${maxDist})`:'';
   openModal('modal-customer');
 }
 function onPkgSelect(){
-  const sel=document.getElementById('cust-pkg');
-  const opt=sel.options[sel.selectedIndex];
+  const sel=document.getElementById('cust-pkg');const opt=sel.options[sel.selectedIndex];
   document.getElementById('cust-cost').value=opt?.dataset?.cost||'';
   document.getElementById('cust-paid').value=opt?.dataset?.price||'';
 }
 function saveCustomer(){
-  const coId=findLineCompany(currentLineId);
-  const m=mdata();
+  const coId=findLineCompany(currentLineId);const m=mdata();
   const maxDist=m.companySettings[coId]?.maxDist||COMPANIES[coId].maxDist;
   const custs=Object.values(m.customers[currentLineId]||{});
   if(custs.length>=maxDist){toast('الخط ممتلئ','error');return;}
@@ -1192,29 +1007,19 @@ function saveCustomer(){
   const paidStatus=document.getElementById('cust-paid-status').value;
   const notes=document.getElementById('cust-notes').value.trim();
   if(!phone){toast('أدخل رقم العميل','error');return;}
-  const seq=custs.length+1;
-  const id=uid();
+  const seq=custs.length+1;const id=uid();
   if(!m.customers[currentLineId])m.customers[currentLineId]={};
   m.customers[currentLineId][id]={id,name,phone,pkgId,cost,paid,paidStatus,notes,seq};
-  saveMdata(m);closeModal('modal-customer');renderLineDetail();
-  toast(`✅ تم إضافة العميل #${seq}`);
+  saveMdata(m);closeModal('modal-customer');renderLineDetail();toast(`✅ تم إضافة العميل #${seq}`);
 }
 function deleteCustomer(lineId,custId){
   if(!confirm('حذف العميل؟'))return;
-  const m=mdata();
-  delete m.customers[lineId][custId];
+  const m=mdata();delete m.customers[lineId][custId];
   Object.values(m.customers[lineId]).sort((a,b)=>a.seq-b.seq).forEach((c,i)=>c.seq=i+1);
   saveMdata(m);renderLineDetail();toast('تم الحذف');
 }
-
-// ===== HELPERS =====
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2);}
-function findLineCompany(lineId){
-  const m=mdata();
-  return Object.keys(COMPANIES).find(coId=>m.lines[coId]?.[lineId]);
-}
-
-// ===== INIT =====
+function findLineCompany(lineId){const m=mdata();return Object.keys(COMPANIES).find(coId=>m.lines[coId]?.[lineId]);}
 getSys();
 </script>
 </body>
