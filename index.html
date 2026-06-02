@@ -383,6 +383,7 @@ select.form-input{appearance:none;cursor:pointer;}
     </div>
   </div>
   <div class="global-stats-bar" id="global-stats"></div>
+  <div id="dashboard-due"></div>
   <div id="dashboard-lines"></div>
 </div>
 <div class="page" id="page-history">
@@ -705,28 +706,42 @@ function toast(msg,type='success'){
 function openModal(id){document.getElementById(id).classList.add('open');}
 function closeModal(id){document.getElementById(id).classList.remove('open');}
 document.querySelectorAll('.modal-overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open');}));
-function renderHome(){
-  const m=mdata();
+function calcMonthTotals(m){
   const allLines=Object.keys(COMPANIES).flatMap(co=>Object.values(m.lines[co]||{}));
   const allCusts=allLines.flatMap(l=>Object.values(m.customers[l.id]||{}));
   const totRev=allCusts.reduce((a,c)=>a+(c.paid||0),0);
+  const totLineCost=allLines.reduce((a,l)=>a+(l.wegoldPkg?l.wegoldPkg.cost:0),0);
+  const totProfit=totRev-totLineCost;
   const unpaid=allCusts.filter(c=>c.paidStatus==='pending').length;
+  const unpaidAmt=allCusts.filter(c=>c.paidStatus==='pending').reduce((a,c)=>{
+    const coId=Object.keys(COMPANIES).find(co=>m.lines[co]?.[Object.keys(m.lines[co]||{}).find(lid=>m.customers[lid]?.[c.id])]);
+    const pkg=Object.values(m.packages[coId||'we']||{}).find(p=>p.id===c.pkgId);
+    return a+(pkg?pkg.price:0);
+  },0);
+  return {allLines,allCusts,totRev,totLineCost,totProfit,unpaid};
+}
+function renderHome(){
+  const m=mdata();
+  const {allLines,allCusts,totRev,totLineCost,totProfit,unpaid}=calcMonthTotals(m);
   const hrs=new Date().getHours();
   document.getElementById('hero-greeting').textContent=(hrs<12?'صباح الخير ☀️':hrs<18?'مساء الخير 🌤️':'مساء النور 🌙')+' '+currentUser.displayName;
   document.getElementById('home-month-label').textContent='شهر: '+(m.label||getMonthLabel(m.key));
   document.getElementById('hero-metrics').innerHTML=`
     <div class="hero-metric"><div class="hm-val">${allLines.length}</div><div class="hm-label">خطوط نشطة</div></div>
     <div class="hero-metric"><div class="hm-val">${allCusts.length}</div><div class="hm-label">إجمالي العملاء</div></div>
-    <div class="hero-metric"><div class="hm-val">${totRev.toLocaleString()}</div><div class="hm-label">الإيرادات (ج)</div></div>
+    <div class="hero-metric"><div class="hm-val">${totRev.toLocaleString()}</div><div class="hm-label">إيرادات (ج)</div></div>
+    <div class="hero-metric"><div class="hm-val" style="color:${totLineCost?'var(--yellow)':'var(--sub)'}">${totLineCost.toLocaleString()}</div><div class="hm-label">تكلفة الباقات</div></div>
+    <div class="hero-metric"><div class="hm-val" style="color:${totProfit>=0?'var(--green)':'var(--red)'}">${totProfit>=0?'+':''}${totProfit.toLocaleString()}</div><div class="hm-label">الربح الحقيقي</div></div>
     <div class="hero-metric"><div class="hm-val" style="color:${unpaid?'var(--yellow)':'var(--green)'}">${unpaid}</div><div class="hm-label">لم يدفعوا</div></div>`;
   document.getElementById('companies-grid').innerHTML=Object.entries(COMPANIES).map(([id,co])=>{
     const lines=Object.values(m.lines[id]||{});
     const custs=lines.flatMap(l=>Object.values(m.customers[l.id]||{}));
     const rev=custs.reduce((a,c)=>a+(c.paid||0),0);
+    const lineCost=lines.reduce((a,l)=>a+(l.wegoldPkg?l.wegoldPkg.cost:0),0);
+    const profit=rev-lineCost;
     const day1=lines.filter(l=>l.renewDay===1).length;
     const day16=lines.filter(l=>l.renewDay===16).length;
-    const maxDist=m.companySettings[id]?.maxDist||co.maxDist;
-    const totalSlots=lines.length*maxDist;
+    const totalSlots=lines.reduce((a,l)=>a+getLineMaxDist(l,id,m),0);
     const pct=totalSlots?Math.round((custs.length/totalSlots)*100):0;
     const R=20,circ=2*Math.PI*R,dash=circ*(pct/100);
     return `<div class="company-card" data-co="${id}" onclick="openCompany('${id}')">
@@ -743,7 +758,7 @@ function renderHome(){
       <div class="co-stats">
         <div class="co-stat"><div class="sv" style="color:${co.color}">${lines.length}</div><div class="sl">خطوط</div></div>
         <div class="co-stat"><div class="sv">${custs.length}</div><div class="sl">عملاء</div></div>
-        <div class="co-stat"><div class="sv" style="color:var(--green)">${rev.toLocaleString()}</div><div class="sl">ج.م</div></div>
+        <div class="co-stat"><div class="sv" style="color:${profit>=0?'var(--green)':'var(--red)'}">${profit>=0?'+':''}${profit.toLocaleString()}</div><div class="sl">ربح</div></div>
       </div>
       <div class="renew-badges">
         ${day1?`<span class="renew-badge rb-1">📅 يوم 1: ${day1}</span>`:''}
@@ -890,6 +905,8 @@ function renderLineDetail(){
 function renderDashboard(){
   const m=mdata();document.getElementById('dash-sub').textContent='شهر: '+(m.label||getMonthLabel(m.key));
   let totRev=0,totCost=0,totCusts=0,totLines=0,totUnpaid=0;
+  // pre-sum all wegoldPkg costs
+  Object.keys(COMPANIES).forEach(coId=>{Object.values(m.lines[coId]||{}).forEach(l=>{if(l.wegoldPkg)totCost+=l.wegoldPkg.cost;});});
   const day1Cards=[],day16Cards=[];
   Object.entries(COMPANIES).forEach(([coId,co])=>{
     let lines=Object.values(m.lines[coId]||{});
@@ -903,11 +920,12 @@ function renderDashboard(){
       const maxDist=getLineMaxDist(line,coId,m);
       const custs=Object.values(m.customers[line.id]||{});
       const rev=custs.reduce((a,c)=>a+(c.paid||0),0);
-      const cost=line.wegoldPkg?line.wegoldPkg.cost:custs.reduce((a,c)=>a+(c.cost||0),0);
+      const lineCostHere=line.wegoldPkg?line.wegoldPkg.cost:0;
       const gb=custs.reduce((a,c)=>{const p=pkgs.find(x=>x.id===c.pkgId);return a+(p?p.gb:0);},0);
       const min=custs.reduce((a,c)=>{const p=pkgs.find(x=>x.id===c.pkgId);return a+(p?p.min:0);},0);
       const unpaid=custs.filter(c=>c.paidStatus==='pending').length;
-      totRev+=rev;totCost+=cost;totCusts+=custs.length;totUnpaid+=unpaid;
+      totRev+=rev;totCusts+=custs.length;totUnpaid+=unpaid;
+      const cost=lineCostHere;
       const pct=(custs.length/maxDist)*100;const fc=pct>=100?'fill-red':pct>=70?'fill-yellow':'fill-green';
       const card=`<div class="dash-line-card" style="border-right:4px solid ${co.color}">
         <div class="dash-line-head">
@@ -931,12 +949,51 @@ function renderDashboard(){
       if(line.renewDay===16)day16Cards.push(card);else day1Cards.push(card);
     });
   });
+  const totProfit=totRev-totCost;
+  // Build due-amounts table per line
+  const dueLines=[];
+  Object.entries(COMPANIES).forEach(([coId,co])=>{
+    Object.values(m.lines[coId]||{}).forEach(line=>{
+      if(!line.wegoldPkg)return;
+      const custs=Object.values(m.customers[line.id]||{});
+      const collected=custs.reduce((a,c)=>a+(c.paid||0),0);
+      dueLines.push({num:line.number,co:co.name,coId,pkg:line.wegoldPkg.name,due:line.wegoldPkg.cost,collected,profit:collected-line.wegoldPkg.cost,renewDay:line.renewDay||1});
+    });
+  });
+  const totDue=dueLines.reduce((a,l)=>a+l.due,0);
+  const dueHtml=dueLines.length?`
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:20px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
+        <div style="font-size:15px;font-weight:800">📋 إجمالي المبالغ المطلوبة للدفع (تكلفة الباقات)</div>
+        <div style="font-size:18px;font-weight:800;color:var(--red)">${totDue.toLocaleString()} ج</div>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>الخط</th><th>الشركة</th><th>الباقة</th><th>يوم</th><th>تكلفة الباقة</th><th>تم تحصيله</th><th>الربح</th></tr></thead>
+        <tbody>${dueLines.map(l=>`<tr>
+          <td><span class="line-number" style="font-size:12px">${l.num}</span></td>
+          <td style="font-size:12px">${l.co}</td>
+          <td><span style="color:#c084fc;font-weight:700;font-size:12px">${l.pkg}</span></td>
+          <td><span class="renew-day-badge ${l.renewDay===16?'day-16':'day-1'}" style="font-size:10px">يوم ${l.renewDay}</span></td>
+          <td style="color:var(--red);font-weight:700">${l.due.toLocaleString()} ج</td>
+          <td style="color:var(--green);font-weight:700">${l.collected.toLocaleString()} ج</td>
+          <td style="font-weight:800;color:${l.profit>=0?'var(--green)':'var(--red)'}">${l.profit>=0?'+':''}${l.profit.toLocaleString()} ج</td>
+        </tr>`).join('')}
+        <tr style="border-top:2px solid var(--border)">
+          <td colspan="4" style="font-weight:800;font-size:13px">الإجمالي</td>
+          <td style="color:var(--red);font-weight:800">${totDue.toLocaleString()} ج</td>
+          <td style="color:var(--green);font-weight:800">${dueLines.reduce((a,l)=>a+l.collected,0).toLocaleString()} ج</td>
+          <td style="font-weight:800;color:${totProfit>=0?'var(--green)':'var(--red)'}">${totProfit>=0?'+':''}${totProfit.toLocaleString()} ج</td>
+        </tr></tbody>
+      </table></div>
+    </div>`:''
   document.getElementById('global-stats').innerHTML=`
     <div class="gsb-card"><div class="gsb-icon" style="background:rgba(0,230,118,.1)">💰</div><div><div class="gv text-green">${totRev.toLocaleString()}</div><div class="gl">إجمالي الإيرادات</div></div></div>
-    <div class="gsb-card"><div class="gsb-icon" style="background:rgba(79,110,247,.1)">📈</div><div><div class="gv" style="color:${totRev-totCost>=0?'var(--green)':'var(--red)'}">${(totRev-totCost>=0?'+':'')+(totRev-totCost).toLocaleString()}</div><div class="gl">الربح الصافي</div></div></div>
+    <div class="gsb-card"><div class="gsb-icon" style="background:rgba(255,77,77,.1)">🧾</div><div><div class="gv" style="color:var(--red)">${totCost.toLocaleString()}</div><div class="gl">تكلفة الباقات</div></div></div>
+    <div class="gsb-card"><div class="gsb-icon" style="background:rgba(79,110,247,.1)">📈</div><div><div class="gv" style="color:${totProfit>=0?'var(--green)':'var(--red)'}">${(totProfit>=0?'+':'')+totProfit.toLocaleString()}</div><div class="gl">الربح الحقيقي</div></div></div>
     <div class="gsb-card"><div class="gsb-icon" style="background:rgba(107,47,160,.1)">👥</div><div><div class="gv">${totCusts}</div><div class="gl">إجمالي العملاء</div></div></div>
     <div class="gsb-card"><div class="gsb-icon" style="background:rgba(255,193,7,.1)">⚠️</div><div><div class="gv" style="color:${totUnpaid?'var(--yellow)':'var(--green)'}">${totUnpaid}</div><div class="gl">لم يدفعوا</div></div></div>
     <div class="gsb-card"><div class="gsb-icon" style="background:rgba(255,77,77,.1)">📡</div><div><div class="gv">${totLines}</div><div class="gl">الخطوط</div></div></div>`;
+  document.getElementById('dashboard-due').innerHTML=dueHtml;
   let html='';
   if(day1Cards.length){html+=`<div class="day-separator"><div class="day-separator-label"><span class="renew-day-badge day-1" style="font-size:13px;padding:5px 14px">📅 خطوط يوم 1</span></div><div class="day-separator-line"></div></div>`;html+=day1Cards.join('');}
   if(day16Cards.length){html+=`<div class="day-separator" style="margin-top:${day1Cards.length?'24px':'0'}"><div class="day-separator-label"><span class="renew-day-badge day-16" style="font-size:13px;padding:5px 14px">📅 خطوط يوم 16</span></div><div class="day-separator-line"></div></div>`;html+=day16Cards.join('');}
