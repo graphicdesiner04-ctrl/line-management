@@ -22,9 +22,10 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',Tahoma,Arial,
   display:flex;align-items:center;justify-content:center;z-index:999;padding:20px;}
 .login-box{background:#fff;border-radius:20px;padding:40px 36px;width:100%;max-width:400px;
   box-shadow:0 20px 60px rgba(0,0,0,.3);}
-.login-logo-row{display:flex;justify-content:center;gap:8px;margin-bottom:20px;}
-.logo-sq{width:38px;height:38px;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.2);}
-.logo-sq svg{width:100%;height:100%;}
+.login-logo-row{display:flex;justify-content:center;gap:10px;margin-bottom:20px;}
+.logo-sq{width:44px;height:44px;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.2);
+  background:#fff;display:flex;align-items:center;justify-content:center;}
+.logo-sq img{width:100%;height:100%;object-fit:contain;}
 .login-title{text-align:center;font-size:20px;font-weight:800;color:#1e1b4b;margin-bottom:4px;}
 .login-sub{text-align:center;color:var(--sub);font-size:13px;margin-bottom:28px;}
 .fl{margin-bottom:14px;}
@@ -44,114 +45,127 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',Tahoma,Arial,
   box-shadow:0 20px 60px rgba(0,0,0,.3);}
 .co-title{text-align:center;font-size:18px;font-weight:800;color:#1e1b4b;margin-bottom:6px;}
 .co-sub{text-align:center;color:var(--sub);font-size:13px;margin-bottom:24px;}
-.co-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.co-card{border:2px solid var(--border);border-radius:14px;padding:20px 12px;cursor:pointer;
+.co-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.co-card{border:2px solid var(--border);border-radius:16px;padding:22px 12px;cursor:pointer;
   text-align:center;transition:.2s;background:#fff;}
-.co-card:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(107,47,160,.15);transform:translateY(-2px);}
+.co-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.12);transform:translateY(-3px);}
 .co-card.we{border-color:#6b2fa0;} .co-card.we:hover{background:#f3e8ff;}
-.co-card.voda{border-color:#e60000;} .co-card.voda:hover{background:#fee2e2;}
-.co-card.etis{border-color:#da0812;} .co-card.etis:hover{background:#fee2e2;}
-.co-card.oran{border-color:#ff7900;} .co-card.oran:hover{background:#fef3c7;}
-.co-icon{font-size:36px;margin-bottom:8px;}
-.co-name{font-size:14px;font-weight:800;color:var(--text);}
+.co-card.vodafone{border-color:#e60000;} .co-card.vodafone:hover{background:#fee2e2;}
+.co-card.etisalat{border-color:#da0812;} .co-card.etisalat:hover{background:#fee2e2;}
+.co-card.orange{border-color:#ff7900;} .co-card.orange:hover{background:#fef3c7;}
+.co-logo{width:56px;height:56px;border-radius:12px;overflow:hidden;margin:0 auto 10px;
+  box-shadow:0 2px 8px rgba(0,0,0,.15);background:#fff;display:flex;align-items:center;justify-content:center;}
+.co-logo img{width:100%;height:100%;object-fit:contain;}
+.co-name{font-size:15px;font-weight:800;color:var(--text);}
 .co-desc{font-size:11px;color:var(--sub);margin-top:3px;}
-.co-back{text-align:center;margin-top:16px;}
+.co-back{text-align:center;margin-top:18px;}
 .co-back button{background:none;border:none;color:var(--sub);cursor:pointer;font-size:13px;text-decoration:underline;}
 
 /* ===== NAV ===== */
 nav{background:#fff;border-bottom:1.5px solid var(--border);padding:0 16px;
   display:none;align-items:center;justify-content:space-between;height:54px;
   position:sticky;top:0;z-index:100;box-shadow:var(--shadow);}
-.nav-brand{font-size:14px;font-weight:800;color:var(--accent);display:flex;align-items:center;gap:6px;}
-.nav-co-badge{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:800;color:#fff;}
+.nav-brand{display:flex;align-items:center;gap:8px;}
+.nav-co-logo{width:28px;height:28px;border-radius:7px;overflow:hidden;background:#fff;
+  box-shadow:0 1px 4px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;}
+.nav-co-logo img{width:100%;height:100%;object-fit:contain;}
+.nav-co-name{font-size:14px;font-weight:800;color:var(--text);}
 .nav-links{display:flex;gap:2px;}
-.nav-link{background:none;border:none;padding:6px 12px;border-radius:8px;cursor:pointer;
-  font-size:13px;font-weight:600;color:var(--sub);transition:.15s;}
+.nav-link{background:none;border:none;padding:6px 11px;border-radius:8px;cursor:pointer;
+  font-size:12px;font-weight:600;color:var(--sub);transition:.15s;}
 .nav-link:hover{background:var(--accent-lt);color:var(--accent);}
 .nav-link.active{background:var(--accent-lt);color:var(--accent);}
 .nav-right{display:flex;align-items:center;gap:8px;}
-.sync-dot{width:8px;height:8px;border-radius:50%;background:var(--sub);transition:.3s;}
+.sync-dot{width:8px;height:8px;border-radius:50%;background:var(--sub);}
 .user-badge{background:var(--accent-lt);color:var(--accent);font-size:12px;font-weight:700;
-  padding:4px 10px;border-radius:20px;}
+  padding:3px 10px;border-radius:20px;}
 .logout-btn{background:none;border:1.5px solid var(--border);color:var(--sub);
-  padding:5px 10px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700;transition:.15s;}
+  padding:4px 10px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700;}
 .logout-btn:hover{border-color:var(--red);color:var(--red);}
 
 /* ===== MONTH BAR ===== */
-#month-bar{background:#fff;border-bottom:1px solid var(--border);padding:8px 16px;
-  display:none;align-items:center;gap:8px;overflow-x:auto;}
-.mchip{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;
-  border:1.5px solid var(--border);background:none;color:var(--sub);white-space:nowrap;transition:.15s;}
+#month-bar{background:#fff;border-bottom:1px solid var(--border);padding:7px 16px;
+  display:none;align-items:center;gap:6px;overflow-x:auto;flex-wrap:nowrap;}
+.mchip{padding:4px 13px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;
+  border:1.5px solid var(--border);background:none;color:var(--sub);white-space:nowrap;}
 .mchip.act{background:var(--accent);color:#fff;border-color:var(--accent);}
 .mchip:hover:not(.act){border-color:var(--accent);color:var(--accent);}
-.add-month-btn{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;
-  border:1.5px dashed var(--accent);color:var(--accent);background:none;cursor:pointer;
-  white-space:nowrap;transition:.15s;}
+.del-month-btn{padding:4px 8px;border-radius:8px;border:1.5px solid var(--red-lt);
+  background:none;color:var(--red);cursor:pointer;font-size:11px;white-space:nowrap;}
+.del-month-btn:hover{background:var(--red-lt);}
+.add-month-btn{padding:4px 13px;border-radius:20px;font-size:12px;font-weight:700;
+  border:1.5px dashed var(--accent);color:var(--accent);background:none;cursor:pointer;white-space:nowrap;}
 .add-month-btn:hover{background:var(--accent-lt);}
 
 /* ===== PAGES ===== */
-.page{display:none;padding:20px;max-width:1100px;margin:0 auto;}
+.page{display:none;padding:16px 20px;max-width:1100px;margin:0 auto;}
 .page.show{display:block;}
 
-/* ===== STATS / DASHBOARD ===== */
-.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:18px;}
-.stat-card{background:#fff;border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);border:1px solid var(--border);}
-.stat-val{font-size:22px;font-weight:800;color:var(--text);}
-.stat-lbl{font-size:11px;font-weight:700;color:var(--sub);margin-top:3px;}
+/* ===== STATS ===== */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:14px;}
+.stat-card{background:#fff;border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);border:1px solid var(--border);}
+.stat-val{font-size:20px;font-weight:800;color:var(--text);}
+.stat-lbl{font-size:11px;font-weight:700;color:var(--sub);margin-top:2px;}
 .stat-card.green .stat-val{color:var(--green);}
 .stat-card.red .stat-val{color:var(--red);}
 .stat-card.amber .stat-val{color:var(--amber);}
 .stat-card.accent .stat-val{color:var(--accent);}
 .stat-card.blue .stat-val{color:var(--blue);}
 
-/* Dashboard tabs */
-.dash-tabs{display:flex;gap:8px;margin-bottom:16px;border-bottom:2px solid var(--border);padding-bottom:0;}
-.dtab{padding:8px 20px;border-radius:8px 8px 0 0;border:2px solid transparent;
-  background:none;color:var(--sub);font-size:13px;font-weight:700;cursor:pointer;
-  border-bottom:none;margin-bottom:-2px;transition:.15s;}
-.dtab.act{background:#fff;border-color:var(--border);border-bottom-color:#fff;color:var(--accent);}
-.dtab:hover:not(.act){color:var(--accent);}
+/* ===== AD EXPENSE ===== */
+.ad-expense-row{display:flex;align-items:center;gap:10px;background:#fff;border-radius:10px;
+  padding:10px 14px;box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:14px;}
+.ad-expense-row label{font-size:12px;font-weight:700;color:var(--sub);white-space:nowrap;}
+.ad-expense-input{border:1.5px solid var(--border);border-radius:8px;padding:6px 10px;
+  font-size:13px;width:130px;outline:none;color:var(--text);}
+.ad-expense-input:focus{border-color:var(--accent);}
+.ad-expense-btn{padding:6px 14px;border-radius:8px;background:var(--accent);color:#fff;
+  border:none;font-size:12px;font-weight:700;cursor:pointer;}
+.ad-expense-note{font-size:11px;color:var(--sub);}
 
-/* Breakdown table */
-.dash-table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;
-  overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--border);}
-.dash-table th{padding:10px 14px;text-align:right;font-size:11px;font-weight:700;
-  color:var(--sub);background:var(--bg);border-bottom:1px solid var(--border);}
-.dash-table td{padding:11px 14px;border-bottom:1px solid var(--border);font-size:13px;}
-.dash-table tr:last-child td{border-bottom:none;}
-.dash-table tr:hover td{background:#fafafa;}
-.dash-table .total-row td{font-weight:800;background:var(--accent-lt);color:var(--accent);}
-
-/* Progress bar */
-.prog-wrap{background:var(--border);border-radius:20px;height:8px;overflow:hidden;margin-top:6px;}
-.prog-bar{height:8px;border-radius:20px;background:var(--green);transition:width .4s;}
+/* ===== ALERTS ===== */
+.alerts-row{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+.alert-card{display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px;
+  font-size:12px;font-weight:700;flex:1;min-width:200px;}
+.alert-card.warn{background:var(--amber-lt);border:1px solid var(--amber);color:var(--amber);}
+.alert-card.best{background:var(--green-lt);border:1px solid var(--green);color:var(--green);}
+.alert-card.worst{background:var(--red-lt);border:1px solid var(--red);color:var(--red);}
+.alert-card .ai{font-size:16px;}
+.alert-card .at{flex:1;}
+.alert-card .av{font-weight:800;}
 
 /* ===== FILTER TABS ===== */
-.filter-tabs{display:flex;gap:8px;margin-bottom:16px;align-items:center;flex-wrap:wrap;}
-.ftab{padding:6px 16px;border-radius:8px;border:1.5px solid var(--border);background:#fff;
-  color:var(--sub);font-size:13px;font-weight:600;cursor:pointer;transition:.15s;}
+.filter-tabs{display:flex;gap:8px;margin-bottom:14px;align-items:center;flex-wrap:wrap;}
+.ftab{padding:5px 14px;border-radius:8px;border:1.5px solid var(--border);background:#fff;
+  color:var(--sub);font-size:12px;font-weight:600;cursor:pointer;}
 .ftab.act{background:var(--accent);color:#fff;border-color:var(--accent);}
 .ftab:hover:not(.act){border-color:var(--accent);color:var(--accent);}
 .spacer{flex:1;}
-.btn-add-line{padding:7px 16px;border-radius:8px;background:var(--accent);color:#fff;
-  border:none;font-size:12px;font-weight:700;cursor:pointer;transition:.15s;}
+.btn-add-line{padding:6px 14px;border-radius:8px;background:var(--accent);color:#fff;
+  border:none;font-size:12px;font-weight:700;cursor:pointer;}
 .btn-add-line:hover{background:var(--accent-dk);}
 .btn-add-line.d16{background:var(--day16);}
-.btn-add-line.d16:hover{background:#5b21b6;}
 
 /* ===== DAY SECTION ===== */
-.day-section{margin-bottom:24px;}
-.day-hdr{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
-.day-badge{padding:5px 16px;border-radius:20px;font-size:12px;font-weight:800;color:#fff;}
+.day-section{margin-bottom:20px;}
+.day-hdr{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.day-badge{padding:4px 14px;border-radius:20px;font-size:12px;font-weight:800;color:#fff;}
 .day-badge.d1{background:var(--day1);}
 .day-badge.d16{background:var(--day16);}
 .day-meta{font-size:12px;color:var(--sub);font-weight:600;}
 
 /* ===== LINE CARD ===== */
 .line-card{background:#fff;border-radius:12px;box-shadow:var(--shadow);border:1px solid var(--border);
-  margin-bottom:12px;overflow:hidden;}
+  margin-bottom:10px;overflow:hidden;}
+.line-card.best-line{border-color:var(--green);box-shadow:0 0 0 2px rgba(22,163,74,.15);}
+.line-card.worst-line{border-color:var(--red);box-shadow:0 0 0 2px rgba(220,38,38,.1);}
+.line-card.warn-line{border-color:var(--amber);box-shadow:0 0 0 2px rgba(217,119,6,.1);}
 .line-hdr{display:flex;align-items:center;gap:8px;padding:10px 14px;
-  border-bottom:1px solid var(--border);background:var(--bg);flex-wrap:wrap;}
+  border-bottom:0px solid var(--border);background:var(--bg);flex-wrap:wrap;cursor:pointer;
+  user-select:none;transition:.15s;}
+.line-hdr:hover{background:#e8edf2;}
+.line-hdr.open{border-bottom:1px solid var(--border);}
+.line-toggle{font-size:11px;color:var(--sub);transition:.2s;margin-right:2px;}
 .line-num{font-size:14px;font-weight:800;color:var(--text);font-family:monospace;}
 .line-owner{font-size:11px;color:var(--sub);font-weight:600;background:var(--border);
   padding:2px 8px;border-radius:20px;}
@@ -160,47 +174,65 @@ nav{background:#fff;border-bottom:1.5px solid var(--border);padding:0 16px;
 .ls-rev{background:var(--blue-lt);color:var(--blue);}
 .ls-profit{background:var(--green-lt);color:var(--green);}
 .ls-profit.neg{background:var(--red-lt);color:var(--red);}
-.line-actions-group{display:flex;gap:6px;margin-right:auto;}
-.btn-sm{padding:4px 10px;border-radius:7px;border:1.5px solid var(--border);background:#fff;
-  color:var(--text);font-size:12px;font-weight:600;cursor:pointer;transition:.15s;}
+.ls-warn{background:var(--amber-lt);color:var(--amber);}
+.line-actions-group{display:flex;gap:5px;margin-right:auto;}
+.btn-sm{padding:4px 9px;border-radius:7px;border:1.5px solid var(--border);background:#fff;
+  color:var(--text);font-size:11px;font-weight:600;cursor:pointer;}
 .btn-sm:hover{border-color:var(--accent);color:var(--accent);}
 .btn-sm.danger:hover{border-color:var(--red);color:var(--red);}
 .btn-sm.primary{background:var(--accent);color:#fff;border-color:var(--accent);}
 .btn-sm.primary:hover{background:var(--accent-dk);}
+.line-body{display:none;}
+.line-body.open{display:block;}
 
 /* ===== CUSTOMERS TABLE ===== */
 .custs-table{width:100%;border-collapse:collapse;}
-.custs-table th{padding:7px 10px;text-align:center;font-size:11px;font-weight:700;
+.custs-table th{padding:6px 10px;text-align:center;font-size:10px;font-weight:700;
   color:var(--sub);background:var(--bg);border-bottom:1px solid var(--border);}
 .custs-table th:first-child,.custs-table td:first-child{text-align:right;}
-.custs-table td{padding:8px 10px;text-align:center;border-bottom:1px solid var(--border);
+.custs-table td{padding:7px 10px;text-align:center;border-bottom:1px solid var(--border);
   font-size:12px;color:var(--text);}
 .custs-table td:nth-child(2){font-weight:700;}
 .custs-table td:nth-child(3){font-family:monospace;font-size:11px;color:var(--sub);}
 .custs-table tr:last-child td{border-bottom:none;}
 .custs-table tr:hover td{background:#fafafa;}
-.toggle-paid{border:none;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;
-  cursor:pointer;transition:.15s;white-space:nowrap;}
+.toggle-paid{border:none;padding:3px 11px;border-radius:20px;font-size:11px;font-weight:700;
+  cursor:pointer;white-space:nowrap;}
 .tp-paid{background:var(--green-lt);color:var(--green);}
 .tp-paid:hover{background:#bbf7d0;}
 .tp-pend{background:var(--red-lt);color:var(--red);}
 .tp-pend:hover{background:#fecaca;}
-.pkg-badge{background:var(--accent-lt);color:var(--accent);padding:2px 6px;border-radius:20px;font-size:10px;font-weight:700;}
-.pkg-detail{font-size:10px;color:var(--sub);}
-.act-btns{display:flex;gap:4px;justify-content:center;}
-.act-btn{width:26px;height:26px;border-radius:6px;border:1.5px solid var(--border);background:#fff;
-  cursor:pointer;font-size:12px;transition:.15s;display:flex;align-items:center;justify-content:center;}
+.act-btns{display:flex;gap:3px;justify-content:center;}
+.act-btn{width:24px;height:24px;border-radius:6px;border:1.5px solid var(--border);background:#fff;
+  cursor:pointer;font-size:11px;display:flex;align-items:center;justify-content:center;}
 .act-btn:hover{background:var(--accent-lt);border-color:var(--accent);}
 .act-btn.del:hover{background:var(--red-lt);border-color:var(--red);}
+.act-btn.extra:hover{background:var(--green-lt);border-color:var(--green);}
 .add-cust-row{padding:8px 14px;text-align:center;}
 .btn-add-cust{background:none;border:1.5px dashed var(--accent);color:var(--accent);
-  border-radius:8px;padding:5px 16px;font-size:12px;font-weight:700;cursor:pointer;transition:.15s;}
+  border-radius:8px;padding:5px 14px;font-size:12px;font-weight:700;cursor:pointer;}
 .btn-add-cust:hover{background:var(--accent-lt);}
 
-/* ===== EMPTY STATE ===== */
-.empty-state{text-align:center;padding:40px 20px;color:var(--sub);}
-.empty-state .ei{font-size:40px;margin-bottom:10px;}
-.empty-state p{font-size:14px;font-weight:600;}
+/* extras sub-row */
+.extra-row td{background:#f8fff8;font-size:11px;}
+.extra-badge{background:var(--green-lt);color:var(--green);padding:1px 7px;border-radius:10px;
+  font-size:10px;font-weight:700;margin-left:4px;}
+
+/* ===== DASH TABS ===== */
+.dash-tabs{display:flex;gap:8px;margin-bottom:14px;border-bottom:2px solid var(--border);padding-bottom:0;}
+.dtab{padding:7px 18px;border-radius:8px 8px 0 0;border:2px solid transparent;
+  background:none;color:var(--sub);font-size:13px;font-weight:700;cursor:pointer;border-bottom:none;margin-bottom:-2px;}
+.dtab.act{background:#fff;border-color:var(--border);border-bottom-color:#fff;color:var(--accent);}
+.dtab:hover:not(.act){color:var(--accent);}
+.dash-table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;
+  overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--border);}
+.dash-table th{padding:9px 13px;text-align:right;font-size:11px;font-weight:700;color:var(--sub);background:var(--bg);border-bottom:1px solid var(--border);}
+.dash-table td{padding:10px 13px;border-bottom:1px solid var(--border);font-size:13px;}
+.dash-table tr:last-child td{border-bottom:none;}
+.dash-table tr:hover td{background:#fafafa;}
+.dash-table .total-row td{font-weight:800;background:var(--accent-lt);color:var(--accent);}
+.prog-wrap{background:var(--border);border-radius:20px;height:8px;overflow:hidden;margin-top:6px;}
+.prog-bar{height:8px;border-radius:20px;background:var(--green);}
 
 /* ===== MODAL ===== */
 #modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);
@@ -209,58 +241,55 @@ nav{background:#fff;border-bottom:1.5px solid var(--border);padding:0 16px;
 .modal{background:#fff;border-radius:16px;width:100%;max-width:500px;box-shadow:var(--shadow-md);
   max-height:90vh;overflow-y:auto;}
 .modal-head{display:flex;align-items:center;justify-content:space-between;
-  padding:16px 20px 12px;border-bottom:1px solid var(--border);}
+  padding:15px 20px 11px;border-bottom:1px solid var(--border);}
 .modal-title{font-size:15px;font-weight:800;color:var(--text);}
-.modal-close{width:28px;height:28px;border-radius:7px;border:1.5px solid var(--border);
-  background:#fff;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;}
-.modal-close:hover{background:var(--red-lt);border-color:var(--red);color:var(--red);}
-.modal-body{padding:18px 20px;}
+.modal-close{width:26px;height:26px;border-radius:7px;border:1.5px solid var(--border);
+  background:#fff;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.modal-close:hover{background:var(--red-lt);border-color:var(--red);}
+.modal-body{padding:16px 20px;}
 .modal-foot{padding:12px 20px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end;}
 .mfl{margin-bottom:12px;}
 .mfl label{display:block;font-size:12px;font-weight:700;color:var(--sub);margin-bottom:4px;}
 .mfl input,.mfl select,.mfl textarea{width:100%;border:1.5px solid var(--border);border-radius:9px;
-  padding:9px 12px;font-size:13px;color:var(--text);outline:none;transition:.2s;font-family:inherit;}
-.mfl input:focus,.mfl select:focus,.mfl textarea:focus{border-color:var(--accent);
-  box-shadow:0 0 0 3px rgba(107,47,160,.1);}
+  padding:8px 12px;font-size:13px;color:var(--text);outline:none;font-family:inherit;}
+.mfl input:focus,.mfl select:focus,.mfl textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(107,47,160,.1);}
 .mfl .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .mfl .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
-.mfl-hint{font-size:11px;color:var(--sub);margin-top:3px;}
-.mfl .check-row{display:flex;align-items:center;gap:8px;padding:10px;background:var(--amber-lt);
+.mfl .check-row{display:flex;align-items:center;gap:8px;padding:9px;background:var(--amber-lt);
   border-radius:9px;border:1px solid var(--amber);}
 .mfl .check-row input[type=checkbox]{width:16px;height:16px;cursor:pointer;}
 .mfl .check-row label{font-size:13px;font-weight:700;color:var(--amber);margin:0;cursor:pointer;}
 .btn-save{background:var(--accent);color:#fff;border:none;border-radius:9px;
-  padding:9px 22px;font-size:14px;font-weight:700;cursor:pointer;transition:.15s;}
+  padding:9px 22px;font-size:13px;font-weight:700;cursor:pointer;}
 .btn-save:hover{background:var(--accent-dk);}
+.btn-save.green{background:var(--green);}
+.btn-save.green:hover{background:#15803d;}
 .btn-cancel{background:#fff;color:var(--sub);border:1.5px solid var(--border);border-radius:9px;
-  padding:9px 18px;font-size:14px;font-weight:700;cursor:pointer;transition:.15s;}
+  padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer;}
 .btn-cancel:hover{border-color:var(--text);color:var(--text);}
 .btn-delete-modal{background:var(--red-lt);color:var(--red);border:1.5px solid var(--red);
-  border-radius:9px;padding:9px 18px;font-size:14px;font-weight:700;cursor:pointer;}
+  border-radius:9px;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer;}
 
-/* ===== ADMIN PAGE ===== */
-.admin-section{background:#fff;border-radius:12px;padding:20px;box-shadow:var(--shadow);
-  border:1px solid var(--border);margin-bottom:16px;}
-.admin-section h3{font-size:14px;font-weight:800;margin-bottom:14px;color:var(--accent);}
+/* ===== ADMIN ===== */
+.admin-section{background:#fff;border-radius:12px;padding:18px 20px;box-shadow:var(--shadow);
+  border:1px solid var(--border);margin-bottom:14px;}
+.admin-section h3{font-size:14px;font-weight:800;margin-bottom:12px;color:var(--accent);}
 .settings-table{width:100%;border-collapse:collapse;}
-.settings-table th{font-size:11px;font-weight:700;color:var(--sub);padding:8px;text-align:right;
-  border-bottom:1px solid var(--border);}
-.settings-table td{padding:10px 8px;border-bottom:1px solid var(--border);font-size:13px;}
+.settings-table th{font-size:11px;font-weight:700;color:var(--sub);padding:7px;text-align:right;border-bottom:1px solid var(--border);}
+.settings-table td{padding:9px 7px;border-bottom:1px solid var(--border);font-size:13px;}
 .settings-table tr:last-child td{border:none;}
 .badge-role{padding:2px 10px;border-radius:20px;font-size:11px;font-weight:700;}
 .badge-admin{background:var(--amber-lt);color:var(--amber);}
 .badge-user{background:var(--blue-lt);color:var(--blue);}
 .fb-row{display:flex;gap:8px;align-items:center;}
-.fb-input{flex:1;border:1.5px solid var(--border);border-radius:9px;padding:9px 12px;
-  font-size:13px;color:var(--text);outline:none;}
+.fb-input{flex:1;border:1.5px solid var(--border);border-radius:9px;padding:8px 12px;font-size:13px;outline:none;}
 .fb-input:focus{border-color:var(--accent);}
-.fb-save{background:var(--accent);color:#fff;border:none;border-radius:9px;
-  padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer;}
+.fb-save{background:var(--accent);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:13px;font-weight:700;cursor:pointer;}
 
 /* ===== LOGS ===== */
-.log-entry{display:flex;gap:12px;padding:9px 14px;border-bottom:1px solid var(--border);align-items:flex-start;}
-.log-ts{font-size:11px;color:var(--sub);white-space:nowrap;margin-top:2px;}
-.log-action{font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-lt);
+.log-entry{display:flex;gap:12px;padding:8px 14px;border-bottom:1px solid var(--border);align-items:flex-start;}
+.log-ts{font-size:11px;color:var(--sub);white-space:nowrap;margin-top:1px;}
+.log-action{font-size:11px;font-weight:700;color:var(--accent);background:var(--accent-lt);
   padding:1px 8px;border-radius:10px;white-space:nowrap;}
 .log-detail{font-size:12px;color:var(--text);}
 
@@ -270,16 +299,15 @@ nav{background:#fff;border-bottom:1.5px solid var(--border);padding:0 16px;
   z-index:9999;display:none;box-shadow:var(--shadow-md);}
 
 /* ===== MISC ===== */
-.page-title{font-size:18px;font-weight:800;color:var(--text);margin-bottom:16px;}
+.page-title{font-size:17px;font-weight:800;color:var(--text);margin-bottom:14px;}
 .no-data{text-align:center;padding:30px;color:var(--sub);font-weight:600;}
-.section-title{font-size:14px;font-weight:800;color:var(--text);margin-bottom:12px;margin-top:20px;
+.section-title{font-size:13px;font-weight:800;color:var(--text);margin-bottom:10px;margin-top:18px;
   display:flex;align-items:center;gap:8px;}
 .section-title::after{content:'';flex:1;height:1px;background:var(--border);}
 @media(max-width:600px){
-  .line-hdr{flex-direction:column;align-items:flex-start;}
-  .line-actions-group{margin-right:0;}
   .stats-row{grid-template-columns:1fr 1fr;}
-  .nav-links .nav-link{padding:6px 8px;font-size:12px;}
+  .nav-links .nav-link{padding:5px 7px;font-size:11px;}
+  .co-grid{grid-template-columns:1fr 1fr;}
 }
 </style>
 </head>
@@ -289,10 +317,10 @@ nav{background:#fff;border-bottom:1.5px solid var(--border);padding:0 16px;
 <div id="login-screen">
 <div class="login-box">
   <div class="login-logo-row">
-    <div class="logo-sq"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#6b2fa0" rx="10"/><text x="50" y="60" text-anchor="middle" fill="white" font-size="26" font-family="Arial" font-weight="bold">WE</text></svg></div>
-    <div class="logo-sq"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#da0812" rx="10"/><text x="50" y="63" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">e&amp;</text></svg></div>
-    <div class="logo-sq"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#e60000" rx="10"/><text x="50" y="60" text-anchor="middle" fill="white" font-size="12" font-family="Arial" font-weight="bold">Voda</text></svg></div>
-    <div class="logo-sq"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#ff7900" rx="10"/><text x="50" y="62" text-anchor="middle" fill="white" font-size="12" font-family="Arial" font-weight="bold">orange</text></svg></div>
+    <div class="logo-sq"><img src="We_logo.svg.png" alt="WE"></div>
+    <div class="logo-sq"><img src="5-1.jpg" alt="Etisalat"></div>
+    <div class="logo-sq"><img src="vodafone.png" alt="Vodafone"></div>
+    <div class="logo-sq"><img src="Orange_logo.svg.png" alt="Orange"></div>
   </div>
   <div class="login-title">إدارة الخطوط</div>
   <div class="login-sub">WE GOLD · اتصالات · فودافون · أورانج</div>
@@ -310,24 +338,20 @@ nav{background:#fff;border-bottom:1.5px solid var(--border);padding:0 16px;
   <div class="co-sub" id="co-welcome"></div>
   <div class="co-grid">
     <div class="co-card we" onclick="selectCompany('we')">
-      <div class="co-icon">🟣</div>
-      <div class="co-name">وي</div>
-      <div class="co-desc">WE GOLD</div>
+      <div class="co-logo"><img src="We_logo.svg.png" alt="WE"></div>
+      <div class="co-name">وي</div><div class="co-desc">WE GOLD</div>
     </div>
-    <div class="co-card voda" onclick="selectCompany('vodafone')">
-      <div class="co-icon">🔴</div>
-      <div class="co-name">فودافون</div>
-      <div class="co-desc">Vodafone Egypt</div>
+    <div class="co-card vodafone" onclick="selectCompany('vodafone')">
+      <div class="co-logo"><img src="vodafone.png" alt="Vodafone"></div>
+      <div class="co-name">فودافون</div><div class="co-desc">Vodafone Egypt</div>
     </div>
-    <div class="co-card etis" onclick="selectCompany('etisalat')">
-      <div class="co-icon">🔶</div>
-      <div class="co-name">اتصالات</div>
-      <div class="co-desc">e& Egypt</div>
+    <div class="co-card etisalat" onclick="selectCompany('etisalat')">
+      <div class="co-logo"><img src="5-1.jpg" alt="Etisalat"></div>
+      <div class="co-name">اتصالات</div><div class="co-desc">e& Egypt</div>
     </div>
-    <div class="co-card oran" onclick="selectCompany('orange')">
-      <div class="co-icon">🟠</div>
-      <div class="co-name">أورانج</div>
-      <div class="co-desc">Orange Egypt</div>
+    <div class="co-card orange" onclick="selectCompany('orange')">
+      <div class="co-logo"><img src="Orange_logo.svg.png" alt="Orange"></div>
+      <div class="co-name">أورانج</div><div class="co-desc">Orange Egypt</div>
     </div>
   </div>
   <div class="co-back"><button onclick="backToLogin()">⬅ رجوع لتسجيل الدخول</button></div>
@@ -337,8 +361,8 @@ nav{background:#fff;border-bottom:1.5px solid var(--border);padding:0 16px;
 <!-- NAV -->
 <nav id="main-nav">
   <div class="nav-brand">
-    📱 <span id="nav-co-name">إدارة الخطوط</span>
-    <span class="nav-co-badge" id="nav-co-badge"></span>
+    <div class="nav-co-logo" id="nav-co-logo"><img id="nav-co-img" src="" alt=""></div>
+    <span class="nav-co-name" id="nav-co-name">إدارة الخطوط</span>
   </div>
   <div class="nav-links">
     <button class="nav-link" onclick="showPage('home')">الخطوط</button>
@@ -347,7 +371,7 @@ nav{background:#fff;border-bottom:1.5px solid var(--border);padding:0 16px;
     <button class="nav-link" onclick="showPage('logs')">📋 السجل</button>
   </div>
   <div class="nav-right">
-    <div class="sync-dot" id="sync-dot" title="حالة المزامنة"></div>
+    <div class="sync-dot" id="sync-dot"></div>
     <div class="user-badge" id="nav-username"></div>
     <button class="logout-btn" onclick="doLogout()">خروج</button>
   </div>
@@ -369,22 +393,18 @@ nav{background:#fff;border-bottom:1.5px solid var(--border);padding:0 16px;
 <div id="modal-overlay" onclick="if(event.target===this)closeModal()">
   <div class="modal" id="modal-box"></div>
 </div>
-
-<!-- TOAST -->
 <div id="toast"></div>
 
 <script>
 // ===== CONSTANTS =====
 const COMPANIES_META={
-  we:{name:'وي',color:'#6b2fa0',emoji:'🟣'},
-  vodafone:{name:'فودافون',color:'#e60000',emoji:'🔴'},
-  etisalat:{name:'اتصالات',color:'#da0812',emoji:'🔶'},
-  orange:{name:'أورانج',color:'#ff7900',emoji:'🟠'}
+  we:{name:'وي',img:'We_logo.svg.png'},
+  vodafone:{name:'فودافون',img:'vodafone.png'},
+  etisalat:{name:'اتصالات',img:'5-1.jpg'},
+  orange:{name:'أورانج',img:'Orange_logo.svg.png'}
 };
 const SYS_KEY='lm_sys';
 const SEED_VERSION='2026-07-01';
-
-// WE GOLD shared-line packages (for line owners)
 const WE_GOLD_PKGS=[
   {idx:0,name:'WE GOLD 300',cost:383,sharedLines:1},
   {idx:1,name:'WE GOLD 600',cost:452.41,sharedLines:2},
@@ -393,29 +413,20 @@ const WE_GOLD_PKGS=[
   {idx:4,name:'WE GOLD 1500',cost:1111.30,sharedLines:5},
   {idx:5,name:'WE GOLD 2300',cost:1697,sharedLines:6},
 ];
-
-// Customer packages: id → {label, gb, min, price}
+// 20GB & 35GB = 1500 min, rest = 1700 min
 const PKG_DATA={
-  'pkg_w1':{label:'20 جيجا / 100 دقيقة',gb:20,min:100,price:280},
-  'pkg_w2':{label:'35 جيجا / 150 دقيقة',gb:35,min:150,price:380},
-  'pkg_w3':{label:'40 جيجا / 200 دقيقة',gb:40,min:200,price:430},
-  'pkg_w4':{label:'50 جيجا / 250 دقيقة',gb:50,min:250,price:490},
-  'pkg_w5':{label:'65 جيجا / 300 دقيقة',gb:65,min:300,price:570},
-  'pkg_w6':{label:'70 جيجا / 350 دقيقة',gb:70,min:350,price:620},
-  'pkg_w7':{label:'80 جيجا / 400 دقيقة',gb:80,min:400,price:700},
+  'pkg_w1':{label:'20 جيجا / 1500 دقيقة',gb:20,min:1500,price:280},
+  'pkg_w2':{label:'35 جيجا / 1500 دقيقة',gb:35,min:1500,price:380},
+  'pkg_w3':{label:'40 جيجا / 1700 دقيقة',gb:40,min:1700,price:430},
+  'pkg_w4':{label:'50 جيجا / 1700 دقيقة',gb:50,min:1700,price:490},
+  'pkg_w5':{label:'65 جيجا / 1700 دقيقة',gb:65,min:1700,price:570},
+  'pkg_w6':{label:'70 جيجا / 1700 دقيقة',gb:70,min:1700,price:620},
+  'pkg_w7':{label:'80 جيجا / 1700 دقيقة',gb:80,min:1700,price:700},
 };
-function pkgLabel(pkgId,cust){
-  if(cust&&cust.customGb!==undefined){
-    const gb=cust.customGb||0;const min=cust.customMin||0;const pr=cust.paid||0;
-    return `${gb} جيجا / ${min} دقيقة`;
-  }
-  return PKG_DATA[pkgId]?.label||pkgId||'—';
-}
 function pkgPrice(pkgId,cust){
   if(cust&&cust.customGb!==undefined)return cust.customPrice||0;
   return PKG_DATA[pkgId]?.price||0;
 }
-
 const SEED={"ahmed.h": {"months": {"2026-06": {"key": "2026-06", "label": "يونيو 2026", "lines": {"we": {"l_557418": {"id": "l_557418", "number": "01555557418", "renewDay": 1, "notes": "", "ownerName": "أحمد حسن بهاء", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_557498": {"id": "l_557498", "number": "01555557498", "renewDay": 1, "notes": "", "ownerName": "أحمد حسن بهاء", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_557425": {"id": "l_557425", "number": "01555557425", "renewDay": 1, "notes": "", "ownerName": "أحمد حسن بهاء", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_555390": {"id": "l_555390", "number": "01515555390", "renewDay": 1, "notes": "", "ownerName": "أحمد حسن بهاء", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_555330": {"id": "l_555330", "number": "01515555330", "renewDay": 1, "notes": "", "ownerName": "أحمد حسن بهاء", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_982222": {"id": "l_982222", "number": "01509982222", "renewDay": 1, "notes": "", "ownerName": "عبد الحكيم علي عبد الحكيم", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_267777": {"id": "l_267777", "number": "01515267777", "renewDay": 16, "notes": "", "ownerName": "احمد حسن بهاء", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_487777": {"id": "l_487777", "number": "01515487777", "renewDay": 16, "notes": "", "ownerName": "احمد حسن بهاء", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_555862": {"id": "l_555862", "number": "01505555862", "renewDay": 16, "notes": "", "ownerName": "احمد حسن بهاء", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_772222": {"id": "l_772222", "number": "01508772222", "renewDay": 16, "notes": "", "ownerName": "عبد الحكيم علي عبد الحكيم", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_992222": {"id": "l_992222", "number": "01507992222", "renewDay": 16, "notes": "", "ownerName": "عبد الحكيم علي عبد الحكيم", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}}, "vodafone": {}, "emerald": {}, "orange": {}}, "packages": {"we": {"pkg_w1": {"id": "pkg_w1", "name": "باقة 20 جيجا", "gb": 20, "min": 1500, "cost": 0, "price": 280}, "pkg_w2": {"id": "pkg_w2", "name": "باقة 35 جيجا", "gb": 35, "min": 1500, "cost": 0, "price": 380}, "pkg_w3": {"id": "pkg_w3", "name": "باقة 40 جيجا", "gb": 40, "min": 1500, "cost": 0, "price": 430}, "pkg_w4": {"id": "pkg_w4", "name": "باقة 50 جيجا", "gb": 50, "min": 1700, "cost": 0, "price": 490}, "pkg_w5": {"id": "pkg_w5", "name": "باقة 65 جيجا", "gb": 65, "min": 1700, "cost": 0, "price": 570}, "pkg_w6": {"id": "pkg_w6", "name": "باقة 70 جيجا", "gb": 70, "min": 1700, "cost": 0, "price": 570}, "pkg_w7": {"id": "pkg_w7", "name": "باقة 80 جيجا", "gb": 80, "min": 1700, "cost": 0, "price": 620}}, "vodafone": {}, "emerald": {}, "orange": {}}, "customers": {"l_557418": {"c_07533559": {"id": "c_07533559", "name": "مصطفي", "phone": "01507533559", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 1}, "c_80898681": {"id": "c_80898681", "name": "", "phone": "01080898681", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 2}, "c_08370099": {"id": "c_08370099", "name": "محمد خالد محمد", "phone": "01508370099", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 3}, "c_55413525": {"id": "c_55413525", "name": "شريف عمر", "phone": "01555413525", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 4}, "c_53909042": {"id": "c_53909042", "name": "بدوي عرفه عبدالقادر", "phone": "01553909042", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 5}, "c_32135035": {"id": "c_32135035", "name": "", "phone": "01032135035", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_557498": {"c_50211369": {"id": "c_50211369", "name": "مصطفى بدر", "phone": "01550211369", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 1}, "c_57007821": {"id": "c_57007821", "name": "شريف عمر", "phone": "01557007821", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 2}, "c_58813233": {"id": "c_58813233", "name": "", "phone": "01558813233", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 3}, "c_05718272": {"id": "c_05718272", "name": "", "phone": "01505718272", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_58272118": {"id": "c_58272118", "name": "رمضان السيد سعد", "phone": "01558272118", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 5}, "c_15225148": {"id": "c_15225148", "name": "محمد خالد", "phone": "01515225148", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_557425": {"c_56959583": {"id": "c_56959583", "name": "تبع علي", "phone": "01556959583", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 1}, "c_55446945": {"id": "c_55446945", "name": "د محمد حسن", "phone": "01555446945", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 2}, "c_50776905": {"id": "c_50776905", "name": "سيف", "phone": "01550776905", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 3}, "c_01893812": {"id": "c_01893812", "name": "عادل عبد الهادي", "phone": "01501893812", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 4}, "c_53359490": {"id": "c_53359490", "name": "ضياء محمد محمود", "phone": "01553359490", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}, "c_55205440": {"id": "c_55205440", "name": "احمد مدكور", "phone": "01555205440", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_555390": {"c_00286901": {"id": "c_00286901", "name": "تبع محمد خالد", "phone": "01500286901", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 1}, "c_54573271": {"id": "c_54573271", "name": "أحمد عاطف عبد الفتاح", "phone": "01554573271", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 2}, "c_56332468": {"id": "c_56332468", "name": "", "phone": "01556332468", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 3}, "c_54181681": {"id": "c_54181681", "name": "مصطفى عماد مصطفى", "phone": "01554181681", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_55129935": {"id": "c_55129935", "name": "رضا محمد", "phone": "01555129935", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}}, "l_555330": {"c_00643032": {"id": "c_00643032", "name": "عطيه خالد", "phone": "01500643032", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 1}, "c_51647055": {"id": "c_51647055", "name": "منار موسي", "phone": "01551647055", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 2}, "c_15852021": {"id": "c_15852021", "name": "حجاج", "phone": "01515852021", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 3}, "c_52282092": {"id": "c_52282092", "name": "", "phone": "01552282092", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_52853151": {"id": "c_52853151", "name": "", "phone": "01552853151", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 5}}, "l_982222": {"c_01075072": {"id": "c_01075072", "name": "", "phone": "01501075072", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 1}, "c_52337849": {"id": "c_52337849", "name": "يوسف عبادة محمد عبدالرسول خطاب", "phone": "01552337849", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 2}, "c_57965079": {"id": "c_57965079", "name": "", "phone": "01557965079", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 3}, "c_07014433": {"id": "c_07014433", "name": "", "phone": "01507014433", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_59607877": {"id": "c_59607877", "name": "حازم رمضان", "phone": "01559607877", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}}, "l_267777": {"c_56154966": {"id": "c_56154966", "name": "محمد جمال محمد", "phone": "01556154966", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 1}, "c_58263689": {"id": "c_58263689", "name": "", "phone": "01558263689", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 2}, "c_52482045": {"id": "c_52482045", "name": "", "phone": "01552482045", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 3}, "c_58292001": {"id": "c_58292001", "name": "", "phone": "01558292001", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 4}, "c_15343405": {"id": "c_15343405", "name": "نور شريف", "phone": "01515343405", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}, "c_51854113": {"id": "c_51854113", "name": "عمر سلامه", "phone": "01551854113", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_487777": {"c_54524745": {"id": "c_54524745", "name": "عمار ابراهيم", "phone": "01554524745", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 1}, "c_03438701": {"id": "c_03438701", "name": "خالد أحمد علي شمس", "phone": "01503438701", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 2}, "c_50662990": {"id": "c_50662990", "name": "", "phone": "01550662990", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 3}, "c_56200701": {"id": "c_56200701", "name": "الحسين محمد", "phone": "01556200701", "pkgId": "pkg_w2", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 4}, "c_00567891": {"id": "c_00567891", "name": "", "phone": "01500567891", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}, "c_51810795": {"id": "c_51810795", "name": "محمد ابراهيم محمد حسن", "phone": "01551810795", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_555862": {"c_57841201": {"id": "c_57841201", "name": "محمد حلاف", "phone": "01557841201", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 1}, "c_55195553": {"id": "c_55195553", "name": "محمد الحنفي", "phone": "01555195553", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 2}, "c_57890589": {"id": "c_57890589", "name": "", "phone": "01557890589", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 3}, "c_55300516": {"id": "c_55300516", "name": "", "phone": "01555300516", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 4}, "c_03424211": {"id": "c_03424211", "name": "سامح عبدالهادي", "phone": "01503424211", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}}, "l_772222": {"c_07552509": {"id": "c_07552509", "name": "تبع عمرو", "phone": "01507552509", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 1}, "c_51780669": {"id": "c_51780669", "name": "تبع عمرو", "phone": "01551780669", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 2}, "c_58575969": {"id": "c_58575969", "name": "تبع عمرو", "phone": "01558575969", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 3}, "c_58085611": {"id": "c_58085611", "name": "", "phone": "01558085611", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_50805105": {"id": "c_50805105", "name": "", "phone": "01550805105", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 5}}, "l_992222": {"c_59494924": {"id": "c_59494924", "name": "تبع عمرو", "phone": "01559494924", "pkgId": "pkg_w6", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 1}, "c_59424224": {"id": "c_59424224", "name": "تبع عمرو", "phone": "01559424224", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 2}, "c_54409881": {"id": "c_54409881", "name": "تبع عمرو", "phone": "01554409881", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 3}, "c_59441717": {"id": "c_59441717", "name": "", "phone": "01559441717", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_58454046": {"id": "c_58454046", "name": "تبع عمرو", "phone": "01558454046", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}}}, "companySettings": {"we": {"maxDist": 6}, "vodafone": {"maxDist": 6}, "emerald": {"maxDist": 6}, "orange": {"maxDist": 6}}}, "2026-07": {"key": "2026-07", "label": "يوليو 2026", "lines": {"we": {"l_557418": {"id": "l_557418", "number": "01555557418", "renewDay": 1, "notes": "", "ownerName": "احمد حسن بهاء", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_557498": {"id": "l_557498", "number": "01555557498", "renewDay": 1, "notes": "", "ownerName": "احمد حسن بهاء", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_557425": {"id": "l_557425", "number": "01555557425", "renewDay": 1, "notes": "", "ownerName": "احمد حسن بهاء", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_555390": {"id": "l_555390", "number": "01515555390", "renewDay": 1, "notes": "", "ownerName": "احمد حسن بهاء", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_555330": {"id": "l_555330", "number": "01515555330", "renewDay": 1, "notes": "", "ownerName": "احمد حسن بهاء", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_982222": {"id": "l_982222", "number": "01509982222", "renewDay": 1, "notes": "", "ownerName": "عبدالحكيم علي عبدالحكيم نصر", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_440065": {"id": "l_440065", "number": "01544440065", "renewDay": 1, "notes": "", "ownerName": "مصطفي عبدالحكيم نصر عبدالمحسن", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_440085": {"id": "l_440085", "number": "01544440085", "renewDay": 1, "notes": "", "ownerName": "مصطفي عبدالحكيم نصر عبدالمحسن", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_267777": {"id": "l_267777", "number": "01515267777", "renewDay": 16, "notes": "", "ownerName": "احمد حسن بهاء", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_487777": {"id": "l_487777", "number": "01515487777", "renewDay": 16, "notes": "", "ownerName": "احمد حسن بهاء", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_555862": {"id": "l_555862", "number": "01505555862", "renewDay": 16, "notes": "", "ownerName": "احمد حسن بهاء", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_772222": {"id": "l_772222", "number": "01508772222", "renewDay": 16, "notes": "", "ownerName": "عبدالحكيم علي عبدالحكيم نصر", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_992222": {"id": "l_992222", "number": "01507992222", "renewDay": 16, "notes": "", "ownerName": "عبدالحكيم علي عبدالحكيم نصر", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}}, "vodafone": {}, "emerald": {}, "orange": {}}, "packages": {"we": {"pkg_w1": {"id": "pkg_w1", "name": "باقة 20 جيجا", "gb": 20, "min": 1500, "cost": 0, "price": 280}, "pkg_w2": {"id": "pkg_w2", "name": "باقة 35 جيجا", "gb": 35, "min": 1500, "cost": 0, "price": 380}, "pkg_w3": {"id": "pkg_w3", "name": "باقة 40 جيجا", "gb": 40, "min": 1500, "cost": 0, "price": 430}, "pkg_w4": {"id": "pkg_w4", "name": "باقة 50 جيجا", "gb": 50, "min": 1700, "cost": 0, "price": 490}, "pkg_w5": {"id": "pkg_w5", "name": "باقة 65 جيجا", "gb": 65, "min": 1700, "cost": 0, "price": 570}, "pkg_w6": {"id": "pkg_w6", "name": "باقة 70 جيجا", "gb": 70, "min": 1700, "cost": 0, "price": 620}, "pkg_w7": {"id": "pkg_w7", "name": "باقة 80 جيجا", "gb": 80, "min": 1700, "cost": 0, "price": 700}}, "vodafone": {}, "emerald": {}, "orange": {}}, "customers": {"l_557418": {"c_07533559": {"id": "c_07533559", "name": "مصطفي", "phone": "01507533559", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 1}, "c_80898681": {"id": "c_80898681", "name": "", "phone": "01080898681", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 2}, "c_08370099": {"id": "c_08370099", "name": "محمد خالد محمد", "phone": "01508370099", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 3}, "c_55413525": {"id": "c_55413525", "name": "شريف عمر", "phone": "01555413525", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 4}, "c_53909042": {"id": "c_53909042", "name": "بدوي عرفه عبدالقادر", "phone": "01553909042", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 5}, "c_21232442": {"id": "c_21232442", "name": "محمد احمد", "phone": "01221232442", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_557498": {"c_50211369": {"id": "c_50211369", "name": "مصطفى بدر", "phone": "01550211369", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 1}, "c_57007821": {"id": "c_57007821", "name": "شريف عمر", "phone": "01557007821", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 2}, "c_58813233": {"id": "c_58813233", "name": "", "phone": "01558813233", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 3}, "c_01078527": {"id": "c_01078527", "name": "", "phone": "01501078527", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_58272118": {"id": "c_58272118", "name": "رمضان السيد سعد", "phone": "01558272118", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 5}, "c_15225148": {"id": "c_15225148", "name": "محمد خالد", "phone": "01515225148", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_557425": {"c_56959583": {"id": "c_56959583", "name": "تبع علي", "phone": "01556959583", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 1}, "c_55446945": {"id": "c_55446945", "name": "د محمد حسن", "phone": "01555446945", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 2}, "c_52287150": {"id": "c_52287150", "name": "انس محمد اسامه", "phone": "01552287150", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 3}, "c_55760411": {"id": "c_55760411", "name": "", "phone": "01555760411", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 4}, "c_53359490": {"id": "c_53359490", "name": "ضياء محمد محمود", "phone": "01553359490", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}, "c_55205440": {"id": "c_55205440", "name": "احمد مدكور", "phone": "01555205440", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_555390": {"c_59434350": {"id": "c_59434350", "name": "", "phone": "01559434350", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 1}, "c_54573271": {"id": "c_54573271", "name": "أحمد عاطف عبد الفتاح", "phone": "01554573271", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 2}, "c_56332468": {"id": "c_56332468", "name": "", "phone": "01556332468", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 3}, "c_24026838": {"id": "c_24026838", "name": "شريف منير", "phone": "01124026838", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_15386103": {"id": "c_15386103", "name": "", "phone": "01515386103", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}}, "l_555330": {"c_55087023": {"id": "c_55087023", "name": "احمد حسن الدقاق", "phone": "01555087023", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 1}, "c_52237001": {"id": "c_52237001", "name": "", "phone": "01552237001", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 2}, "c_15852021": {"id": "c_15852021", "name": "حجاج", "phone": "01515852021", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 3}, "c_52282092": {"id": "c_52282092", "name": "", "phone": "01552282092", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_52853151": {"id": "c_52853151", "name": "", "phone": "01552853151", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 5}}, "l_982222": {"c_01075072": {"id": "c_01075072", "name": "", "phone": "01501075072", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 1}, "c_57884305": {"id": "c_57884305", "name": "مصطفي عياده", "phone": "01557884305", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 2}, "c_08734677": {"id": "c_08734677", "name": "", "phone": "01508734677", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 3}, "c_07014433": {"id": "c_07014433", "name": "", "phone": "01507014433", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_59607877": {"id": "c_59607877", "name": "حازم رمضان", "phone": "01559607877", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}}, "l_440065": {"c_54730073": {"id": "c_54730073", "name": "احمدمحمد", "phone": "01554730073", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 1}, "c_23753586": {"id": "c_23753586", "name": "تبع محمود الخميس", "phone": "01123753586", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 2}, "c_15396295": {"id": "c_15396295", "name": "", "phone": "01515396295", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 3}, "c_51510941": {"id": "c_51510941", "name": "مهاب حسني", "phone": "01551510941", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 4}, "c_55430564": {"id": "c_55430564", "name": "مصطفي بدري", "phone": "01555430564", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 5}}, "l_440085": {"c_15279767": {"id": "c_15279767", "name": "محمد جويد", "phone": "01115279767", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 1}, "c_54292006": {"id": "c_54292006", "name": "عبدالرحمن صابر عبدالرحمن الحاوي", "phone": "01554292006", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 2}, "c_58292001": {"id": "c_58292001", "name": "", "phone": "01558292001", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 3}, "c_07954476": {"id": "c_07954476", "name": "محمد رمضان", "phone": "01507954476", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_52337849": {"id": "c_52337849", "name": "يوسف عبادة محمد عبدالرسول خطاب", "phone": "01552337849", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}}, "l_267777": {"c_56154966": {"id": "c_56154966", "name": "محمد جمال محمد", "phone": "01556154966", "pkgId": "pkg_w3", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 1}, "c_07619272": {"id": "c_07619272", "name": "خالد شحاته عبد الحكيم", "phone": "01507619272", "pkgId": "pkg_w4", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 2}, "c_52482045": {"id": "c_52482045", "name": "", "phone": "01552482045", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 3}, "c_54226520": {"id": "c_54226520", "name": "", "phone": "01554226520", "pkgId": "pkg_w2", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 4}, "c_15343405": {"id": "c_15343405", "name": "نور شريف", "phone": "01515343405", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 5}, "c_15377088": {"id": "c_15377088", "name": "محمد ناصر", "phone": "01515377088", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 6}}, "l_487777": {"c_54524745": {"id": "c_54524745", "name": "عمار ابراهيم", "phone": "01554524745", "pkgId": "pkg_w2", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 1}, "c_00567891": {"id": "c_00567891", "name": "", "phone": "01500567891", "pkgId": "pkg_w3", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 2}, "c_50662990": {"id": "c_50662990", "name": "", "phone": "01550662990", "pkgId": "pkg_w2", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 3}, "c_56200701": {"id": "c_56200701", "name": "الحسين محمد", "phone": "01556200701", "pkgId": "pkg_w3", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 4}, "c_56125124": {"id": "c_56125124", "name": "محمد أسامه", "phone": "01556125124", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 5}, "c_54730073": {"id": "c_54730073", "name": "", "phone": "01554730073", "pkgId": "pkg_w2", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 6}}, "l_555862": {"c_57841201": {"id": "c_57841201", "name": "محمد حلاف", "phone": "01557841201", "pkgId": "pkg_w5", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 1}, "c_55195553": {"id": "c_55195553", "name": "محمد الحنفي", "phone": "01555195553", "pkgId": "pkg_w3", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 2}, "c_53492380": {"id": "c_53492380", "name": "مصطفى عماد مصطفى", "phone": "01553492380", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 3}, "c_52206376": {"id": "c_52206376", "name": "عبدالوهاب", "phone": "01552206376", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 4}, "c_03424211": {"id": "c_03424211", "name": "سامح عبدالهادي", "phone": "01503424211", "pkgId": "pkg_w2", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 5}, "c_55399898": {"id": "c_55399898", "name": "تبع حجاج", "phone": "01555399898", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 6}}, "l_772222": {"c_07552509": {"id": "c_07552509", "name": "تبع عمرو", "phone": "01507552509", "pkgId": "pkg_w5", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 1}, "c_50805105": {"id": "c_50805105", "name": "", "phone": "01550805105", "pkgId": "pkg_w2", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 2}, "c_55181864": {"id": "c_55181864", "name": "مارتن يوسف راغب", "phone": "01555181864", "pkgId": "pkg_w2", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 3}, "c_15484103": {"id": "c_15484103", "name": "صبحى عصام صبحى", "phone": "01515484103", "pkgId": "pkg_w2", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 4}, "c_58208620": {"id": "c_58208620", "name": "نيرمين السيد عبداللطيف", "phone": "01558208620", "pkgId": "pkg_w2", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 5}}, "l_992222": {"c_59494924": {"id": "c_59494924", "name": "تبع عمرو", "phone": "01559494924", "pkgId": "pkg_w5", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 1}, "c_55726876": {"id": "c_55726876", "name": "", "phone": "01555726876", "pkgId": "pkg_w5", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 2}, "c_03766822": {"id": "c_03766822", "name": "", "phone": "01503766822", "pkgId": "pkg_w3", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 3}, "c_00339120": {"id": "c_00339120", "name": "", "phone": "01500339120", "pkgId": "pkg_w2", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 4}, "c_52606245": {"id": "c_52606245", "name": "", "phone": "01552606245", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 5}}}, "companySettings": {"we": {"maxDist": 6}, "vodafone": {"maxDist": 6}, "emerald": {"maxDist": 6}, "orange": {"maxDist": 6}}}}}, "rania.m": {"months": {"2026-06": {"key": "2026-06", "label": "يونيو 2026", "lines": {"we": {"l_024444": {"id": "l_024444", "number": "01515024444", "renewDay": 1, "notes": "", "ownerName": "رانيا محمد عبد الفتاح", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_027777": {"id": "l_027777", "number": "01515027777", "renewDay": 1, "notes": "", "ownerName": "رانيا محمد عبد الفتاح", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_038888": {"id": "l_038888", "number": "01515038888", "renewDay": 1, "notes": "", "ownerName": "رانيا محمد عبد الفتاح", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_861111": {"id": "l_861111", "number": "01505861111", "renewDay": 1, "notes": "", "ownerName": "مصطفي محمد عبدالفتاح", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_761111": {"id": "l_761111", "number": "01551761111", "renewDay": 1, "notes": "", "ownerName": "مصطفي محمد عبدالفتاح", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_341111": {"id": "l_341111", "number": "01508341111", "renewDay": 1, "notes": "", "ownerName": "مصطفي محمد عبدالفتاح", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_504910": {"id": "l_504910", "number": "01555504910", "renewDay": 1, "notes": "", "ownerName": "مصطفي محمد عبدالفتاح", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_211116": {"id": "l_211116", "number": "01515211116", "renewDay": 1, "notes": "", "ownerName": "احمد محمد عبد الفتاح", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_506455": {"id": "l_506455", "number": "01555506455", "renewDay": 1, "notes": "", "ownerName": "احمد محمد عبد الفتاح", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_800388": {"id": "l_800388", "number": "0150800388", "renewDay": 1, "notes": "", "ownerName": "احمد محمد عبد الفتاح", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_456666": {"id": "l_456666", "number": "01515456666", "renewDay": 16, "notes": "", "ownerName": "رانيا محمد عبد الفتاح", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_596666": {"id": "l_596666", "number": "01515596666", "renewDay": 16, "notes": "", "ownerName": "رانيا محمد عبد الفتاح", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_666693": {"id": "l_666693", "number": "01515666693", "renewDay": 16, "notes": "", "ownerName": "رانيا محمد عبد الفتاح", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}}, "vodafone": {}, "emerald": {}, "orange": {}}, "packages": {"we": {"pkg_w1": {"id": "pkg_w1", "name": "باقة 20 جيجا", "gb": 20, "min": 1500, "cost": 0, "price": 280}, "pkg_w2": {"id": "pkg_w2", "name": "باقة 35 جيجا", "gb": 35, "min": 1500, "cost": 0, "price": 380}, "pkg_w3": {"id": "pkg_w3", "name": "باقة 40 جيجا", "gb": 40, "min": 1500, "cost": 0, "price": 430}, "pkg_w4": {"id": "pkg_w4", "name": "باقة 50 جيجا", "gb": 50, "min": 1700, "cost": 0, "price": 490}, "pkg_w5": {"id": "pkg_w5", "name": "باقة 65 جيجا", "gb": 65, "min": 1700, "cost": 0, "price": 570}, "pkg_w6": {"id": "pkg_w6", "name": "باقة 70 جيجا", "gb": 70, "min": 1700, "cost": 0, "price": 570}, "pkg_w7": {"id": "pkg_w7", "name": "باقة 80 جيجا", "gb": 80, "min": 1700, "cost": 0, "price": 620}}, "vodafone": {}, "emerald": {}, "orange": {}}, "customers": {"l_024444": {"c_22096604": {"id": "c_22096604", "name": "مصطفى اشرف ثابت", "phone": "01122096604", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 1}, "c_03312517": {"id": "c_03312517", "name": "سامح شوقي سعدان", "phone": "01503312517", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 2}, "c_69297069": {"id": "c_69297069", "name": "احمد بدراوي الشافعي", "phone": "01069297069", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 3}, "c_52577342": {"id": "c_52577342", "name": "احمد جمال", "phone": "01552577342", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_56414097": {"id": "c_56414097", "name": "", "phone": "01556414097", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}, "c_08734688": {"id": "c_08734688", "name": "اخو اسلام", "phone": "01508734688", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_027777": {"c_52162652": {"id": "c_52162652", "name": "", "phone": "01552162652", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 1}, "c_55123725": {"id": "c_55123725", "name": "محمد رمضان", "phone": "01555123725", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 2}, "c_57928882": {"id": "c_57928882", "name": "فادي عادل", "phone": "01557928882", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 3}, "c_57643052": {"id": "c_57643052", "name": "انعام", "phone": "01557643052", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_15166781": {"id": "c_15166781", "name": "علاء جمال", "phone": "01515166781", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 5}, "c_51371507": {"id": "c_51371507", "name": "", "phone": "01551371507", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_038888": {"c_12259667": {"id": "c_12259667", "name": "عبدالعزيز", "phone": "01212259667", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 1}, "c_56556504": {"id": "c_56556504", "name": "", "phone": "01556556504", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 2}, "c_23753586": {"id": "c_23753586", "name": "تبع محمود الخميس", "phone": "01123753586", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 3}, "c_07177346": {"id": "c_07177346", "name": "ضياء محمد محمود", "phone": "01507177346", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 4}, "c_57308311": {"id": "c_57308311", "name": "اسلام احمد مصطفى محمود", "phone": "01557308311", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}, "c_15396295": {"id": "c_15396295", "name": "", "phone": "01515396295", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_861111": {"c_58453806": {"id": "c_58453806", "name": "محمد عماد الدين", "phone": "01558453806", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 1}, "c_07339094": {"id": "c_07339094", "name": "", "phone": "01507339094", "pkgId": "pkg_w7", "cost": 0, "paid": 700, "paidStatus": "paid", "notes": "", "seq": 2}, "c_59181573": {"id": "c_59181573", "name": "سعد", "phone": "01559181573", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 3}, "c_00212141": {"id": "c_00212141", "name": "", "phone": "01500212141", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 4}, "c_07344221": {"id": "c_07344221", "name": "", "phone": "01507344221", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}}, "l_761111": {"c_56619967": {"id": "c_56619967", "name": "احمد", "phone": "01556619967", "pkgId": "pkg_w7", "cost": 0, "paid": 620, "paidStatus": "paid", "notes": "", "seq": 1}, "c_95577922": {"id": "c_95577922", "name": "اسلام سامي محمد", "phone": "01095577922", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 2}, "c_05315087": {"id": "c_05315087", "name": "مرات اسلام", "phone": "01505315087", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 3}, "c_54991058": {"id": "c_54991058", "name": "اميره عرفه", "phone": "01554991058", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 4}, "c_59996862": {"id": "c_59996862", "name": "نقيب معاذ الهواري", "phone": "01559996862", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 5}}, "l_341111": {"c_57959563": {"id": "c_57959563", "name": "", "phone": "01557959563", "pkgId": "pkg_w7", "cost": 0, "paid": 700, "paidStatus": "paid", "notes": "", "seq": 1}, "c_51429966": {"id": "c_51429966", "name": "", "phone": "01551429966", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 2}, "c_01595051": {"id": "c_01595051", "name": "ضياء", "phone": "01501595051", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 3}, "c_54730073": {"id": "c_54730073", "name": "احمدمحمد", "phone": "01554730073", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}}, "l_504910": {"c_56034097": {"id": "c_56034097", "name": "محمد سعد", "phone": "01556034097", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 1}, "c_15281041": {"id": "c_15281041", "name": "", "phone": "01515281041", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 2}, "c_03328622": {"id": "c_03328622", "name": "مصطفى احمد جمعه", "phone": "01503328622", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 3}, "c_58279727": {"id": "c_58279727", "name": "احمد مختار فؤاد", "phone": "01558279727", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 4}}, "l_211116": {"c_54129570": {"id": "c_54129570", "name": "محمد يحيى محمد", "phone": "01554129570", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 1}, "c_58906817": {"id": "c_58906817", "name": "تبع علي", "phone": "01558906817", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 2}, "c_51303685": {"id": "c_51303685", "name": "طه عدلى فتحي", "phone": "01551303685", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 3}, "c_01882003": {"id": "c_01882003", "name": "عبدالله طلعت محمد عبدالله", "phone": "01501882003", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_07790035": {"id": "c_07790035", "name": "", "phone": "01507790035", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}}, "l_506455": {"c_01202647": {"id": "c_01202647", "name": "رياض عياد", "phone": "01501202647", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 1}, "c_03283837": {"id": "c_03283837", "name": "رياض عياد", "phone": "01503283837", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 2}, "c_54088248": {"id": "c_54088248", "name": "احمد جمال", "phone": "01554088248", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 3}, "c_50544747": {"id": "c_50544747", "name": "رجب جمعه‏‪", "phone": "01550544747", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_59356265": {"id": "c_59356265", "name": "محمد سمير", "phone": "01559356265", "pkgId": "pkg_w5", "cost": 0, "paid": 550, "paidStatus": "paid", "notes": "", "seq": 5}}, "l_800388": {"c_54200726": {"id": "c_54200726", "name": "جمال عبدالمنعم", "phone": "01554200726", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 1}, "c_50029810": {"id": "c_50029810", "name": "", "phone": "01550029810", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 2}, "c_15169029": {"id": "c_15169029", "name": "حجاج", "phone": "01515169029", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 3}, "c_58822555": {"id": "c_58822555", "name": "", "phone": "01558822555", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 4}, "c_21110990": {"id": "c_21110990", "name": "د محمد", "phone": "0121110990", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}, "c_55181864": {"id": "c_55181864", "name": "مارتن يوسف", "phone": "01555181864", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_456666": {"c_15058265": {"id": "c_15058265", "name": "محمد أحمد", "phone": "01515058265", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 1}, "c_51594223": {"id": "c_51594223", "name": "رياض محمود", "phone": "01551594223", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 2}, "c_15852021": {"id": "c_15852021", "name": "تبع حجاج", "phone": "01515852021", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 3}, "c_50805105": {"id": "c_50805105", "name": "", "phone": "01550805105", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_15148953": {"id": "c_15148953", "name": "", "phone": "01515148953", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}, "c_52004124": {"id": "c_52004124", "name": "", "phone": "01552004124", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_596666": {"c_53190329": {"id": "c_53190329", "name": "احمد السيد الحوشي", "phone": "01553190329", "pkgId": "pkg_w4", "cost": 0, "paid": 480, "paidStatus": "paid", "notes": "", "seq": 1}, "c_55823397": {"id": "c_55823397", "name": "رامى شعبان", "phone": "01555823397", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 2}, "c_52453747": {"id": "c_52453747", "name": "محمد غريب", "phone": "01552453747", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 3}, "c_00601499": {"id": "c_00601499", "name": "", "phone": "01500601499", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 4}, "c_21232442": {"id": "c_21232442", "name": "محمد احمد", "phone": "01221232442", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}, "c_59021383": {"id": "c_59021383", "name": "تبع رانيا", "phone": "01559021383", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 6}}, "l_666693": {"c_05125697": {"id": "c_05125697", "name": "احمد سامي امين", "phone": "01505125697", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 1}, "c_07469147": {"id": "c_07469147", "name": "عمرو", "phone": "01507469147", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 2}, "c_15160918": {"id": "c_15160918", "name": "عمرو", "phone": "01515160918", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 3}, "c_58971353": {"id": "c_58971353", "name": "عمرو", "phone": "01558971353", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_05513138": {"id": "c_05513138", "name": "زياد خالد سعيد", "phone": "01505513138", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 5}, "c_51715029": {"id": "c_51715029", "name": "", "phone": "01551715029", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 6}}}, "companySettings": {"we": {"maxDist": 6}, "vodafone": {"maxDist": 6}, "emerald": {"maxDist": 6}, "orange": {"maxDist": 6}}}, "2026-07": {"key": "2026-07", "label": "يوليو 2026", "lines": {"we": {"l_024444": {"id": "l_024444", "number": "01515024444", "renewDay": 1, "notes": "", "ownerName": "رانيا محمد عبد الفتاح", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_027777": {"id": "l_027777", "number": "01515027777", "renewDay": 1, "notes": "", "ownerName": "رانيا محمد عبد الفتاح", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_038888": {"id": "l_038888", "number": "01515038888", "renewDay": 1, "notes": "", "ownerName": "رانيا محمد عبد الفتاح", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_861111": {"id": "l_861111", "number": "01505861111", "renewDay": 1, "notes": "", "ownerName": "مصطفي عبدالحكيم نصر عبدالمحسن", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_761111": {"id": "l_761111", "number": "01551761111", "renewDay": 1, "notes": "", "ownerName": "مصطفي عبدالحكيم نصر عبدالمحسن", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_341111": {"id": "l_341111", "number": "01508341111", "renewDay": 1, "notes": "", "ownerName": "مصطفي عبدالحكيم نصر عبدالمحسن", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_504910": {"id": "l_504910", "number": "01555504910", "renewDay": 1, "notes": "", "ownerName": "مصطفي عبدالحكيم نصر عبدالمحسن", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_592223": {"id": "l_592223", "number": "01555592223", "renewDay": 1, "notes": "", "ownerName": "احمد حسن بهاء", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_211116": {"id": "l_211116", "number": "01515211116", "renewDay": 1, "notes": "", "ownerName": "احمد حسن بهاء", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_506455": {"id": "l_506455", "number": "01555506455", "renewDay": 1, "notes": "", "ownerName": "احمد حسن بهاء", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_800388": {"id": "l_800388", "number": "0150800388", "renewDay": 1, "notes": "", "ownerName": "احمد حسن بهاء", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_456666": {"id": "l_456666", "number": "01515456666", "renewDay": 16, "notes": "", "ownerName": "رانيا محمد عبد الفتاح", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_596666": {"id": "l_596666", "number": "01515596666", "renewDay": 16, "notes": "", "ownerName": "رانيا محمد عبد الفتاح", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_666693": {"id": "l_666693", "number": "01515666693", "renewDay": 16, "notes": "", "ownerName": "رانيا محمد عبد الفتاح", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}}, "vodafone": {}, "emerald": {}, "orange": {}}, "packages": {"we": {"pkg_w1": {"id": "pkg_w1", "name": "باقة 20 جيجا", "gb": 20, "min": 1500, "cost": 0, "price": 280}, "pkg_w2": {"id": "pkg_w2", "name": "باقة 35 جيجا", "gb": 35, "min": 1500, "cost": 0, "price": 380}, "pkg_w3": {"id": "pkg_w3", "name": "باقة 40 جيجا", "gb": 40, "min": 1500, "cost": 0, "price": 430}, "pkg_w4": {"id": "pkg_w4", "name": "باقة 50 جيجا", "gb": 50, "min": 1700, "cost": 0, "price": 490}, "pkg_w5": {"id": "pkg_w5", "name": "باقة 65 جيجا", "gb": 65, "min": 1700, "cost": 0, "price": 570}, "pkg_w6": {"id": "pkg_w6", "name": "باقة 70 جيجا", "gb": 70, "min": 1700, "cost": 0, "price": 620}, "pkg_w7": {"id": "pkg_w7", "name": "باقة 80 جيجا", "gb": 80, "min": 1700, "cost": 0, "price": 700}}, "vodafone": {}, "emerald": {}, "orange": {}}, "customers": {"l_024444": {"c_22096604": {"id": "c_22096604", "name": "مصطفى اشرف ثابت", "phone": "01122096604", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 1}, "c_03312517": {"id": "c_03312517", "name": "سامح شوقي سعدان", "phone": "01503312517", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 2}, "c_69297069": {"id": "c_69297069", "name": "احمد بدراوي الشافعي", "phone": "01069297069", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 3}, "c_52577342": {"id": "c_52577342", "name": "احمد جمال", "phone": "01552577342", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_56414097": {"id": "c_56414097", "name": "", "phone": "01556414097", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}, "c_08734688": {"id": "c_08734688", "name": "اخو اسلام", "phone": "01508734688", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_027777": {"c_52162652": {"id": "c_52162652", "name": "", "phone": "01552162652", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 1}, "c_55123725": {"id": "c_55123725", "name": "محمد رمضان", "phone": "01555123725", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 2}, "c_57928882": {"id": "c_57928882", "name": "فادي عادل", "phone": "01557928882", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 3}, "c_57643052": {"id": "c_57643052", "name": "انعام", "phone": "01557643052", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_15166781": {"id": "c_15166781", "name": "علاء جمال", "phone": "01515166781", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 5}, "c_50713729": {"id": "c_50713729", "name": "", "phone": "01550713729", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_038888": {"c_12259667": {"id": "c_12259667", "name": "عبدالعزيز", "phone": "01212259667", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 1}, "c_56556504": {"id": "c_56556504", "name": "", "phone": "01556556504", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 2}, "c_15979783": {"id": "c_15979783", "name": "", "phone": "01515979783", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 3}, "c_07177346": {"id": "c_07177346", "name": "ضياء محمد محمود", "phone": "01507177346", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 4}, "c_51060814": {"id": "c_51060814", "name": "مصطفى عماد مصطفى", "phone": "01551060814", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}, "c_05714514": {"id": "c_05714514", "name": "", "phone": "01505714514", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_861111": {"c_53754979": {"id": "c_53754979", "name": "", "phone": "01553754979", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 1}, "c_07339094": {"id": "c_07339094", "name": "", "phone": "01507339094", "pkgId": "pkg_w7", "cost": 0, "paid": 700, "paidStatus": "paid", "notes": "", "seq": 2}, "c_59181573": {"id": "c_59181573", "name": "سعد", "phone": "01559181573", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 3}, "c_56730291": {"id": "c_56730291", "name": "", "phone": "01556730291", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 4}, "c_07344221": {"id": "c_07344221", "name": "", "phone": "01507344221", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}}, "l_761111": {"c_56619967": {"id": "c_56619967", "name": "احمد", "phone": "01556619967", "pkgId": "pkg_w6", "cost": 0, "paid": 620, "paidStatus": "paid", "notes": "", "seq": 1}, "c_25124106": {"id": "c_25124106", "name": "محمود محمد", "phone": "01225124106", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 2}, "c_51859331": {"id": "c_51859331", "name": "مصطفى محمد", "phone": "01551859331", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 3}, "c_54991058": {"id": "c_54991058", "name": "اميره عرفه", "phone": "01554991058", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 4}, "c_59996862": {"id": "c_59996862", "name": "نقيب معاذ الهواري", "phone": "01559996862", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 5}}, "l_341111": {"c_57959563": {"id": "c_57959563", "name": "", "phone": "01557959563", "pkgId": "pkg_w7", "cost": 0, "paid": 700, "paidStatus": "paid", "notes": "", "seq": 1}, "c_51429966": {"id": "c_51429966", "name": "", "phone": "01551429966", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 2}, "c_01595051": {"id": "c_01595051", "name": "ضياء", "phone": "01501595051", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 3}, "c_22512406": {"id": "c_22512406", "name": "", "phone": "0122512406", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 4}}, "l_504910": {"c_56034097": {"id": "c_56034097", "name": "محمد سعد", "phone": "01556034097", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 1}, "c_03438701": {"id": "c_03438701", "name": "خالد أحمد شمس", "phone": "01503438701", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 2}, "c_03328622": {"id": "c_03328622", "name": "مصطفى احمد جمعه", "phone": "01503328622", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 3}, "c_58279727": {"id": "c_58279727", "name": "احمد مختار فؤاد", "phone": "01558279727", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 4}}, "l_592223": {"c_23880575": {"id": "c_23880575", "name": "", "phone": "01023880575", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 1}, "c_01533704": {"id": "c_01533704", "name": "اسلام منصور", "phone": "01501533704", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 2}, "c_54594548": {"id": "c_54594548", "name": "", "phone": "01554594548", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 3}, "c_50776905": {"id": "c_50776905", "name": "سيف مدحت", "phone": "01550776905", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 4}, "c_59550350": {"id": "c_59550350", "name": "على", "phone": "01559550350", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 5}}, "l_211116": {"c_05377435": {"id": "c_05377435", "name": "", "phone": "01505377435", "pkgId": "pkg_w4", "cost": 0, "paid": 490, "paidStatus": "paid", "notes": "", "seq": 1}, "c_58906817": {"id": "c_58906817", "name": "تبع علي", "phone": "01558906817", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 2}, "c_56199483": {"id": "c_56199483", "name": "محمد عادل", "phone": "01556199483", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 3}, "c_01882003": {"id": "c_01882003", "name": "عبدالله طلعت محمد عبدالله", "phone": "01501882003", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 4}}, "l_506455": {"c_01202647": {"id": "c_01202647", "name": "رياض عياد", "phone": "01501202647", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 1}, "c_03283837": {"id": "c_03283837", "name": "رياض عياد", "phone": "01503283837", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 2}, "c_54088248": {"id": "c_54088248", "name": "احمد جمال", "phone": "01554088248", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 3}, "c_50544747": {"id": "c_50544747", "name": "رجب جمعه‏‪", "phone": "01550544747", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_59356265": {"id": "c_59356265", "name": "محمد سمير", "phone": "01559356265", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 5}}, "l_800388": {"c_05850656": {"id": "c_05850656", "name": "", "phone": "01505850656", "pkgId": "pkg_w1", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 1}, "c_50029810": {"id": "c_50029810", "name": "", "phone": "01550029810", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 2}, "c_15169029": {"id": "c_15169029", "name": "حجاج", "phone": "01515169029", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 3}, "c_58822555": {"id": "c_58822555", "name": "", "phone": "01558822555", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 4}, "c_11109990": {"id": "c_11109990", "name": "د محمد", "phone": "01211109990", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}, "c_21232440": {"id": "c_21232440", "name": "يوسف", "phone": "01221232440", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_456666": {"c_15058265": {"id": "c_15058265", "name": "محمد أحمد", "phone": "01515058265", "pkgId": "pkg_w5", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 1}, "c_51594223": {"id": "c_51594223", "name": "رياض محمود", "phone": "01551594223", "pkgId": "pkg_w2", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 2}, "c_67459726": {"id": "c_67459726", "name": "", "phone": "01067459726", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 3}, "c_15148958": {"id": "c_15148958", "name": "", "phone": "01515148958", "pkgId": "pkg_w2", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 4}, "c_15148953": {"id": "c_15148953", "name": "", "phone": "01515148953", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 5}, "c_07790035": {"id": "c_07790035", "name": "إسماعيل علاء", "phone": "01507790035", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 6}}, "l_596666": {"c_53190329": {"id": "c_53190329", "name": "احمد السيد الحوشي", "phone": "01553190329", "pkgId": "pkg_w4", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 1}, "c_55823397": {"id": "c_55823397", "name": "رامى شعبان", "phone": "01555823397", "pkgId": "pkg_w5", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 2}, "c_08517210": {"id": "c_08517210", "name": "كريم نبيل سليمان", "phone": "01508517210", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 3}, "c_07284476": {"id": "c_07284476", "name": "", "phone": "01507284476", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 4}, "c_52000693": {"id": "c_52000693", "name": "", "phone": "01552000693", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 5}, "c_59021383": {"id": "c_59021383", "name": "تبع رانيا", "phone": "01559021383", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 6}}, "l_666693": {"c_05125697": {"id": "c_05125697", "name": "احمد سامي امين", "phone": "01505125697", "pkgId": "pkg_w3", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 1}, "c_52453747": {"id": "c_52453747", "name": "محمد غريب", "phone": "01552453747", "pkgId": "pkg_w3", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 2}, "c_58085611": {"id": "c_58085611", "name": "", "phone": "01558085611", "pkgId": "pkg_w2", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 3}, "c_01078527": {"id": "c_01078527", "name": "", "phone": "01501078527", "pkgId": "pkg_w2", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 4}, "c_05513138": {"id": "c_05513138", "name": "زياد خالد سعيد", "phone": "01505513138", "pkgId": "pkg_w2", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 5}, "c_43523901": {"id": "c_43523901", "name": "", "phone": "01143523901", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 6}}}, "companySettings": {"we": {"maxDist": 6}, "vodafone": {"maxDist": 6}, "emerald": {"maxDist": 6}, "orange": {"maxDist": 6}}}}}, "madona.n": {"months": {"2026-06": {"key": "2026-06", "label": "يونيو 2026", "lines": {"we": {"l_673333": {"id": "l_673333", "number": "01515673333", "renewDay": 1, "notes": "", "ownerName": "مادونا نشأت", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_611222": {"id": "l_611222", "number": "01500611222", "renewDay": 1, "notes": "", "ownerName": "مادونا نشأت", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_780731": {"id": "l_780731", "number": "01280780731", "renewDay": 1, "notes": "", "ownerName": "مادونا نشأت", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_648888": {"id": "l_648888", "number": "01515648888", "renewDay": 16, "notes": "", "ownerName": "مادونا نشأت", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_618888": {"id": "l_618888", "number": "01515618888", "renewDay": 16, "notes": "", "ownerName": "مادونا نشأت", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}}, "vodafone": {}, "emerald": {}, "orange": {}}, "packages": {"we": {"pkg_w1": {"id": "pkg_w1", "name": "باقة 20 جيجا", "gb": 20, "min": 1500, "cost": 0, "price": 280}, "pkg_w2": {"id": "pkg_w2", "name": "باقة 35 جيجا", "gb": 35, "min": 1500, "cost": 0, "price": 380}, "pkg_w3": {"id": "pkg_w3", "name": "باقة 40 جيجا", "gb": 40, "min": 1500, "cost": 0, "price": 430}, "pkg_w4": {"id": "pkg_w4", "name": "باقة 50 جيجا", "gb": 50, "min": 1700, "cost": 0, "price": 490}, "pkg_w5": {"id": "pkg_w5", "name": "باقة 65 جيجا", "gb": 65, "min": 1700, "cost": 0, "price": 570}, "pkg_w6": {"id": "pkg_w6", "name": "باقة 70 جيجا", "gb": 70, "min": 1700, "cost": 0, "price": 570}, "pkg_w7": {"id": "pkg_w7", "name": "باقة 80 جيجا", "gb": 80, "min": 1700, "cost": 0, "price": 620}}, "vodafone": {}, "emerald": {}, "orange": {}}, "customers": {"l_673333": {"c_51510941": {"id": "c_51510941", "name": "مهاب حسني", "phone": "01551510941", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 1}, "c_08758465": {"id": "c_08758465", "name": "", "phone": "01508758465", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 2}, "c_54917381": {"id": "c_54917381", "name": "عمر فتحي محمد", "phone": "01554917381", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 3}, "c_01579310": {"id": "c_01579310", "name": "عبيد جلال عبيد", "phone": "01501579310", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_50826699": {"id": "c_50826699", "name": "محمود منير", "phone": "01550826699", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 5}, "c_00339120": {"id": "c_00339120", "name": "عمرو", "phone": "01500339120", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_611222": {"c_56998536": {"id": "c_56998536", "name": "وليد محمد", "phone": "01556998536", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 1}, "c_08102805": {"id": "c_08102805", "name": "احمد عمر احمد", "phone": "01508102805", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 2}, "c_54292006": {"id": "c_54292006", "name": "عبدالرحمن صابر عبدالرحمن الحاوي", "phone": "01554292006", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 3}, "c_55430564": {"id": "c_55430564", "name": "تبع محمد خالد", "phone": "01555430564", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 4}, "c_00139377": {"id": "c_00139377", "name": "", "phone": "01500139377", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}, "c_67459726": {"id": "c_67459726", "name": "", "phone": "01067459726", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_780731": {"c_58292001": {"id": "c_58292001", "name": "", "phone": "01558292001", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 1}, "c_59191952": {"id": "c_59191952", "name": "", "phone": "01559191952", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 2}, "c_07284476": {"id": "c_07284476", "name": "محمد رضا سالم", "phone": "01507284476", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 3}, "c_15253696": {"id": "c_15253696", "name": "محمد صابر", "phone": "01515253696", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 4}, "c_57850694": {"id": "c_57850694", "name": "احمداسماعيل عبد المعبود", "phone": "01557850694", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}, "c_05314321": {"id": "c_05314321", "name": "سمير محمود", "phone": "01505314321", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_648888": {"c_07224290": {"id": "c_07224290", "name": "عبده السنوسي", "phone": "01507224290", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 1}, "c_57617031": {"id": "c_57617031", "name": "محمد ناجي", "phone": "01557617031", "pkgId": "pkg_w5", "cost": 0, "paid": 570, "paidStatus": "paid", "notes": "", "seq": 2}, "c_54931980": {"id": "c_54931980", "name": "تبع عمرو", "phone": "01554931980", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 3}, "c_53179013": {"id": "c_53179013", "name": "محمد حجاج", "phone": "01553179013", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 4}, "c_02156743": {"id": "c_02156743", "name": "محمد صبرى محمد حسن", "phone": "01102156743", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}}, "l_618888": {"c_53534128": {"id": "c_53534128", "name": "الحسيني", "phone": "01553534128", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 1}, "c_07296230": {"id": "c_07296230", "name": "تبع عمرو", "phone": "01507296230", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 2}, "c_51876645": {"id": "c_51876645", "name": "هيثم جمعه", "phone": "01551876645", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 3}, "c_54603838": {"id": "c_54603838", "name": "احمد سيد", "phone": "01554603838", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_57566969": {"id": "c_57566969", "name": "عمرو العطار", "phone": "01557566969", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 5}, "c_15148956": {"id": "c_15148956", "name": "", "phone": "01515148956", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 6}}}, "companySettings": {"we": {"maxDist": 6}, "vodafone": {"maxDist": 6}, "emerald": {"maxDist": 6}, "orange": {"maxDist": 6}}}, "2026-07": {"key": "2026-07", "label": "يوليو 2026", "lines": {"we": {"l_611222": {"id": "l_611222", "number": "01500611222", "renewDay": 1, "notes": "", "ownerName": "مادونا نشأت", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_780731": {"id": "l_780731", "number": "01280780731", "renewDay": 1, "notes": "", "ownerName": "مادونا نشأت", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_673333": {"id": "l_673333", "number": "01515673333", "renewDay": 1, "notes": "", "ownerName": "مادونا نشأت", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_648888": {"id": "l_648888", "number": "01515648888", "renewDay": 16, "notes": "", "ownerName": "مادونا نشأت", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}, "l_618888": {"id": "l_618888", "number": "01515618888", "renewDay": 16, "notes": "", "ownerName": "مادونا نشأت", "company": "we", "wegoldPkg": {"idx": 5, "name": "WE GOLD 2300", "cost": 1697, "gb": 200, "min": 10000, "sharedLines": 6, "intlMin": 75}}}, "vodafone": {}, "emerald": {}, "orange": {}}, "packages": {"we": {"pkg_w1": {"id": "pkg_w1", "name": "باقة 20 جيجا", "gb": 20, "min": 1500, "cost": 0, "price": 280}, "pkg_w2": {"id": "pkg_w2", "name": "باقة 35 جيجا", "gb": 35, "min": 1500, "cost": 0, "price": 380}, "pkg_w3": {"id": "pkg_w3", "name": "باقة 40 جيجا", "gb": 40, "min": 1500, "cost": 0, "price": 430}, "pkg_w4": {"id": "pkg_w4", "name": "باقة 50 جيجا", "gb": 50, "min": 1700, "cost": 0, "price": 490}, "pkg_w5": {"id": "pkg_w5", "name": "باقة 65 جيجا", "gb": 65, "min": 1700, "cost": 0, "price": 570}, "pkg_w6": {"id": "pkg_w6", "name": "باقة 70 جيجا", "gb": 70, "min": 1700, "cost": 0, "price": 620}, "pkg_w7": {"id": "pkg_w7", "name": "باقة 80 جيجا", "gb": 80, "min": 1700, "cost": 0, "price": 700}}, "vodafone": {}, "emerald": {}, "orange": {}}, "customers": {"l_611222": {"c_01230801": {"id": "c_01230801", "name": "احمد عبد المجيد قناوي", "phone": "01501230801", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 1}, "c_15358143": {"id": "c_15358143", "name": "تبع علي", "phone": "01515358143", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 2}, "c_55965602": {"id": "c_55965602", "name": "اسماعيل على عبدالكريم", "phone": "01555965602", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 3}, "c_54206445": {"id": "c_54206445", "name": "محمد رضا", "phone": "01554206445", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 4}, "c_00139377": {"id": "c_00139377", "name": "", "phone": "01500139377", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}, "c_00575332": {"id": "c_00575332", "name": "", "phone": "01500575332", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_780731": {"c_04124428": {"id": "c_04124428", "name": "", "phone": "01204124428", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 1}, "c_08182057": {"id": "c_08182057", "name": "", "phone": "01508182057", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 2}, "c_08102805": {"id": "c_08102805", "name": "", "phone": "01508102805", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 3}, "c_15253696": {"id": "c_15253696", "name": "محمد صابر", "phone": "01515253696", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_50372082": {"id": "c_50372082", "name": "", "phone": "01550372082", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 5}}, "l_673333": {"c_50761898": {"id": "c_50761898", "name": "", "phone": "01550761898", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 1}, "c_08758465": {"id": "c_08758465", "name": "", "phone": "01508758465", "pkgId": "pkg_w3", "cost": 0, "paid": 430, "paidStatus": "paid", "notes": "", "seq": 2}, "c_51326248": {"id": "c_51326248", "name": "عبدالرحمن عنتر عثمان", "phone": "01551326248", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 3}, "c_01579310": {"id": "c_01579310", "name": "عبيد جلال عبيد", "phone": "01501579310", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 4}, "c_15095675": {"id": "c_15095675", "name": "احمد هشام", "phone": "01515095675", "pkgId": "pkg_w2", "cost": 0, "paid": 380, "paidStatus": "paid", "notes": "", "seq": 5}, "c_55129935": {"id": "c_55129935", "name": "", "phone": "01555129935", "pkgId": "pkg_w1", "cost": 0, "paid": 280, "paidStatus": "paid", "notes": "", "seq": 6}}, "l_648888": {"c_07224290": {"id": "c_07224290", "name": "عبده السنوسي", "phone": "01507224290", "pkgId": "pkg_w5", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 1}, "c_57617031": {"id": "c_57617031", "name": "محمد ناجي", "phone": "01557617031", "pkgId": "pkg_w5", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 2}, "c_59424224": {"id": "c_59424224", "name": "تبع عمرو", "phone": "01559424224", "pkgId": "pkg_w3", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 3}, "c_53179013": {"id": "c_53179013", "name": "محمد حجاج", "phone": "01553179013", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 4}, "c_02156743": {"id": "c_02156743", "name": "محمد صبرى محمد حسن", "phone": "01102156743", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 5}}, "l_618888": {"c_53534128": {"id": "c_53534128", "name": "الحسيني", "phone": "01553534128", "pkgId": "pkg_w3", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 1}, "c_54339469": {"id": "c_54339469", "name": "رجب علي رجب", "phone": "01554339469", "pkgId": "pkg_w2", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 2}, "c_51876645": {"id": "c_51876645", "name": "هيثم جمعه", "phone": "01551876645", "pkgId": "pkg_w2", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 3}, "c_54603838": {"id": "c_54603838", "name": "احمد سيد", "phone": "01554603838", "pkgId": "pkg_w2", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 4}, "c_57566969": {"id": "c_57566969", "name": "عمرو العطار", "phone": "01557566969", "pkgId": "pkg_w2", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 5}, "c_15148956": {"id": "c_15148956", "name": "", "phone": "01515148956", "pkgId": "pkg_w1", "cost": 0, "paid": 0, "paidStatus": "pending", "notes": "", "seq": 6}}}, "companySettings": {"we": {"maxDist": 6}, "vodafone": {"maxDist": 6}, "emerald": {"maxDist": 6}, "orange": {"maxDist": 6}}}}}};
 
 
@@ -450,8 +461,8 @@ function applySeed(un){
   if(u.seedVersion!==SEED_VERSION){u.seedVersion=SEED_VERSION;changed=true;}
   if(changed)saveSys(s);
 }
-
-let CU=null, CM='', CC='we'; // current user, month, company
+let CU=null,CM='',CC='we';
+let expandedLines=new Set();
 function gd(){const s=getSys();return s.users[CU.username].data||{};}
 function sd2(d){const s=getSys();s.users[CU.username].data=d;saveSys(s);}
 function gm(){const d=gd();if(!d.months||!d.months[CM])return null;return d.months[CM];}
@@ -459,23 +470,11 @@ function sm(m){const d=gd();if(!d.months)d.months={};d.months[CM]=m;sd2(d);}
 function getAllMonths(){const d=gd();if(!d.months)return[];return Object.keys(d.months).sort((a,b)=>b.localeCompare(a)).map(k=>d.months[k]);}
 function getMonthLabel(key){const p=key.split('-');const names=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];return(names[parseInt(p[1])-1]||p[1])+' '+p[0];}
 function uid(){return '_'+Math.random().toString(36).slice(2,9);}
-function emptyMonth(key){return{key,label:getMonthLabel(key),lines:{we:{},vodafone:{},etisalat:{},orange:{}},customers:{},companySettings:{}};}
+function emptyMonth(key){return{key,label:getMonthLabel(key),lines:{we:{},vodafone:{},etisalat:{},orange:{}},customers:{},adExpense:0};}
+function addLog(a,d){try{const dt=gd();if(!dt.logs)dt.logs=[];dt.logs.unshift({ts:new Date().toISOString(),u:CU.username,n:CU.displayName,a,d});if(dt.logs.length>500)dt.logs.length=500;sd2(dt);}catch{}}
+function toast(msg,ok=true){const t=document.getElementById('toast');t.textContent=msg;t.style.background=ok?'#16a34a':'#dc2626';t.style.display='block';setTimeout(()=>t.style.display='none',2500);}
 
-// Audit log
-function addLog(action,detail){
-  try{const d=gd();if(!d.logs)d.logs=[];
-  d.logs.unshift({ts:new Date().toISOString(),u:CU.username,n:CU.displayName,a:action,d:detail});
-  if(d.logs.length>500)d.logs.length=500;sd2(d);}catch{}
-}
-
-// Toast
-function toast(msg,ok=true){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.style.background=ok?'#16a34a':'#dc2626';
-  t.style.display='block';setTimeout(()=>t.style.display='none',2500);
-}
-
-// ===== LOGIN / COMPANY / LOGOUT =====
+// ===== LOGIN / COMPANY =====
 document.getElementById('login-pass').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
 document.getElementById('login-user').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('login-pass').focus();});
 
@@ -491,8 +490,7 @@ async function doLogin(){
   applySeed(un);
   document.getElementById('login-error').textContent='';
   document.getElementById('login-screen').style.display='none';
-  // Show company selector
-  document.getElementById('co-welcome').textContent='مرحباً '+user.displayName+' — اختار الشركة اللي هتشتغل عليها';
+  document.getElementById('co-welcome').textContent='مرحباً '+user.displayName+' — اختار الشركة';
   document.getElementById('company-screen').style.display='flex';
 }
 
@@ -500,7 +498,6 @@ function backToLogin(){
   CU=null;
   document.getElementById('company-screen').style.display='none';
   document.getElementById('login-screen').style.display='flex';
-  document.getElementById('login-error').textContent='';
 }
 
 function selectCompany(co){
@@ -511,20 +508,19 @@ function selectCompany(co){
   document.getElementById('month-bar').style.display='flex';
   document.getElementById('nav-username').textContent=CU.displayName;
   document.getElementById('nav-co-name').textContent=meta.name;
-  const badge=document.getElementById('nav-co-badge');
-  badge.textContent=meta.emoji+' '+meta.name;
-  badge.style.background=meta.color;
+  document.getElementById('nav-co-img').src=meta.img;
   if(CU.role==='admin')document.getElementById('nav-admin').style.display='';
   const months=getAllMonths();
   CM=months.length?months[0].key:(()=>{
     const now=new Date();const key=now.getFullYear()+'-'+(now.getMonth()+1).toString().padStart(2,'0');
     const d=gd();d.months=d.months||{};d.months[key]=emptyMonth(key);sd2(d);return key;
   })();
+  expandedLines=new Set();
   renderMonthBar();showPage('home');
 }
 
 function doLogout(){
-  CU=null;CC='we';
+  CU=null;CC='we';expandedLines=new Set();
   document.getElementById('login-screen').style.display='flex';
   document.getElementById('company-screen').style.display='none';
   document.getElementById('main-nav').style.display='none';
@@ -550,36 +546,100 @@ function showPage(name){
 // ===== MONTH BAR =====
 function renderMonthBar(){
   const months=getAllMonths();
-  document.getElementById('month-chips').innerHTML=months.map(m=>`<button class="mchip ${m.key===CM?'act':''}" onclick="selectMonth('${m.key}')">${m.label||getMonthLabel(m.key)}</button>`).join('');
+  document.getElementById('month-chips').innerHTML=months.map(m=>`
+    <button class="mchip ${m.key===CM?'act':''}" onclick="selectMonth('${m.key}')">${m.label||getMonthLabel(m.key)}</button>
+    ${m.key===CM?`<button class="del-month-btn" onclick="confirmDeleteMonth('${m.key}')" title="حذف الشهر">🗑️</button>`:''}
+  `).join('');
 }
-function selectMonth(key){CM=key;renderMonthBar();const active=document.querySelector('.page.show');if(active?.id==='page-dash')renderDash();else renderHome();}
+function selectMonth(key){CM=key;expandedLines=new Set();renderMonthBar();const a=document.querySelector('.page.show');if(a?.id==='page-dash')renderDash();else renderHome();}
+
+// ===== DELETE MONTH =====
+function confirmDeleteMonth(key){
+  const m=gd().months?.[key];if(!m)return;
+  const label=m.label||getMonthLabel(key);
+  openModal(`${modalHead('حذف الشهر')}
+  <div class="modal-body" style="text-align:center;padding:24px">
+    <div style="font-size:40px;margin-bottom:12px">⚠️</div>
+    <p style="font-size:15px;font-weight:700;margin-bottom:8px">حذف شهر "${label}"؟</p>
+    <p style="color:var(--sub);font-size:13px">سيتم حذف كل الخطوط والعملاء في هذا الشهر نهائياً. لا يمكن التراجع.</p>
+  </div>
+  <div class="modal-foot">
+    <button class="btn-cancel" onclick="closeModal()">إلغاء</button>
+    <button class="btn-delete-modal" onclick="deleteMonth('${key}')">حذف الشهر نهائياً</button>
+  </div>`);
+}
+function deleteMonth(key){
+  const d=gd();if(!d.months?.[key])return;
+  const label=d.months[key].label||getMonthLabel(key);
+  delete d.months[key];sd2(d);
+  const months=getAllMonths();
+  CM=months.length?months[0].key:'';
+  closeModal();expandedLines=new Set();renderMonthBar();
+  if(CM)renderHome();else document.getElementById('page-home').innerHTML='<div class="no-data">لا توجد شهور. أضف شهراً جديداً.</div>';
+  addLog('حذف شهر',label);toast('تم حذف الشهر',false);
+}
 
 // ===== HOME PAGE =====
+function getCoLines(m,co){return m?.lines?.[co]||{};}
+function getCoCustomers(m,lineIds){return lineIds.flatMap(lid=>Object.values(m.customers?.[lid]||{}));}
+function findLine(lid){const m=gm();if(!m)return null;for(const co of Object.keys(COMPANIES_META)){const l=m.lines?.[co]?.[lid];if(l)return{...l,_co:co};}return null;}
+
+function lineProfit(m,line){
+  const custs=Object.values(m.customers?.[line.id]||{});
+  const extrasRev=custs.reduce((s,c)=>{return s+(c.extras||[]).reduce((s2,e)=>s2+(e.profit||0),0);},0);
+  const rev=custs.filter(c=>c.paidStatus==='paid').reduce((s,c)=>s+(c.paid||0),0)+extrasRev;
+  return rev-(line.wegoldPkg?.cost||0);
+}
+
 function renderHome(){
-  const m=gm();
-  const el=document.getElementById('page-home');
-  if(!m){el.innerHTML='<div class="no-data">لا توجد بيانات لهذا الشهر</div>';return;}
+  const m=gm();const el=document.getElementById('page-home');
+  if(!m){el.innerHTML='<div class="no-data">لا توجد بيانات</div>';return;}
   const coLines=getCoLines(m,CC);
-  const allCusts=getCoCustomers(m,Object.keys(coLines));
+  const allLineIds=Object.keys(coLines);
+  const allCusts=getCoCustomers(m,allLineIds);
   const nPaid=allCusts.filter(c=>c.paidStatus==='paid').length;
-  const rev=allCusts.reduce((s,c)=>s+(c.paid||0),0);
+  const baseRev=allCusts.filter(c=>c.paidStatus==='paid').reduce((s,c)=>s+(c.paid||0),0);
+  const extrasRev=allCusts.reduce((s,c)=>{return s+(c.extras||[]).reduce((s2,e)=>s2+(e.profit||0),0);},0);
+  const totalRev=baseRev+extrasRev;
   const cost=Object.values(coLines).reduce((s,l)=>s+(l.wegoldPkg?.cost||0),0);
-  const profit=rev-cost;
+  const adExp=m.adExpense||0;
+  const profit=totalRev-cost-adExp;
   const pct=allCusts.length?Math.round(nPaid/allCusts.length*100):0;
-  const day1Lines=Object.values(coLines).filter(l=>l.renewDay===1).sort((a,b)=>a.number?.localeCompare(b.number||'')||0);
-  const day16Lines=Object.values(coLines).filter(l=>l.renewDay===16).sort((a,b)=>a.number?.localeCompare(b.number||'')||0);
+  const day1Lines=Object.values(coLines).filter(l=>l.renewDay===1);
+  const day16Lines=Object.values(coLines).filter(l=>l.renewDay===16);
+
+  // Alerts
+  const incompleteLinesCount=Object.values(coLines).filter(l=>{
+    const cnt=Object.keys(m.customers?.[l.id]||{}).length;
+    return cnt<(l.wegoldPkg?.sharedLines||6);
+  }).length;
+  const linesByProfit=Object.values(coLines).map(l=>({...l,_p:lineProfit(m,l)}));
+  linesByProfit.sort((a,b)=>b._p-a._p);
+  const bestLine=linesByProfit[0];const worstLine=linesByProfit[linesByProfit.length-1];
+
   el.innerHTML=`
     <div class="stats-row">
-      <div class="stat-card"><div class="stat-val">${Object.keys(coLines).length}</div><div class="stat-lbl">الخطوط</div></div>
+      <div class="stat-card"><div class="stat-val">${allLineIds.length}</div><div class="stat-lbl">الخطوط</div></div>
       <div class="stat-card"><div class="stat-val">${allCusts.length}</div><div class="stat-lbl">العملاء</div></div>
       <div class="stat-card green"><div class="stat-val">${nPaid}</div><div class="stat-lbl">دفعوا ✓</div></div>
       <div class="stat-card ${allCusts.length-nPaid>0?'amber':'green'}"><div class="stat-val">${allCusts.length-nPaid}</div><div class="stat-lbl">لم يدفعوا</div></div>
-      <div class="stat-card accent"><div class="stat-val">${pct}%</div><div class="stat-lbl">نسبة التحصيل</div></div>
-      <div class="stat-card blue"><div class="stat-val">${rev.toLocaleString('ar-EG')} ج</div><div class="stat-lbl">الإيرادات</div></div>
-      <div class="stat-card ${profit>=0?'green':'red'}"><div class="stat-val">${profit.toLocaleString('ar-EG')} ج</div><div class="stat-lbl">الربح</div></div>
+      <div class="stat-card accent"><div class="stat-val">${pct}%</div><div class="stat-lbl">التحصيل</div></div>
+      <div class="stat-card blue"><div class="stat-val">${totalRev.toLocaleString('ar-EG')} ج</div><div class="stat-lbl">الإيرادات</div></div>
+      <div class="stat-card ${profit>=0?'green':'red'}"><div class="stat-val">${profit.toLocaleString('ar-EG')} ج</div><div class="stat-lbl">الربح الصافي</div></div>
     </div>
+    <div class="ad-expense-row">
+      <label>💰 مصروفات دعائية:</label>
+      <input class="ad-expense-input" id="ad-exp-input" type="number" value="${adExp}" placeholder="0" min="0">
+      <button class="ad-expense-btn" onclick="saveAdExpense()">حفظ</button>
+      ${adExp>0?`<span class="ad-expense-note">يخصم ${adExp.toLocaleString('ar-EG')} ج من الربح</span>`:'<span class="ad-expense-note">الإعلانات الممولة وغيرها</span>'}
+    </div>
+    ${linesByProfit.length>=1?`<div class="alerts-row">
+      ${incompleteLinesCount>0?`<div class="alert-card warn"><span class="ai">⚠️</span><span class="at">خطوط تحتاج مشتركين</span><span class="av">${incompleteLinesCount} خط</span></div>`:''}
+      ${bestLine?`<div class="alert-card best"><span class="ai">🏆</span><span class="at">الأعلى ربحاً: ${bestLine.number}</span><span class="av">+${bestLine._p.toLocaleString('ar-EG')} ج</span></div>`:''}
+      ${worstLine&&linesByProfit.length>1?`<div class="alert-card worst"><span class="ai">📉</span><span class="at">الأقل ربحاً: ${worstLine.number}</span><span class="av">${worstLine._p.toLocaleString('ar-EG')} ج</span></div>`:''}
+    </div>`:''}
     <div class="filter-tabs">
-      <button class="ftab act" id="ft-all" onclick="setFilter('all')">الكل (${Object.keys(coLines).length})</button>
+      <button class="ftab act" id="ft-all" onclick="setFilter('all')">الكل (${allLineIds.length})</button>
       <button class="ftab" id="ft-d1" onclick="setFilter('d1')">يوم 1 (${day1Lines.length})</button>
       <button class="ftab" id="ft-d16" onclick="setFilter('d16')">يوم 16 (${day16Lines.length})</button>
       <div class="spacer"></div>
@@ -607,38 +667,61 @@ function renderLinesContainer(day1,day16){
     html+=`<div class="day-section"><div class="day-hdr"><span class="day-badge d1">يوم 1</span><span class="day-meta">${day1.length} خط</span></div>${day1.map(l=>renderLineCard(l)).join('')}</div>`;
   if(_curFilter!=='d1'&&day16.length)
     html+=`<div class="day-section"><div class="day-hdr"><span class="day-badge d16">يوم 16</span><span class="day-meta">${day16.length} خط</span></div>${day16.map(l=>renderLineCard(l)).join('')}</div>`;
-  if(!html)html='<div class="empty-state"><div class="ei">📭</div><p>لا توجد خطوط. اضغط "+ خط جديد" لإضافة خط.</p></div>';
+  if(!html)html='<div style="text-align:center;padding:40px;color:var(--sub)">📭 لا توجد خطوط. اضغط "+ خط" لإضافة.</div>';
   el.innerHTML=html;
+}
+
+function toggleLine(lid){
+  if(expandedLines.has(lid))expandedLines.delete(lid);else expandedLines.add(lid);
+  const m=gm();const line=findLine(lid);if(!line)return;
+  const cardEl=document.getElementById('lc-'+lid);
+  if(cardEl){const tmp=document.createElement('div');tmp.innerHTML=renderLineCard(line);cardEl.replaceWith(tmp.firstChild);}
 }
 
 function renderLineCard(line){
   const m=gm();if(!m)return'';
-  const custs=Object.values(m.customers[line.id]||{}).sort((a,b)=>(a.seq||0)-(b.seq||0));
+  const custs=Object.values(m.customers?.[line.id]||{}).sort((a,b)=>(a.seq||0)-(b.seq||0));
   const paid=custs.filter(c=>c.paidStatus==='paid');
-  const rev=paid.reduce((s,c)=>s+(c.paid||0),0);
+  const baseRev=paid.reduce((s,c)=>s+(c.paid||0),0);
+  const extrasRev=custs.reduce((s,c)=>{return s+(c.extras||[]).reduce((s2,e)=>s2+(e.profit||0),0);},0);
+  const rev=baseRev+extrasRev;
   const cost=line.wegoldPkg?.cost||0;
   const profit=rev-cost;
-  const pct=custs.length?Math.round(paid.length/custs.length*100):0;
   const maxC=line.wegoldPkg?.sharedLines||6;
   const isFull=custs.length>=maxC;
-  return `<div class="line-card" id="lc-${line.id}">
-    <div class="line-hdr">
+  const pct=custs.length?Math.round(paid.length/custs.length*100):0;
+  const isOpen=expandedLines.has(line.id);
+  const isIncomplete=custs.length<maxC;
+  const lp=lineProfit(m,line);
+  const m2=gm();const coLines=Object.values(getCoLines(m2,CC));
+  const profits=coLines.map(l=>lineProfit(m2,l));
+  const isBest=coLines.length>1&&lp===Math.max(...profits)&&lp>0;
+  const isWorst=coLines.length>1&&lp===Math.min(...profits);
+
+  const cardClass=`line-card${isBest?' best-line':isWorst&&lp<0?' worst-line':isIncomplete?' warn-line':''}`;
+  return `<div class="${cardClass}" id="lc-${line.id}">
+    <div class="line-hdr ${isOpen?'open':''}" onclick="toggleLine('${line.id}')">
+      <span class="line-toggle">${isOpen?'▼':'▶'}</span>
       <span class="line-num">📱 ${line.number||'—'}</span>
       ${line.ownerName?`<span class="line-owner">${line.ownerName}</span>`:''}
-      <span class="line-stat ls-paid">${paid.length}/${custs.length} دفعوا (${pct}%)</span>
+      ${isIncomplete?`<span class="line-stat ls-warn">⚠️ ${custs.length}/${maxC}</span>`:`<span class="line-stat ls-paid">${paid.length}/${custs.length} دفعوا (${pct}%)</span>`}
+      ${extrasRev>0?`<span class="line-stat" style="background:var(--green-lt);color:var(--green)">+${extrasRev} ج إضافات</span>`:''}
       <span class="line-stat ls-rev">${rev.toLocaleString('ar-EG')} ج</span>
       <span class="line-stat ls-profit ${profit<0?'neg':''}">${profit>=0?'+':''}${profit.toLocaleString('ar-EG')} ج</span>
-      <div class="line-actions-group">
-        ${!isFull?`<button class="btn-sm primary" onclick="showAddCust('${line.id}')">+ عميل</button>`:`<span style="font-size:11px;color:var(--sub)">مكتمل ${custs.length}/${maxC}</span>`}
+      <div class="line-actions-group" onclick="event.stopPropagation()">
         <button class="btn-sm" onclick="showEditLine('${line.id}')">✏️</button>
         <button class="btn-sm danger" onclick="confirmDeleteLine('${line.id}')">🗑️</button>
       </div>
     </div>
-    ${custs.length?`<table class="custs-table">
-      <thead><tr><th>#</th><th>الاسم</th><th>الرقم</th><th>الباقة</th><th>الجيجا</th><th>الدقايق</th><th>السعر</th><th>الحالة</th><th></th></tr></thead>
-      <tbody>${custs.map((c,i)=>renderCustRow(c,line.id,i+1)).join('')}</tbody>
-    </table>`:''}
-    <div class="add-cust-row">${!isFull?`<button class="btn-add-cust" onclick="showAddCust('${line.id}')">+ إضافة عميل</button>`:''}</div>
+    <div class="line-body ${isOpen?'open':''}">
+      ${custs.length?`<table class="custs-table">
+        <thead><tr><th>#</th><th>الاسم</th><th>الرقم</th><th>الجيجا</th><th>الدقايق</th><th>السعر</th><th>الحالة</th><th></th></tr></thead>
+        <tbody>${custs.map((c,i)=>renderCustRow(c,line.id,i+1)).join('')}</tbody>
+      </table>`:'<div style="padding:12px 14px;color:var(--sub);font-size:12px">لا يوجد عملاء بعد.</div>'}
+      <div class="add-cust-row">
+        ${!isFull?`<button class="btn-add-cust" onclick="showAddCust('${line.id}')">+ إضافة عميل</button>`:`<span style="font-size:11px;color:var(--sub)">الخط ممتلئ ${custs.length}/${maxC}</span>`}
+      </div>
+    </div>
   </div>`;
 }
 
@@ -647,48 +730,51 @@ function renderCustRow(c,lid,i){
   const gb=c.customGb!==undefined?c.customGb:(PKG_DATA[c.pkgId]?.gb||'—');
   const min=c.customMin!==undefined?c.customMin:(PKG_DATA[c.pkgId]?.min||'—');
   const pr=isPaid?(c.paid||0):0;
-  return `<tr id="cr-${c.id}">
+  const extras=c.extras||[];
+  let rows=`<tr id="cr-${c.id}">
     <td style="color:var(--sub);font-size:11px">${i}</td>
     <td>${c.name||'—'}</td>
     <td>${c.phone||''}</td>
-    <td><span class="pkg-badge">${c.customGb!==undefined?'مخصص':(c.pkgId||'—')}</span></td>
     <td style="font-weight:700;color:var(--blue)">${gb} GB</td>
     <td style="font-weight:700;color:var(--accent)">${min} د</td>
     <td style="font-weight:700">${isPaid?pr.toLocaleString('ar-EG')+' ج':'—'}</td>
     <td><button class="toggle-paid ${isPaid?'tp-paid':'tp-pend'}" onclick="togglePaid('${lid}','${c.id}')">${isPaid?'✓ دفع':'⏳ معلق'}</button></td>
     <td><div class="act-btns">
+      <button class="act-btn extra" onclick="showAddExtra('${lid}','${c.id}')" title="إضافة وسط الشهر">➕</button>
       <button class="act-btn" onclick="showEditCust('${lid}','${c.id}')">✏️</button>
       <button class="act-btn del" onclick="confirmDeleteCust('${lid}','${c.id}')">🗑️</button>
     </div></td>
   </tr>`;
+  for(const ex of extras){
+    rows+=`<tr class="extra-row" id="ex-${ex.id}">
+      <td colspan="2" style="padding-right:20px"><span class="extra-badge">إضافة ${ex.date||''}</span> ${ex.desc||''}</td>
+      <td></td><td style="color:var(--blue)">${ex.gb||0} GB</td>
+      <td style="color:var(--accent)">${ex.min||0} د</td>
+      <td>${ex.price||0} ج</td>
+      <td style="color:var(--green);font-weight:700">ربح: ${ex.profit||0} ج</td>
+      <td><button class="act-btn del" onclick="deleteExtra('${lid}','${c.id}','${ex.id}')">🗑️</button></td>
+    </tr>`;
+  }
+  return rows;
 }
 
-// ===== HELPERS =====
-function getCoLines(m,co){
-  if(!m||!m.lines)return{};
-  return m.lines[co]||{};
-}
-function getCoCustomers(m,lineIds){
-  if(!m||!m.customers)return[];
-  return lineIds.flatMap(lid=>Object.values(m.customers[lid]||{}));
-}
-function findLine(lid){
-  const m=gm();if(!m)return null;
-  for(const co of Object.keys(COMPANIES_META)){
-    const l=m.lines?.[co]?.[lid];if(l)return{...l,_co:co};
-  }
-  return null;
+// ===== AD EXPENSE =====
+function saveAdExpense(){
+  const v=parseFloat(document.getElementById('ad-exp-input').value)||0;
+  const m=gm();if(!m)return;
+  m.adExpense=v;sm(m);
+  addLog('مصروفات دعائية',`${v.toLocaleString('ar-EG')} ج`);
+  toast('✓ تم حفظ المصروفات');renderHome();
 }
 
 // ===== TOGGLE PAID =====
 function togglePaid(lid,cid){
-  const m=gm();if(!m||!m.customers[lid]||!m.customers[lid][cid])return;
+  const m=gm();if(!m||!m.customers?.[lid]?.[cid])return;
   const c=m.customers[lid][cid];
   const wasPaid=c.paidStatus==='paid';
   c.paidStatus=wasPaid?'pending':'paid';
   c.paid=wasPaid?0:pkgPrice(c.pkgId,c);
-  sm(m);
-  addLog('تحديث دفع',`${c.name||c.phone} — ${c.paidStatus==='paid'?'دفع ✓':'معلق ⏳'}`);
+  sm(m);addLog('تحديث دفع',`${c.name||c.phone} — ${c.paidStatus==='paid'?'دفع ✓':'معلق ⏳'}`);
   const line=findLine(lid);if(!line)return;
   const cardEl=document.getElementById('lc-'+lid);
   if(cardEl){const tmp=document.createElement('div');tmp.innerHTML=renderLineCard(line);cardEl.replaceWith(tmp.firstChild);}
@@ -699,48 +785,50 @@ function togglePaid(lid,cid){
 function refreshStats(){
   const m=gm();if(!m)return;
   const coLines=getCoLines(m,CC);
-  const allCusts=getCoCustomers(m,Object.keys(coLines));
+  const allLineIds=Object.keys(coLines);
+  const allCusts=getCoCustomers(m,allLineIds);
   const nPaid=allCusts.filter(c=>c.paidStatus==='paid').length;
-  const rev=allCusts.reduce((s,c)=>s+(c.paid||0),0);
+  const baseRev=allCusts.filter(c=>c.paidStatus==='paid').reduce((s,c)=>s+(c.paid||0),0);
+  const extrasRev=allCusts.reduce((s,c)=>{return s+(c.extras||[]).reduce((s2,e)=>s2+(e.profit||0),0);},0);
+  const totalRev=baseRev+extrasRev;
   const cost=Object.values(coLines).reduce((s,l)=>s+(l.wegoldPkg?.cost||0),0);
-  const profit=rev-cost;
+  const adExp=m.adExpense||0;
+  const profit=totalRev-cost-adExp;
   const pct=allCusts.length?Math.round(nPaid/allCusts.length*100):0;
   const el=document.querySelector('#page-home .stats-row');
   if(el)el.innerHTML=`
-    <div class="stat-card"><div class="stat-val">${Object.keys(coLines).length}</div><div class="stat-lbl">الخطوط</div></div>
+    <div class="stat-card"><div class="stat-val">${allLineIds.length}</div><div class="stat-lbl">الخطوط</div></div>
     <div class="stat-card"><div class="stat-val">${allCusts.length}</div><div class="stat-lbl">العملاء</div></div>
     <div class="stat-card green"><div class="stat-val">${nPaid}</div><div class="stat-lbl">دفعوا ✓</div></div>
     <div class="stat-card ${allCusts.length-nPaid>0?'amber':'green'}"><div class="stat-val">${allCusts.length-nPaid}</div><div class="stat-lbl">لم يدفعوا</div></div>
-    <div class="stat-card accent"><div class="stat-val">${pct}%</div><div class="stat-lbl">نسبة التحصيل</div></div>
-    <div class="stat-card blue"><div class="stat-val">${rev.toLocaleString('ar-EG')} ج</div><div class="stat-lbl">الإيرادات</div></div>
-    <div class="stat-card ${profit>=0?'green':'red'}"><div class="stat-val">${profit.toLocaleString('ar-EG')} ج</div><div class="stat-lbl">الربح</div></div>
+    <div class="stat-card accent"><div class="stat-val">${pct}%</div><div class="stat-lbl">التحصيل</div></div>
+    <div class="stat-card blue"><div class="stat-val">${totalRev.toLocaleString('ar-EG')} ج</div><div class="stat-lbl">الإيرادات</div></div>
+    <div class="stat-card ${profit>=0?'green':'red'}"><div class="stat-val">${profit.toLocaleString('ar-EG')} ج</div><div class="stat-lbl">الربح الصافي</div></div>
   `;
 }
 
-// ===== MODAL HELPERS =====
+// ===== MODAL =====
 function openModal(html){document.getElementById('modal-box').innerHTML=html;document.getElementById('modal-overlay').classList.add('show');}
 function closeModal(){document.getElementById('modal-overlay').classList.remove('show');}
-function modalHead(title){return`<div class="modal-head"><div class="modal-title">${title}</div><button class="modal-close" onclick="closeModal()">✕</button></div>`;}
+function modalHead(t){return`<div class="modal-head"><div class="modal-title">${t}</div><button class="modal-close" onclick="closeModal()">✕</button></div>`;}
 
-// ===== ADD / EDIT LINE =====
+// ===== ADD/EDIT LINE =====
 function showAddLine(day=1){
   openModal(`${modalHead('إضافة خط جديد')}
   <div class="modal-body">
     <div class="mfl"><label>رقم الخط</label><input id="ml-num" placeholder="01555557418" dir="ltr"></div>
     <div class="mfl"><label>اسم صاحب الخط</label><input id="ml-owner" placeholder="احمد حسن بهاء"></div>
     <div class="mfl"><label>يوم الدفع</label><select id="ml-day">
-      <option value="1" ${day===1?'selected':''}>يوم 1</option>
-      <option value="16" ${day===16?'selected':''}>يوم 16</option>
+      <option value="1" ${day===1?'selected':''}>يوم 1</option><option value="16" ${day===16?'selected':''}>يوم 16</option>
     </select></div>
-    <div class="mfl"><label>باقة WE GOLD (الخط الأساسي)</label><select id="ml-pkg">
+    <div class="mfl"><label>باقة WE GOLD</label><select id="ml-pkg">
       ${WE_GOLD_PKGS.map(p=>`<option value="${p.idx}">${p.name} — ${p.cost} ج (${p.sharedLines} مشتركين)</option>`).join('')}
     </select></div>
-    <div class="mfl"><label>ملاحظات</label><textarea id="ml-notes" rows="2" placeholder="اختياري"></textarea></div>
+    <div class="mfl"><label>ملاحظات</label><textarea id="ml-notes" rows="2"></textarea></div>
   </div>
   <div class="modal-foot"><button class="btn-cancel" onclick="closeModal()">إلغاء</button><button class="btn-save" onclick="saveLine()">حفظ</button></div>`);
   document.getElementById('ml-pkg').value='5';
 }
-
 function showEditLine(lid){
   const line=findLine(lid);if(!line)return;
   openModal(`${modalHead('تعديل الخط')}
@@ -748,20 +836,15 @@ function showEditLine(lid){
     <div class="mfl"><label>رقم الخط</label><input id="ml-num" value="${line.number||''}" dir="ltr"></div>
     <div class="mfl"><label>اسم صاحب الخط</label><input id="ml-owner" value="${line.ownerName||''}"></div>
     <div class="mfl"><label>يوم الدفع</label><select id="ml-day">
-      <option value="1" ${line.renewDay===1?'selected':''}>يوم 1</option>
-      <option value="16" ${line.renewDay===16?'selected':''}>يوم 16</option>
+      <option value="1" ${line.renewDay===1?'selected':''}>يوم 1</option><option value="16" ${line.renewDay===16?'selected':''}>يوم 16</option>
     </select></div>
     <div class="mfl"><label>باقة WE GOLD</label><select id="ml-pkg">
       ${WE_GOLD_PKGS.map(p=>`<option value="${p.idx}" ${(line.wegoldPkg?.idx||5)===p.idx?'selected':''}>${p.name} — ${p.cost} ج (${p.sharedLines} مشتركين)</option>`).join('')}
     </select></div>
     <div class="mfl"><label>ملاحظات</label><textarea id="ml-notes" rows="2">${line.notes||''}</textarea></div>
   </div>
-  <div class="modal-foot">
-    <button class="btn-cancel" onclick="closeModal()">إلغاء</button>
-    <button class="btn-save" onclick="saveLine('${lid}','${line._co}')">حفظ التعديل</button>
-  </div>`);
+  <div class="modal-foot"><button class="btn-cancel" onclick="closeModal()">إلغاء</button><button class="btn-save" onclick="saveLine('${lid}','${line._co}')">حفظ</button></div>`);
 }
-
 function saveLine(lid=null,co=null){
   if(!co)co=CC;
   const num=document.getElementById('ml-num').value.trim();
@@ -780,58 +863,49 @@ function saveLine(lid=null,co=null){
     addLog('إضافة خط',`${num} — ${owner||'بدون مالك'}`);toast('✓ تم إضافة الخط');
   } else {
     m.lines[co][lid]={...m.lines[co][lid],number:num,renewDay:day,ownerName:owner,notes,wegoldPkg:pkg};
-    addLog('تعديل خط',`${num} — ${owner}`);toast('✓ تم تعديل الخط');
+    addLog('تعديل خط',`${num}`);toast('✓ تم التعديل');
   }
   sm(m);closeModal();renderHome();
 }
-
 function confirmDeleteLine(lid){
   const line=findLine(lid);if(!line)return;
-  const m=gm();const nCusts=Object.keys(m?.customers?.[lid]||{}).length;
+  const m=gm();const n=Object.keys(m?.customers?.[lid]||{}).length;
   openModal(`${modalHead('حذف الخط')}
   <div class="modal-body" style="text-align:center;padding:24px">
     <div style="font-size:36px;margin-bottom:12px">⚠️</div>
     <p style="font-size:15px;font-weight:700;margin-bottom:8px">حذف الخط ${line.number}؟</p>
-    <p style="color:var(--sub);font-size:13px">سيتم حذف الخط و${nCusts} عميل. لا يمكن التراجع.</p>
+    <p style="color:var(--sub);font-size:13px">سيتم حذف الخط و${n} عميل نهائياً.</p>
   </div>
-  <div class="modal-foot">
-    <button class="btn-cancel" onclick="closeModal()">إلغاء</button>
-    <button class="btn-delete-modal" onclick="deleteLine('${lid}','${line._co}')">حذف نهائياً</button>
-  </div>`);
+  <div class="modal-foot"><button class="btn-cancel" onclick="closeModal()">إلغاء</button><button class="btn-delete-modal" onclick="deleteLine('${lid}','${line._co}')">حذف</button></div>`);
 }
-
 function deleteLine(lid,co){
   const m=gm();if(!m)return;
   const line=m.lines[co]?.[lid];
   delete m.lines[co][lid];delete m.customers[lid];
+  expandedLines.delete(lid);
   addLog('حذف خط',`${line?.number||lid}`);
-  sm(m);closeModal();toast('تم حذف الخط',false);renderHome();
+  sm(m);closeModal();toast('تم الحذف',false);renderHome();
 }
 
-// ===== ADD / EDIT CUSTOMER =====
+// ===== ADD/EDIT CUSTOMER =====
 function pkgSelectHtml(selId=''){
   let opts=Object.entries(PKG_DATA).map(([k,v])=>`<option value="${k}" ${k===selId?'selected':''}>${v.label} — ${v.price} ج</option>`).join('');
   opts+=`<option value="custom" ${'custom'===selId?'selected':''}>🔧 باقة مخصصة</option>`;
   return opts;
 }
-
 function showAddCust(lid){
   const line=findLine(lid);
   openModal(`${modalHead('إضافة عميل — '+(line?.number||''))}
   <div class="modal-body">
     <div class="mfl"><label>الاسم</label><input id="mc-name" placeholder="اسم العميل"></div>
     <div class="mfl"><label>رقم الهاتف</label><input id="mc-phone" placeholder="01xxxxxxxxx" dir="ltr"></div>
-    <div class="mfl"><label>الباقة</label>
-      <select id="mc-pkg" onchange="toggleCustomPkg()">${pkgSelectHtml()}</select>
-    </div>
+    <div class="mfl"><label>الباقة</label><select id="mc-pkg" onchange="toggleCustomPkg()">${pkgSelectHtml('pkg_w4')}</select></div>
     <div id="custom-pkg-fields" style="display:none">
-      <div class="mfl"><label>تفاصيل الباقة المخصصة</label>
-        <div class="row3">
-          <div><label style="font-size:11px">الجيجا (GB)</label><input id="mc-gb" type="number" placeholder="50" min="0"></div>
-          <div><label style="font-size:11px">الدقايق</label><input id="mc-min" type="number" placeholder="200" min="0"></div>
-          <div><label style="font-size:11px">السعر (ج)</label><input id="mc-price" type="number" placeholder="490" min="0"></div>
-        </div>
-      </div>
+      <div class="mfl"><div class="row3">
+        <div><label>الجيجا (GB)</label><input id="mc-gb" type="number" placeholder="50" min="0"></div>
+        <div><label>الدقايق</label><input id="mc-min" type="number" placeholder="1700" min="0"></div>
+        <div><label>السعر (ج)</label><input id="mc-price" type="number" placeholder="490" min="0"></div>
+      </div></div>
     </div>
     <div class="mfl"><label>حالة الدفع</label><select id="mc-status">
       <option value="pending">⏳ لم يدفع</option><option value="paid">✓ دفع</option>
@@ -840,9 +914,8 @@ function showAddCust(lid){
   </div>
   <div class="modal-foot"><button class="btn-cancel" onclick="closeModal()">إلغاء</button><button class="btn-save" onclick="saveCust('${lid}')">حفظ</button></div>`);
 }
-
 function showEditCust(lid,cid){
-  const m=gm();if(!m||!m.customers[lid]?.[cid])return;
+  const m=gm();if(!m||!m.customers?.[lid]?.[cid])return;
   const c=m.customers[lid][cid];
   const isCustom=c.customGb!==undefined;
   const pkgVal=isCustom?'custom':(c.pkgId||'pkg_w4');
@@ -850,17 +923,13 @@ function showEditCust(lid,cid){
   <div class="modal-body">
     <div class="mfl"><label>الاسم</label><input id="mc-name" value="${c.name||''}"></div>
     <div class="mfl"><label>رقم الهاتف</label><input id="mc-phone" value="${c.phone||''}" dir="ltr"></div>
-    <div class="mfl"><label>الباقة</label>
-      <select id="mc-pkg" onchange="toggleCustomPkg()">${pkgSelectHtml(pkgVal)}</select>
-    </div>
+    <div class="mfl"><label>الباقة</label><select id="mc-pkg" onchange="toggleCustomPkg()">${pkgSelectHtml(pkgVal)}</select></div>
     <div id="custom-pkg-fields" style="${isCustom?'':'display:none'}">
-      <div class="mfl"><label>تفاصيل الباقة المخصصة</label>
-        <div class="row3">
-          <div><label style="font-size:11px">الجيجا (GB)</label><input id="mc-gb" type="number" value="${c.customGb||''}" min="0"></div>
-          <div><label style="font-size:11px">الدقايق</label><input id="mc-min" type="number" value="${c.customMin||''}" min="0"></div>
-          <div><label style="font-size:11px">السعر (ج)</label><input id="mc-price" type="number" value="${c.customPrice||''}" min="0"></div>
-        </div>
-      </div>
+      <div class="mfl"><div class="row3">
+        <div><label>الجيجا (GB)</label><input id="mc-gb" type="number" value="${c.customGb||''}" min="0"></div>
+        <div><label>الدقايق</label><input id="mc-min" type="number" value="${c.customMin||''}" min="0"></div>
+        <div><label>السعر (ج)</label><input id="mc-price" type="number" value="${c.customPrice||''}" min="0"></div>
+      </div></div>
     </div>
     <div class="mfl"><label>حالة الدفع</label><select id="mc-status">
       <option value="pending" ${c.paidStatus!=='paid'?'selected':''}>⏳ لم يدفع</option>
@@ -868,17 +937,12 @@ function showEditCust(lid,cid){
     </select></div>
     <div class="mfl"><label>ملاحظات</label><input id="mc-notes" value="${c.notes||''}"></div>
   </div>
-  <div class="modal-foot">
-    <button class="btn-cancel" onclick="closeModal()">إلغاء</button>
-    <button class="btn-save" onclick="saveCust('${lid}','${cid}')">حفظ التعديل</button>
-  </div>`);
+  <div class="modal-foot"><button class="btn-cancel" onclick="closeModal()">إلغاء</button><button class="btn-save" onclick="saveCust('${lid}','${cid}')">حفظ</button></div>`);
 }
-
 function toggleCustomPkg(){
   const v=document.getElementById('mc-pkg').value;
   document.getElementById('custom-pkg-fields').style.display=v==='custom'?'':'none';
 }
-
 function saveCust(lid,cid=null){
   const name=document.getElementById('mc-name').value.trim();
   const phone=document.getElementById('mc-phone').value.trim().replace(/[\s\-]/g,'');
@@ -888,56 +952,93 @@ function saveCust(lid,cid=null){
   if(!phone){alert('أدخل رقم الهاتف');return;}
   const m=gm();if(!m)return;
   if(!m.customers[lid])m.customers[lid]={};
-  let custData={name,phone,pkgId:pkgId==='custom'?'custom':pkgId,paidStatus:status,notes};
+  let custData={name,phone,paidStatus:status,notes};
   if(pkgId==='custom'){
     const gb=parseFloat(document.getElementById('mc-gb').value)||0;
     const min=parseFloat(document.getElementById('mc-min').value)||0;
     const price=parseFloat(document.getElementById('mc-price').value)||0;
-    custData.customGb=gb;custData.customMin=min;custData.customPrice=price;
+    custData.customGb=gb;custData.customMin=min;custData.customPrice=price;custData.pkgId='custom';
     custData.paid=status==='paid'?price:0;
-    delete custData.pkgId;
   } else {
-    custData.paid=status==='paid'?(PKG_DATA[pkgId]?.price||0):0;
+    custData.pkgId=pkgId;custData.paid=status==='paid'?(PKG_DATA[pkgId]?.price||0):0;
   }
   if(!cid){
-    cid='c_'+phone.slice(-8)+'_'+uid();
-    custData.id=cid;custData.seq=Object.keys(m.customers[lid]).length+1;
-    m.customers[lid][cid]=custData;
-    addLog('إضافة عميل',`${name||phone}`);toast('✓ تم إضافة العميل');
+    cid='c_'+phone.slice(-8)+'_'+uid();custData.id=cid;custData.seq=Object.keys(m.customers[lid]).length+1;custData.extras=[];
+    m.customers[lid][cid]=custData;addLog('إضافة عميل',`${name||phone}`);toast('✓ تمت الإضافة');
   } else {
-    m.customers[lid][cid]={...m.customers[lid][cid],...custData,id:cid};
-    addLog('تعديل عميل',`${name||phone}`);toast('✓ تم حفظ التعديل');
+    m.customers[lid][cid]={...m.customers[lid][cid],...custData,id:cid};addLog('تعديل عميل',`${name||phone}`);toast('✓ تم التعديل');
   }
   sm(m);closeModal();
-  const line=findLine(lid);
-  const cardEl=document.getElementById('lc-'+lid);
+  const line=findLine(lid);const cardEl=document.getElementById('lc-'+lid);
   if(cardEl&&line){const tmp=document.createElement('div');tmp.innerHTML=renderLineCard(line);cardEl.replaceWith(tmp.firstChild);}
   refreshStats();
 }
-
 function confirmDeleteCust(lid,cid){
-  const m=gm();if(!m||!m.customers[lid]?.[cid])return;
+  const m=gm();if(!m||!m.customers?.[lid]?.[cid])return;
   const c=m.customers[lid][cid];
   openModal(`${modalHead('حذف العميل')}
   <div class="modal-body" style="text-align:center;padding:24px">
     <div style="font-size:36px;margin-bottom:12px">⚠️</div>
     <p style="font-size:15px;font-weight:700;margin-bottom:8px">حذف ${c.name||c.phone}؟</p>
-    <p style="color:var(--sub);font-size:13px">لا يمكن التراجع عن هذا الإجراء.</p>
+    <p style="color:var(--sub);font-size:13px">لا يمكن التراجع.</p>
   </div>
-  <div class="modal-foot">
-    <button class="btn-cancel" onclick="closeModal()">إلغاء</button>
-    <button class="btn-delete-modal" onclick="deleteCust('${lid}','${cid}')">حذف</button>
-  </div>`);
+  <div class="modal-foot"><button class="btn-cancel" onclick="closeModal()">إلغاء</button><button class="btn-delete-modal" onclick="deleteCust('${lid}','${cid}')">حذف</button></div>`);
 }
-
 function deleteCust(lid,cid){
   const m=gm();if(!m)return;
-  const c=m.customers[lid]?.[cid];
-  delete m.customers[lid][cid];
-  addLog('حذف عميل',`${c?.name||c?.phone||cid}`);
-  sm(m);closeModal();toast('تم حذف العميل',false);
-  const line=findLine(lid);
-  const cardEl=document.getElementById('lc-'+lid);
+  const c=m.customers[lid]?.[cid];delete m.customers[lid][cid];
+  addLog('حذف عميل',`${c?.name||c?.phone||cid}`);sm(m);closeModal();toast('تم الحذف',false);
+  const line=findLine(lid);const cardEl=document.getElementById('lc-'+lid);
+  if(cardEl&&line){const tmp=document.createElement('div');tmp.innerHTML=renderLineCard(line);cardEl.replaceWith(tmp.firstChild);}
+  refreshStats();
+}
+
+// ===== MID-MONTH EXTRAS =====
+function showAddExtra(lid,cid){
+  const m=gm();if(!m||!m.customers?.[lid]?.[cid])return;
+  const c=m.customers[lid][cid];
+  const today=new Date().toISOString().slice(0,10);
+  openModal(`${modalHead('إضافة وسط الشهر — '+( c.name||c.phone))}
+  <div class="modal-body">
+    <p style="color:var(--sub);font-size:12px;margin-bottom:12px">سواء جيجات إضافية أو دقايق زيادة في نص الشهر</p>
+    <div class="mfl"><label>الوصف</label><input id="ex-desc" placeholder="مثال: 10 جيجا إضافية"></div>
+    <div class="mfl"><label>التاريخ</label><input id="ex-date" type="date" value="${today}" dir="ltr"></div>
+    <div class="mfl"><div class="row3">
+      <div><label>الجيجا الزيادة</label><input id="ex-gb" type="number" placeholder="10" min="0" value="0"></div>
+      <div><label>الدقايق الزيادة</label><input id="ex-min" type="number" placeholder="0" min="0" value="0"></div>
+      <div><label>سعر البيع (ج)</label><input id="ex-price" type="number" placeholder="100" min="0" value="0"></div>
+    </div></div>
+    <div class="mfl"><label>الربح الصافي منها (ج)</label>
+      <input id="ex-profit" type="number" placeholder="مثال: 30" min="0" value="0">
+      <div style="font-size:11px;color:var(--sub);margin-top:3px">الفرق بين سعر البيع والتكلفة</div>
+    </div>
+  </div>
+  <div class="modal-foot"><button class="btn-cancel" onclick="closeModal()">إلغاء</button><button class="btn-save green" onclick="saveExtra('${lid}','${cid}')">إضافة</button></div>`);
+}
+function saveExtra(lid,cid){
+  const desc=document.getElementById('ex-desc').value.trim();
+  const date=document.getElementById('ex-date').value;
+  const gb=parseFloat(document.getElementById('ex-gb').value)||0;
+  const min=parseFloat(document.getElementById('ex-min').value)||0;
+  const price=parseFloat(document.getElementById('ex-price').value)||0;
+  const profit=parseFloat(document.getElementById('ex-profit').value)||0;
+  const m=gm();if(!m||!m.customers?.[lid]?.[cid])return;
+  const c=m.customers[lid][cid];
+  if(!c.extras)c.extras=[];
+  c.extras.push({id:'ex_'+uid(),desc,date,gb,min,price,profit});
+  sm(m);closeModal();
+  addLog('إضافة وسط شهر',`${c.name||c.phone} — ${desc||gb+' GB'} — ربح: ${profit} ج`);
+  toast('✓ تمت الإضافة');
+  const line=findLine(lid);const cardEl=document.getElementById('lc-'+lid);
+  if(cardEl&&line){const tmp=document.createElement('div');tmp.innerHTML=renderLineCard(line);cardEl.replaceWith(tmp.firstChild);}
+  refreshStats();
+}
+function deleteExtra(lid,cid,exid){
+  const m=gm();if(!m||!m.customers?.[lid]?.[cid])return;
+  const c=m.customers[lid][cid];
+  c.extras=(c.extras||[]).filter(e=>e.id!==exid);
+  sm(m);toast('تم الحذف',false);addLog('حذف إضافة',`${c.name||c.phone}`);
+  const line=findLine(lid);const cardEl=document.getElementById('lc-'+lid);
   if(cardEl&&line){const tmp=document.createElement('div');tmp.innerHTML=renderLineCard(line);cardEl.replaceWith(tmp.firstChild);}
   refreshStats();
 }
@@ -948,161 +1049,141 @@ function showAddMonth(){
   const now=new Date();
   const defKey=now.getFullYear()+'-'+(now.getMonth()+1).toString().padStart(2,'0');
   const prevKey=months.length?months[0].key:'';
+  const prevLabel=prevKey?(months[0].label||getMonthLabel(prevKey)):'';
   openModal(`${modalHead('إضافة شهر جديد')}
   <div class="modal-body">
-    <div class="mfl"><label>الشهر (YYYY-MM)</label><input id="nm-key" value="${defKey}" dir="ltr" placeholder="2026-08"></div>
-    <div class="mfl"><label>الاسم (اختياري)</label><input id="nm-label" placeholder="أغسطس 2026"></div>
-    ${prevKey?`<div class="mfl">
-      <div class="check-row">
-        <input type="checkbox" id="nm-copy" onchange="toggleCopyInfo()">
-        <label for="nm-copy">نسخ بيانات ${getAllMonths()[0].label||getMonthLabel(prevKey)} (كل العملاء = لم يدفعوا)</label>
-      </div>
-      <div id="nm-copy-info" style="display:none;margin-top:8px;padding:8px;background:var(--bg);border-radius:8px;font-size:12px;color:var(--sub)">
-        ✓ سيتم نسخ كل الخطوط والعملاء من الشهر السابق — كل العملاء هيبقوا "لم يدفع" وأنت تعدّل على من دفع
-      </div>
-    </div>`:''}
+    <div class="mfl"><label>الشهر (YYYY-MM)</label><input id="nm-key" value="${defKey}" dir="ltr"></div>
+    <div class="mfl"><label>الاسم (اختياري)</label><input id="nm-label" placeholder="${getMonthLabel(defKey)}"></div>
+    ${prevKey?`<div class="mfl"><div class="check-row">
+      <input type="checkbox" id="nm-copy" onchange="toggleCopyInfo()">
+      <label for="nm-copy">نسخ بيانات ${prevLabel} (كل العملاء = لم يدفعوا)</label>
+    </div>
+    <div id="nm-copy-info" style="display:none;margin-top:8px;padding:8px;background:var(--bg);border-radius:8px;font-size:12px;color:var(--sub)">
+      ✓ سيتم نسخ كل الخطوط والعملاء — المصروفات الدعائية تبدأ من صفر — الإضافات لا تنسخ
+    </div></div>`:''}
   </div>
   <div class="modal-foot"><button class="btn-cancel" onclick="closeModal()">إلغاء</button><button class="btn-save" onclick="addMonth('${prevKey}')">إنشاء</button></div>`);
 }
-
-function toggleCopyInfo(){
-  const cb=document.getElementById('nm-copy');
-  const info=document.getElementById('nm-copy-info');
-  if(info)info.style.display=cb?.checked?'':'none';
-}
-
+function toggleCopyInfo(){const cb=document.getElementById('nm-copy');const info=document.getElementById('nm-copy-info');if(info)info.style.display=cb?.checked?'':'none';}
 function addMonth(prevKey=''){
   const key=document.getElementById('nm-key').value.trim();
   const label=document.getElementById('nm-label').value.trim()||getMonthLabel(key);
-  if(!key||!/^\d{4}-\d{2}$/.test(key)){alert('صيغة غير صحيحة. استخدم YYYY-MM مثل 2026-08');return;}
+  if(!key||!/^\d{4}-\d{2}$/.test(key)){alert('صيغة غير صحيحة. مثال: 2026-08');return;}
   const d=gd();if(!d.months)d.months={};
   if(d.months[key]){alert('هذا الشهر موجود بالفعل');return;}
   const copyChecked=document.getElementById('nm-copy')?.checked;
   if(copyChecked&&prevKey&&d.months[prevKey]){
-    // Deep clone previous month, reset all paid statuses
     const prev=JSON.parse(JSON.stringify(d.months[prevKey]));
-    prev.key=key;prev.label=label;
-    // Reset all customers to pending
+    prev.key=key;prev.label=label;prev.adExpense=0;
     for(const lid of Object.keys(prev.customers||{})){
       for(const cid of Object.keys(prev.customers[lid]||{})){
         const c=prev.customers[lid][cid];
-        c.paidStatus='pending';c.paid=0;
+        c.paidStatus='pending';c.paid=0;c.extras=[];
       }
     }
-    d.months[key]=prev;
-    addLog('نسخ شهر',`${getMonthLabel(prevKey)} → ${label}`);
+    d.months[key]=prev;addLog('نسخ شهر',`${getMonthLabel(prevKey)} → ${label}`);
   } else {
-    d.months[key]=emptyMonth(key);d.months[key].label=label;
-    addLog('إضافة شهر',`${label}`);
+    d.months[key]=emptyMonth(key);d.months[key].label=label;addLog('إضافة شهر',label);
   }
-  sd2(d);CM=key;closeModal();renderMonthBar();renderHome();toast('✓ تم إنشاء الشهر');
+  sd2(d);CM=key;expandedLines=new Set();closeModal();renderMonthBar();renderHome();toast('✓ تم إنشاء الشهر');
 }
 
-// ===== DASHBOARD PAGE =====
+// ===== DASHBOARD =====
 let _dashTab='all';
 function renderDash(){
   const el=document.getElementById('page-dash');
-  const m=gm();
-  if(!m){el.innerHTML='<div class="no-data">لا توجد بيانات</div>';return;}
+  const m=gm();if(!m){el.innerHTML='<div class="no-data">لا توجد بيانات</div>';return;}
   const coLines=getCoLines(m,CC);
-  const day1Ids=Object.keys(Object.fromEntries(Object.entries(coLines).filter(([,l])=>l.renewDay===1)));
-  const day16Ids=Object.keys(Object.fromEntries(Object.entries(coLines).filter(([,l])=>l.renewDay===16)));
-  const allIds=Object.keys(coLines);
-  const stats=computeStats(m,allIds,coLines);
-  const stats1=computeStats(m,day1Ids,Object.fromEntries(Object.entries(coLines).filter(([,l])=>l.renewDay===1)));
-  const stats16=computeStats(m,day16Ids,Object.fromEntries(Object.entries(coLines).filter(([,l])=>l.renewDay===16)));
-
-  const cur=_dashTab==='d1'?stats1:_dashTab==='d16'?stats16:stats;
+  const f=l=>l.renewDay===1;const f2=l=>l.renewDay===16;
+  const d1Lines=Object.fromEntries(Object.entries(coLines).filter(([,l])=>f(l)));
+  const d16Lines=Object.fromEntries(Object.entries(coLines).filter(([,l])=>f2(l)));
+  const all=computeStats(m,Object.keys(coLines),coLines);
+  const s1=computeStats(m,Object.keys(d1Lines),d1Lines);
+  const s16=computeStats(m,Object.keys(d16Lines),d16Lines);
+  const adExp=m.adExpense||0;
+  const cur=_dashTab==='d1'?s1:_dashTab==='d16'?s16:all;
   el.innerHTML=`
     <div class="page-title">📊 لوحة الإيرادات — ${m.label||getMonthLabel(CM)}</div>
     <div class="dash-tabs">
       <button class="dtab ${_dashTab==='all'?'act':''}" onclick="switchDashTab('all')">الكل</button>
-      <button class="dtab ${_dashTab==='d1'?'act':''}" onclick="switchDashTab('d1')">يوم 1 فقط</button>
-      <button class="dtab ${_dashTab==='d16'?'act':''}" onclick="switchDashTab('d16')">يوم 16 فقط</button>
+      <button class="dtab ${_dashTab==='d1'?'act':''}" onclick="switchDashTab('d1')">يوم 1</button>
+      <button class="dtab ${_dashTab==='d16'?'act':''}" onclick="switchDashTab('d16')">يوم 16</button>
     </div>
-    ${renderDashBody(_dashTab==='d1'?stats1:_dashTab==='d16'?stats16:stats, _dashTab==='all'?{stats,stats1,stats16}:null, m, coLines)}
-  `;
+    ${renderDashBody(cur,adExp,_dashTab==='all'?{all,s1,s16}:null,m,coLines)}`;
 }
-
 function switchDashTab(tab){_dashTab=tab;renderDash();}
-
 function computeStats(m,lineIds,linesObj){
-  const custs=lineIds.flatMap(lid=>Object.values(m.customers[lid]||{}));
+  const custs=lineIds.flatMap(lid=>Object.values(m.customers?.[lid]||{}));
   const paid=custs.filter(c=>c.paidStatus==='paid');
-  const rev=paid.reduce((s,c)=>s+(c.paid||0),0);
+  const baseRev=paid.reduce((s,c)=>s+(c.paid||0),0);
+  const extrasRev=custs.reduce((s,c)=>{return s+(c.extras||[]).reduce((s2,e)=>s2+(e.profit||0),0);},0);
+  const rev=baseRev+extrasRev;
   const cost=Object.values(linesObj).reduce((s,l)=>s+(l.wegoldPkg?.cost||0),0);
-  const profit=rev-cost;
-  return{lines:lineIds.length,custs:custs.length,paid:paid.length,unpaid:custs.length-paid.length,rev,cost,profit,pct:custs.length?Math.round(paid.length/custs.length*100):0,custs_list:custs,lines_list:Object.values(linesObj)};
+  return{lines:lineIds.length,custs:custs.length,paid:paid.length,unpaid:custs.length-paid.length,
+    rev,extrasRev,baseRev,cost,pct:custs.length?Math.round(paid.length/custs.length*100):0,
+    custs_list:custs,lines_list:Object.values(linesObj)};
 }
-
-function renderDashBody(s, compare, m, coLines){
-  const profitCls=s.profit>=0?'green':'red';
+function renderDashBody(s,adExp,compare,m,coLines){
+  const profit=s.rev-s.cost-adExp;
+  const pc=s.pct;
   let html=`
     <div class="stats-row">
       <div class="stat-card"><div class="stat-val">${s.lines}</div><div class="stat-lbl">خطوط</div></div>
       <div class="stat-card"><div class="stat-val">${s.custs}</div><div class="stat-lbl">عملاء</div></div>
       <div class="stat-card green"><div class="stat-val">${s.paid}</div><div class="stat-lbl">دفعوا</div></div>
       <div class="stat-card amber"><div class="stat-val">${s.unpaid}</div><div class="stat-lbl">لم يدفعوا</div></div>
-      <div class="stat-card accent"><div class="stat-val">${s.pct}%</div><div class="stat-lbl">نسبة التحصيل</div></div>
-      <div class="stat-card blue"><div class="stat-val">${s.rev.toLocaleString('ar-EG')} ج</div><div class="stat-lbl">الإيرادات</div></div>
+      <div class="stat-card accent"><div class="stat-val">${pc}%</div><div class="stat-lbl">التحصيل</div></div>
+      <div class="stat-card blue"><div class="stat-val">${s.baseRev.toLocaleString('ar-EG')} ج</div><div class="stat-lbl">إيراد الباقات</div></div>
+      ${s.extrasRev>0?`<div class="stat-card green"><div class="stat-val">${s.extrasRev.toLocaleString('ar-EG')} ج</div><div class="stat-lbl">ربح الإضافات</div></div>`:''}
       <div class="stat-card red"><div class="stat-val">${s.cost.toLocaleString('ar-EG')} ج</div><div class="stat-lbl">التكاليف</div></div>
-      <div class="stat-card ${profitCls}"><div class="stat-val">${s.profit>=0?'+':''}${s.profit.toLocaleString('ar-EG')} ج</div><div class="stat-lbl">الربح الصافي</div></div>
+      ${adExp>0?`<div class="stat-card red"><div class="stat-val">${adExp.toLocaleString('ar-EG')} ج</div><div class="stat-lbl">مصروفات دعائية</div></div>`:''}
+      <div class="stat-card ${profit>=0?'green':'red'}"><div class="stat-val">${profit>=0?'+':''}${profit.toLocaleString('ar-EG')} ج</div><div class="stat-lbl">الربح الصافي</div></div>
     </div>
-    <div class="prog-wrap"><div class="prog-bar" style="width:${s.pct}%"></div></div>
-    <div style="text-align:center;font-size:11px;color:var(--sub);margin-top:4px;margin-bottom:16px">${s.pct}% نسبة التحصيل</div>
-  `;
-
-  // If showing all, show comparison table day1 vs day16
+    <div class="prog-wrap"><div class="prog-bar" style="width:${pc}%"></div></div>
+    <div style="text-align:center;font-size:11px;color:var(--sub);margin-top:4px;margin-bottom:16px">${pc}% تحصيل</div>`;
   if(compare){
-    html+=`
-    <div class="section-title">مقارنة يوم 1 مقابل يوم 16</div>
+    const p1=compare.s1.rev-compare.s1.cost;const p16=compare.s16.rev-compare.s16.cost;
+    html+=`<div class="section-title">يوم 1 مقابل يوم 16</div>
     <table class="dash-table" style="margin-bottom:20px">
       <thead><tr><th>البيان</th><th>يوم 1</th><th>يوم 16</th><th>الإجمالي</th></tr></thead>
       <tbody>
-        <tr><td>عدد الخطوط</td><td>${compare.stats1.lines}</td><td>${compare.stats16.lines}</td><td style="font-weight:700">${compare.stats.lines}</td></tr>
-        <tr><td>عدد العملاء</td><td>${compare.stats1.custs}</td><td>${compare.stats16.custs}</td><td style="font-weight:700">${compare.stats.custs}</td></tr>
-        <tr><td>دفعوا</td><td style="color:var(--green);font-weight:700">${compare.stats1.paid}</td><td style="color:var(--green);font-weight:700">${compare.stats16.paid}</td><td style="color:var(--green);font-weight:700">${compare.stats.paid}</td></tr>
-        <tr><td>لم يدفعوا</td><td style="color:var(--amber);font-weight:700">${compare.stats1.unpaid}</td><td style="color:var(--amber);font-weight:700">${compare.stats16.unpaid}</td><td style="color:var(--amber);font-weight:700">${compare.stats.unpaid}</td></tr>
-        <tr><td>الإيرادات</td><td>${compare.stats1.rev.toLocaleString('ar-EG')} ج</td><td>${compare.stats16.rev.toLocaleString('ar-EG')} ج</td><td style="font-weight:700">${compare.stats.rev.toLocaleString('ar-EG')} ج</td></tr>
-        <tr><td>التكاليف</td><td>${compare.stats1.cost.toLocaleString('ar-EG')} ج</td><td>${compare.stats16.cost.toLocaleString('ar-EG')} ج</td><td>${compare.stats.cost.toLocaleString('ar-EG')} ج</td></tr>
-        <tr class="total-row"><td>الربح الصافي</td><td>${compare.stats1.profit>=0?'+':''}${compare.stats1.profit.toLocaleString('ar-EG')} ج</td><td>${compare.stats16.profit>=0?'+':''}${compare.stats16.profit.toLocaleString('ar-EG')} ج</td><td>${compare.stats.profit>=0?'+':''}${compare.stats.profit.toLocaleString('ar-EG')} ج</td></tr>
+        <tr><td>الخطوط</td><td>${compare.s1.lines}</td><td>${compare.s16.lines}</td><td style="font-weight:700">${compare.all.lines}</td></tr>
+        <tr><td>العملاء</td><td>${compare.s1.custs}</td><td>${compare.s16.custs}</td><td style="font-weight:700">${compare.all.custs}</td></tr>
+        <tr><td>دفعوا</td><td style="color:var(--green);font-weight:700">${compare.s1.paid}</td><td style="color:var(--green);font-weight:700">${compare.s16.paid}</td><td style="color:var(--green);font-weight:700">${compare.all.paid}</td></tr>
+        <tr><td>الإيرادات</td><td>${compare.s1.rev.toLocaleString('ar-EG')} ج</td><td>${compare.s16.rev.toLocaleString('ar-EG')} ج</td><td>${compare.all.rev.toLocaleString('ar-EG')} ج</td></tr>
+        <tr><td>التكاليف</td><td style="color:var(--red)">${compare.s1.cost.toLocaleString('ar-EG')} ج</td><td style="color:var(--red)">${compare.s16.cost.toLocaleString('ar-EG')} ج</td><td style="color:var(--red)">${compare.all.cost.toLocaleString('ar-EG')} ج</td></tr>
+        <tr class="total-row"><td>الربح</td><td>${p1>=0?'+':''}${p1.toLocaleString('ar-EG')} ج</td><td>${p16>=0?'+':''}${p16.toLocaleString('ar-EG')} ج</td><td>${profit>=0?'+':''}${profit.toLocaleString('ar-EG')} ج</td></tr>
       </tbody>
     </table>`;
   }
-
-  // Breakdown per line
   html+=`<div class="section-title">تفصيل الخطوط</div>
   <table class="dash-table">
-    <thead><tr><th>الخط</th><th>صاحب الخط</th><th>يوم</th><th>عملاء</th><th>دفعوا</th><th>الإيراد</th><th>التكلفة</th><th>الربح</th></tr></thead>
+    <thead><tr><th>الخط</th><th>صاحب الخط</th><th>يوم</th><th>عملاء</th><th>إيراد</th><th>إضافات</th><th>تكلفة</th><th>ربح</th></tr></thead>
     <tbody>`;
   for(const line of s.lines_list){
-    const lCusts=Object.values(m.customers[line.id]||{});
+    const lCusts=Object.values(m.customers?.[line.id]||{});
     const lPaid=lCusts.filter(c=>c.paidStatus==='paid');
-    const lRev=lPaid.reduce((s2,c)=>s2+(c.paid||0),0);
-    const lCost=line.wegoldPkg?.cost||0;
-    const lProfit=lRev-lCost;
+    const lBaseRev=lPaid.reduce((s2,c)=>s2+(c.paid||0),0);
+    const lExtRev=lCusts.reduce((s2,c)=>{return s2+(c.extras||[]).reduce((s3,e)=>s3+(e.profit||0),0);},0);
+    const lRev=lBaseRev+lExtRev;const lCost=line.wegoldPkg?.cost||0;const lP=lRev-lCost;
     html+=`<tr>
       <td style="font-family:monospace;font-weight:700">${line.number||'—'}</td>
       <td>${line.ownerName||'—'}</td>
       <td><span class="day-badge ${line.renewDay===1?'d1':'d16'}" style="font-size:10px;padding:2px 8px">يوم ${line.renewDay}</span></td>
       <td>${lPaid.length}/${lCusts.length}</td>
-      <td><span style="color:var(--green);font-weight:700">${lPaid.length}</span></td>
-      <td>${lRev.toLocaleString('ar-EG')} ج</td>
+      <td>${lBaseRev.toLocaleString('ar-EG')} ج</td>
+      <td style="color:var(--green)">${lExtRev>0?'+'+lExtRev.toLocaleString('ar-EG')+' ج':'—'}</td>
       <td style="color:var(--red)">${lCost.toLocaleString('ar-EG')} ج</td>
-      <td style="font-weight:700;color:${lProfit>=0?'var(--green)':'var(--red)'}">${lProfit>=0?'+':''}${lProfit.toLocaleString('ar-EG')} ج</td>
+      <td style="font-weight:700;color:${lP>=0?'var(--green)':'var(--red)'}">${lP>=0?'+':''}${lP.toLocaleString('ar-EG')} ج</td>
     </tr>`;
   }
   if(!s.lines_list.length)html+=`<tr><td colspan="8" style="text-align:center;color:var(--sub);padding:20px">لا توجد خطوط</td></tr>`;
   html+='</tbody></table>';
-
-  // Unpaid customers list
-  const unpaidList=s.custs_list.filter(c=>c.paidStatus!=='paid');
-  if(unpaidList.length){
-    html+=`<div class="section-title" style="margin-top:20px">⏳ لم يدفعوا (${unpaidList.length})</div>
-    <table class="dash-table">
-      <thead><tr><th>الاسم</th><th>الرقم</th><th>الجيجا</th><th>الدقايق</th><th>السعر</th></tr></thead>
-      <tbody>`;
-    for(const c of unpaidList){
+  const unpaid=s.custs_list.filter(c=>c.paidStatus!=='paid');
+  if(unpaid.length){
+    html+=`<div class="section-title" style="margin-top:18px">⏳ لم يدفعوا (${unpaid.length})</div>
+    <table class="dash-table"><thead><tr><th>الاسم</th><th>الرقم</th><th>الجيجا</th><th>الدقايق</th><th>السعر</th></tr></thead><tbody>`;
+    for(const c of unpaid){
       const gb=c.customGb!==undefined?c.customGb:(PKG_DATA[c.pkgId]?.gb||'—');
       const min=c.customMin!==undefined?c.customMin:(PKG_DATA[c.pkgId]?.min||'—');
       const pr=c.customPrice||PKG_DATA[c.pkgId]?.price||0;
@@ -1116,71 +1197,48 @@ function renderDashBody(s, compare, m, coLines){
   return html;
 }
 
-// ===== ADMIN PAGE =====
+// ===== ADMIN =====
 function renderAdmin(){
-  const sys=getSys();const users=Object.values(sys.users);const fbUrl_=fbUrl();
+  const sys=getSys();const users=Object.values(sys.users);const fbu=fbUrl();
   document.getElementById('page-admin').innerHTML=`
     <div class="page-title">⚙️ الإعدادات</div>
-    <div class="admin-section">
-      <h3>🔥 مزامنة Firebase</h3>
+    <div class="admin-section"><h3>🔥 مزامنة Firebase</h3>
       <div class="fb-row">
-        <input class="fb-input" id="fb-url-input" value="${fbUrl_}" placeholder="https://your-project.firebaseio.com" dir="ltr">
+        <input class="fb-input" id="fb-url-input" value="${fbu}" placeholder="https://your-project.firebaseio.com" dir="ltr">
         <button class="fb-save" onclick="saveFbUrl()">حفظ</button>
-        ${fbUrl_?`<button class="btn-sm" onclick="testFb()">اختبار</button>`:''}
+        ${fbu?`<button class="btn-sm" onclick="testFb()">اختبار</button>`:''}
       </div>
     </div>
-    <div class="admin-section">
-      <h3>👥 المستخدمون</h3>
+    <div class="admin-section"><h3>👥 المستخدمون</h3>
       <table class="settings-table">
         <thead><tr><th>المستخدم</th><th>الاسم</th><th>الدور</th><th>كلمة المرور</th><th></th></tr></thead>
         <tbody>${users.map(u=>`<tr>
-          <td style="font-family:monospace;font-weight:700">${u.username}</td>
-          <td>${u.displayName}</td>
+          <td style="font-family:monospace;font-weight:700">${u.username}</td><td>${u.displayName}</td>
           <td><span class="badge-role ${u.role==='admin'?'badge-admin':'badge-user'}">${u.role==='admin'?'أدمن':'مستخدم'}</span></td>
           <td style="color:var(--sub);font-size:12px">${u.password}</td>
           <td><button class="btn-sm" onclick="showEditUser('${u.username}')">تعديل</button></td>
         </tr>`).join('')}</tbody>
       </table>
-    </div>
-  `;
+    </div>`;
 }
-function saveFbUrl(){
-  const url=document.getElementById('fb-url-input').value.trim().replace(/\/$/,'');
-  localStorage.setItem('lm_fb_url',url);toast(url?'✓ تم حفظ رابط Firebase':'تم مسح الرابط');renderAdmin();
+function saveFbUrl(){const url=document.getElementById('fb-url-input').value.trim().replace(/\/$/,'');localStorage.setItem('lm_fb_url',url);toast(url?'✓ تم حفظ Firebase':'تم مسح الرابط');renderAdmin();}
+async function testFb(){const url=fbUrl();if(!url){toast('أدخل الرابط',false);return;}try{const r=await fetch(`${url}/ping.json`,{method:'PUT',headers:{'Content-Type':'application/json'},body:'"ok"'});if(r.ok){fbStatus(true);toast('✓ الاتصال ناجح');}else{fbStatus(false);toast('فشل: '+r.status,false);}}catch(e){fbStatus(false);toast('خطأ: '+e.message,false);}}
+function showEditUser(un){const sys=getSys();const u=sys.users[un];if(!u)return;
+  openModal(`${modalHead('تعديل المستخدم — '+un)}<div class="modal-body">
+    <div class="mfl"><label>الاسم</label><input id="eu-name" value="${u.displayName}"></div>
+    <div class="mfl"><label>كلمة المرور</label><input id="eu-pass" value="${u.password}"></div>
+  </div><div class="modal-foot"><button class="btn-cancel" onclick="closeModal()">إلغاء</button><button class="btn-save" onclick="saveUser('${un}')">حفظ</button></div>`);
 }
-async function testFb(){
-  const url=fbUrl();if(!url){toast('أدخل الرابط أولاً',false);return;}
-  try{const r=await fetch(`${url}/ping.json`,{method:'PUT',headers:{'Content-Type':'application/json'},body:'"ok"'});if(r.ok){fbStatus(true);toast('✓ الاتصال ناجح');}else{fbStatus(false);toast('فشل: '+r.status,false);}}catch(e){fbStatus(false);toast('خطأ: '+e.message,false);}
-}
-function showEditUser(un){
-  const sys=getSys();const u=sys.users[un];if(!u)return;
-  openModal(`${modalHead('تعديل المستخدم — '+un)}
-  <div class="modal-body">
-    <div class="mfl"><label>الاسم المعروض</label><input id="eu-name" value="${u.displayName}"></div>
-    <div class="mfl"><label>كلمة المرور</label><input id="eu-pass" type="text" value="${u.password}"></div>
-  </div>
-  <div class="modal-foot"><button class="btn-cancel" onclick="closeModal()">إلغاء</button><button class="btn-save" onclick="saveUser('${un}')">حفظ</button></div>`);
-}
-function saveUser(un){
-  const name=document.getElementById('eu-name').value.trim();
-  const pass=document.getElementById('eu-pass').value.trim();
-  if(!name||!pass){alert('أدخل جميع البيانات');return;}
-  const sys=getSys();if(!sys.users[un])return;
-  sys.users[un].displayName=name;sys.users[un].password=pass;
-  saveSys(sys);closeModal();renderAdmin();toast('✓ تم تعديل المستخدم');
-}
+function saveUser(un){const name=document.getElementById('eu-name').value.trim();const pass=document.getElementById('eu-pass').value.trim();if(!name||!pass)return;const sys=getSys();sys.users[un].displayName=name;sys.users[un].password=pass;saveSys(sys);closeModal();renderAdmin();toast('✓ تم التعديل');}
 
-// ===== LOGS PAGE =====
+// ===== LOGS =====
 function renderLogs(){
   const d=gd();const logs=d.logs||[];
-  document.getElementById('page-logs').innerHTML=`
-    <div class="page-title">📋 سجل التعديلات</div>
+  document.getElementById('page-logs').innerHTML=`<div class="page-title">📋 سجل التعديلات</div>
     <div style="background:#fff;border-radius:12px;box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden">
       ${logs.length?logs.slice(0,200).map(l=>`<div class="log-entry">
-        <div class="log-ts">${formatTs(l.ts)}</div>
-        <div class="log-action">${l.a}</div>
-        <div class="log-detail">${l.d||''}</div>
-      </div>`).join(''):'<div class="no-data">لا توجد سجلات بعد</div>'}
+        <div class="log-ts">${formatTs(l.ts)}</div><div class="log-action">${l.a}</div><div class="log-detail">${l.d||''}</div>
+      </div>`).join(''):'<div class="no-data">لا توجد سجلات</div>'}
     </div>`;
 }
 function formatTs(ts){try{const d=new Date(ts);return d.toLocaleDateString('ar-EG')+' '+d.toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'});}catch{return ts;}}
